@@ -1,0 +1,77 @@
+.about-us-bg-container {
+  background-color: #ffffff;
+  padding-top: 50px;
+  padding: 30px;
+  padding-right: 60px;
+}
+.about-us-text {
+  margin-top: 50px;
+  text-align: center;
+  color: #333;
+  font-size: 30px;
+  font-weight: 400;
+}
+.about-us-description {
+  color: #333;
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 300;
+  text-align: center;
+  margin-top: 45px;
+  margin-bottom: 100px;
+}
+.about-iphone-container {
+  width: 100vw;
+}
+.about-iphone {
+  width: 80%;
+}
+.why-choose-dizi-text {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 37px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+.why-choose-us-img-text-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.why-choose-us-text-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.dizital-subheadings {
+  text-align: left;
+  color: #343434;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 15px;
+}
+.dizital-subheadings-track {
+  text-align: left;
+  color: #343434;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 0px;
+}
+.track-img {
+  width: 50px;
+  height: 50px;
+  margin-right: 15px;
+}
+.dizital-sub-des {
+  text-align: left;
+  color: #727272;
+  font-size: 15px;
+}
+.why-choose-us-icons {
+  font-size: 55px;
+  color: #129cf3;
+  margin-right: 15px;
+}
