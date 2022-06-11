@@ -1,8 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import React from "react";
 import NavBar from "../NavBar/NavBar";
 import { FaAngleDown } from "react-icons/fa";
 import "./Home.css";
 import AboutUs from "../AboutUs/AboutUs";
+import Features from "../Features/Features";
+import Screens from "../Screens/Screens";
+import Download from "../Download/Download";
+import Contact from "../Contact/Contact";
 
 const Home = () => {
   return (
@@ -43,6 +48,10 @@ const Home = () => {
         </div>
       </div>
       <AboutUs />
+      <Features />
+      <Screens />
+      <Download />
+      <Contact />
     </div>
   );
 };

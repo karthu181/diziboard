@@ -1,0 +1,11 @@
+.features-bg-container {
+  background-color: #ffffff;
+}
+
+.features-row-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.features-heading {
+}

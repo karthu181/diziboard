@@ -1,6 +1,8 @@
 import "./NavBar.css";
+import React from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 const NavBar = () => {
   return (
@@ -30,17 +32,37 @@ const NavBar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link navbar-custom" to="about">
+                <HashLink className="nav-link navbar-custom" to="/#aboutdiv">
                   ABOUT
+                </HashLink>
+              </li>
+              <li className="nav-item">
+                <HashLink className="nav-link navbar-custom" to="/#features">
+                  FEATURES
+                </HashLink>
+              </li>
+              <li className="nav-item">
+                <HashLink className="nav-link navbar-custom" to="/#screens">
+                  SCREENS
+                </HashLink>
+              </li>
+              <li className="nav-item">
+                <HashLink className="nav-link navbar-custom" to="/#download">
+                  DOWNLOAD
+                </HashLink>
+              </li>
+              <li className="nav-item">
+                <HashLink className="nav-link navbar-custom" to="/#contact">
+                  CONTACT
+                </HashLink>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link navbar-custom" to="/registration">
+                  REGISTRATION
                 </Link>
               </li>
-              {/* <li className="nav-item"><Link className="nav-link navbar-custom " > FEATURES </Link></li>
-    <li className="nav-item"><Link className="nav-link navbar-custom " > SCREENS </Link></li>
-    <li className="nav-item"><Link className="nav-link navbar-custom " > DOWNLOAD </Link></li>
-    <li className="nav-item"><Link className="nav-link navbar-custom " > CONTACT </Link></li>
-    <li className="nav-item"><Link className="nav-link navbar-custom " > REGISTRATION </Link></li> */}
               <li className="nav-item">
-                <Link className="nav-link navbar-custom " to="/login">
+                <Link className="nav-link navbar-custom" to="/login">
                   SIGN IN
                 </Link>
               </li>

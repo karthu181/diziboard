@@ -1,10 +1,11 @@
 import "./AboutUs.css";
+import React from "react";
 import { FaRegCalendarAlt, FaRegFlag } from "react-icons/fa";
 import { HiUserGroup } from "react-icons/hi";
 
 const AboutUs = () => {
   return (
-    <div className="about-us-bg-container">
+    <div id="aboutdiv" className="about-us-bg-container">
       <h1 className="about-us-text">ABOUT US</h1>
       <p className="about-us-description">
         DiZi Board is a digital platform which aims to promote, recognize and
