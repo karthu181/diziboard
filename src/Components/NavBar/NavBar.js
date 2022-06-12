@@ -1,76 +1,38 @@
 import "./NavBar.css";
 import React from "react";
-import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
-import { HashLink } from "react-router-hash-link";
+import { Nav, Navbar } from "react-bootstrap";
 
 const NavBar = () => {
   return (
-    <div>
-      <nav className="autohide navbar navbar-expand-lg navbar-white bg-transparent">
-        <div className="container-fluid">
+    <div className="nav-container">
+      <Navbar collapseOnSelect expand="lg" bg="transparent" variant="light">
+        <Navbar.Brand className="me-auto" href="#home">
           <img
             className="navbar-logo"
             alt="nav-logo"
             src="http://192.168.0.116:8080/images/logo_small.png"
           />
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#main_nav"
-          >
-            <span className="navbar-toggler-icon">
-              <GiHamburgerMenu />
-            </span>
-          </button>
-          <div className="collapse navbar-collapse" id="main_nav">
-            <ul className="navbar-nav ms-auto">
-              <li className="nav-item">
-                <Link className="nav-link navbar-custom" to="/">
-                  HOME
-                </Link>
-              </li>
-              <li className="nav-item">
-                <HashLink className="nav-link navbar-custom" to="/#aboutdiv">
-                  ABOUT
-                </HashLink>
-              </li>
-              <li className="nav-item">
-                <HashLink className="nav-link navbar-custom" to="/#features">
-                  FEATURES
-                </HashLink>
-              </li>
-              <li className="nav-item">
-                <HashLink className="nav-link navbar-custom" to="/#screens">
-                  SCREENS
-                </HashLink>
-              </li>
-              <li className="nav-item">
-                <HashLink className="nav-link navbar-custom" to="/#download">
-                  DOWNLOAD
-                </HashLink>
-              </li>
-              <li className="nav-item">
-                <HashLink className="nav-link navbar-custom" to="/#contact">
-                  CONTACT
-                </HashLink>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link navbar-custom" to="/registration">
-                  REGISTRATION
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link navbar-custom" to="/login">
-                  SIGN IN
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <hr className="hr-line" />
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="ms-auto">
+            <Nav.Link href="#home">HOME</Nav.Link>
+            <Nav.Link href="#about">ABOUT</Nav.Link>
+            <Nav.Link href="#features">FEATURES</Nav.Link>
+            <Nav.Link href="#screens">SCREENS</Nav.Link>
+            <Nav.Link href="#download">DOWNLOAD</Nav.Link>
+            <Nav.Link href="#contact">CONTACT</Nav.Link>
+            <Link className="nav-link navbar-custom" to="/registration">
+              REGISTRATION
+            </Link>
+            <Link className="nav-link navbar-custom" to="/login">
+              SIGN IN
+            </Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+      {/* <hr classNameName="hr-line" /> */}
     </div>
   );
 };

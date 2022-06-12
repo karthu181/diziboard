@@ -6,6 +6,39 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin-left: 15%;
+  margin-right: 15%;
 }
 .features-heading {
+  margin-top: 50px;
+  text-align: center;
+  color: #333;
+  font-size: 30px;
+  font-weight: 400;
+}
+.features-description {
+  color: #333;
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 300;
+  text-align: center;
+  margin-top: 45px;
+  margin-bottom: 100px;
+  margin-left: 17%;
+  margin-right: 17%;
+}
+.features-subheadings {
+  text-align: left;
+  color: #343434;
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 15px;
+}
+.features-sub-des {
+  color: #727272;
+  font-size: 15px;
+}
+.iphone-black-container {
+  margin-left: 10px;
+  margin-right: 10px;
 }

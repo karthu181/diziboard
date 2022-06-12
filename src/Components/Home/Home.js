@@ -11,7 +11,7 @@ import Contact from "../Contact/Contact";
 
 const Home = () => {
   return (
-    <div className="bg-container">
+    <div id="home" className="bg-container">
       <NavBar />
       <div>
         <div className="home-bg">

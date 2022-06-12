@@ -2,7 +2,7 @@ import React from "react";
 
 const Screens = () => {
   return (
-    <div id="screens">
+    <div id="screens" className="screens-bg-container">
       <h1>SCREENS</h1>
       <p>
         A simple yet ever so useful motivational guide and help application that

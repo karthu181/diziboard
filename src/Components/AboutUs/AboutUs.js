@@ -5,7 +5,7 @@ import { HiUserGroup } from "react-icons/hi";
 
 const AboutUs = () => {
   return (
-    <div id="aboutdiv" className="about-us-bg-container">
+    <div id="about" className="about-us-bg-container">
       <h1 className="about-us-text">ABOUT US</h1>
       <p className="about-us-description">
         DiZi Board is a digital platform which aims to promote, recognize and
@@ -70,7 +70,9 @@ const AboutUs = () => {
               />
             </div>
             <div>
-              <h3 className="dizital-subheadings-track">DIZITAL TRACKING</h3>
+              <h3 className="dizital-subheadings dizital-subheadings-track">
+                DIZITAL TRACKING
+              </h3>
               <p className="dizital-sub-des">
                 "Dizital Tracking", It is a mobile-first platform that will
                 enable tracking and monitor of kids transportation. It will give

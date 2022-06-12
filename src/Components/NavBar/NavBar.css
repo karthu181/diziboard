@@ -1,3 +1,10 @@
-.hr-line{
-    margin-top: 0px;
+.nav-container {
+}
+
+.hr-line {
+  margin-top: 0px;
+}
+nav {
+  position: sticky;
+  top: 0;
 }

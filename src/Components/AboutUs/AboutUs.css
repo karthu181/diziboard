@@ -47,17 +47,11 @@
 .dizital-subheadings {
   text-align: left;
   color: #343434;
-  text-transform: uppercase;
   font-size: 20px;
   font-weight: 700;
   margin-top: 15px;
 }
 .dizital-subheadings-track {
-  text-align: left;
-  color: #343434;
-  text-transform: uppercase;
-  font-size: 20px;
-  font-weight: 700;
   margin-top: 0px;
 }
 .track-img {
