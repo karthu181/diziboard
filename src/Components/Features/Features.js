@@ -5,6 +5,7 @@ const Features = () => {
   return (
     <div id="features" className="features-bg-container">
       <h1 className="features-heading">FEATURES</h1>
+      <hr className="features-hr-line" />
       <p className="features-description">
         The point of your app is the same as your website, just made easier and
         more useful. It is to give parents the ability to get educated on their
@@ -13,7 +14,7 @@ const Features = () => {
         available all the time.
       </p>
       <div className="features-row-container">
-        <div>
+        <div className="features-left-text-container">
           <h1 className="features-subheadings text-end">LIVE BUS TRACKING</h1>
           <p className="features-sub-des text-end">
             Managing the school bus fleet and ensuring the safety of school
@@ -41,7 +42,7 @@ const Features = () => {
             src="http://192.168.0.116:8080/images/iphone-black.png"
           />
         </div>
-        <div>
+        <div className="features-right-text-container">
           <h1 className="features-subheadings text-start">
             ONLINE ASSESSMENTS
           </h1>
@@ -61,6 +62,22 @@ const Features = () => {
             Today's school branding goes a step further and identifies a
             school's unique competitive advantage.
           </p>
+        </div>
+      </div>
+
+      <div className="purchase-btn-des-container">
+        <div className="purchase-des-container">
+          <p className="purchase-des">
+            Apps are pieces of software that run on any device, such as laptop,
+            smart phone, or an iPod or iPad. As devices increase in popularity -
+            at home and business, as well as in the classroom - a seemingly
+            endless range of apps have become available for purchase. Many of
+            these apps are designed specifically for use by teachers and
+            students.
+          </p>
+        </div>
+        <div className="purchase-btn-container">
+          <button className="btn btn-primary purchase-btn">PURCHASE NOW</button>
         </div>
       </div>
     </div>

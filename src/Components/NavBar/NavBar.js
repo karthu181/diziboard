@@ -3,9 +3,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Nav, Navbar } from "react-bootstrap";
 
-const NavBar = () => {
+const NavBar = (props) => {
+  const { displayOrHide } = props;
+
   return (
-    <div className="nav-container">
+    <div className={`nav-container ${displayOrHide}`}>
       <Navbar collapseOnSelect expand="lg" bg="transparent" variant="light">
         <Navbar.Brand className="me-auto" href="#home">
           <img
@@ -23,10 +25,10 @@ const NavBar = () => {
             <Nav.Link href="#screens">SCREENS</Nav.Link>
             <Nav.Link href="#download">DOWNLOAD</Nav.Link>
             <Nav.Link href="#contact">CONTACT</Nav.Link>
-            <Link className="nav-link navbar-custom" to="/registration">
+            <Link className="nav-link" to="/registration">
               REGISTRATION
             </Link>
-            <Link className="nav-link navbar-custom" to="/login">
+            <Link className="nav-link" to="/login">
               SIGN IN
             </Link>
           </Nav>

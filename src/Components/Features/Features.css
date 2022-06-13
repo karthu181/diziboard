@@ -8,6 +8,7 @@
   justify-content: center;
   margin-left: 15%;
   margin-right: 15%;
+  padding: 30px;
 }
 .features-heading {
   margin-top: 50px;
@@ -16,16 +17,22 @@
   font-size: 30px;
   font-weight: 400;
 }
+.features-hr-line {
+  width: 4%;
+  margin-left: 48%;
+  margin-right: 48%;
+}
 .features-description {
   color: #333;
   font-size: 18px;
   line-height: 28px;
   font-weight: 300;
   text-align: center;
-  margin-top: 45px;
+  margin-top: 22px;
   margin-bottom: 100px;
   margin-left: 17%;
   margin-right: 17%;
+  padding: 30px;
 }
 .features-subheadings {
   text-align: left;
@@ -41,4 +48,37 @@
 .iphone-black-container {
   margin-left: 10px;
   margin-right: 10px;
+  width: 30%;
+}
+.purchase-btn-des-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 100px;
+  background-color: black;
+  padding: 100px;
+  padding-left: 150px;
+}
+.purchase-des-container {
+  text-align: left;
+  color: #ffffff;
+  width: 65%;
+}
+.purchase-btn-container {
+  padding-left: 0px;
+  width: 30%;
+  text-align: left;
+  margin-left: 50px;
+}
+.purchase-btn {
+  padding-left: 28px;
+  padding-right: 28px;
+  height: 42px;
+}
+.features-left-text-container {
+  width: 30%;
+}
+.features-right-text-container {
+  width: 30%;
 }

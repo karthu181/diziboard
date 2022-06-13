@@ -1,6 +1,5 @@
 .about-us-bg-container {
   background-color: #ffffff;
-  padding-top: 50px;
   padding: 30px;
   padding-right: 60px;
 }
@@ -11,13 +10,18 @@
   font-size: 30px;
   font-weight: 400;
 }
+.about-us-hr-line {
+  width: 4%;
+  margin-left: 48%;
+  margin-right: 48%;
+}
 .about-us-description {
   color: #333;
   font-size: 18px;
   line-height: 28px;
   font-weight: 300;
   text-align: center;
-  margin-top: 45px;
+  margin-top: 22px;
   margin-bottom: 100px;
 }
 .about-iphone-container {

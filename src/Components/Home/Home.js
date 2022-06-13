@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import React from "react";
+import React, { useState } from "react";
 import NavBar from "../NavBar/NavBar";
 import { FaAngleDown } from "react-icons/fa";
 import "./Home.css";
@@ -10,10 +10,24 @@ import Download from "../Download/Download";
 import Contact from "../Contact/Contact";
 
 const Home = () => {
+  const [display, setDisplay] = useState("d-block");
+  // var navDisplayOrHideClassName = "display";
+
+  // const onMouseMoveHandler = () => {
+  //   navDisplayOrHideClassName = "hide";
+  // };
+
+  const onMouseMoveHandler = () => {
+    setDisplay("d-block");
+    setTimeout(() => {
+      setDisplay("d-none");
+    }, 5000);
+  };
+
   return (
     <div id="home" className="bg-container">
-      <NavBar />
-      <div>
+      <NavBar displayOrHide={display} />
+      <div onMouseMove={onMouseMoveHandler}>
         <div className="home-bg">
           <div>
             <img

@@ -1,8 +1,8 @@
 .bg-container {
   background-image: url("http://192.168.0.116:8080/images/shutterstock_246299713.jpg");
+  width: 100%;
   min-height: 100vh;
   background-size: cover;
-  background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
@@ -71,4 +71,10 @@
   font-size: 22px;
   font-weight: 400;
   background: transparent;
+}
+.hide {
+  display: none;
+}
+.display {
+  display: block;
 }
