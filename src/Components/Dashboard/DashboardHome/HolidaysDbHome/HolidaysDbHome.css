@@ -1,0 +1,31 @@
+.holiday-container {
+  background-color: #ed6647;
+  cursor: pointer;
+  border: 5px solid #e0e0e0;
+}
+
+.hr-line {
+  color: white;
+  height: 1px;
+  background-color: white;
+}
+
+.bday-bottom-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 50px;
+  align-self: center;
+  text-align: center;
+}
+
+.bday-heading {
+  color: blue;
+  font-size: 35px;
+}
+
+.bday-description {
+  color: white;
+  font-size: 25px;
+}

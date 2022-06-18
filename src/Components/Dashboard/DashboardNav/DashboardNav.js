@@ -1,19 +1,91 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./DashboardNav.css";
 
 const DashboardNav = () => {
   return (
-    <div>
-      <nav>
-        <Link to="/dashboard">Dashboard</Link>
-        <Link to="/kidstatus">Kid Status</Link>
-        <Link to="/eventmanagement">Event Management</Link>
-        <Link to="/holidaymanagement">Holiday Management</Link>
-        <Link to="/kidmarks">Kid Marks</Link>
-        <Link to="/attendance">Attendance</Link>
-        <Link to="/diary">Diary</Link>
-        <Link to="kidapprovals">Kid Approvals</Link>
-        <Link to="aboutme">About Me</Link>
+    <div className="dashboard-bg-container">
+      <nav className="dashboard-nav-container">
+        <div>
+          <img
+            className="nav-logo"
+            src="http://192.168.0.116:8080/css/images/logo.png"
+          />
+        </div>
+        <ul className="nav-ul-list-container">
+          <li>
+            <Link
+              className="text-decoration-none me-3 nav-link-item"
+              to="/dashboard"
+            >
+              Dashboard
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="text-decoration-none me-3 nav-link-item"
+              to="/dashboard/kidstatus"
+            >
+              Kid Status
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="text-decoration-none me-3 nav-link-item"
+              to="/dashboard/eventmanagement"
+            >
+              Event Management
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="text-decoration-none me-3 nav-link-item"
+              to="/dashboard/holidaymanagement"
+            >
+              Holiday Management
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="text-decoration-none me-3 nav-link-item"
+              to="/dashboard/kidmarks"
+            >
+              Kid Marks
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="text-decoration-none me-3 nav-link-item"
+              to="/dashboard/attendance"
+            >
+              Attendance
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="text-decoration-none me-3 nav-link-item"
+              to="/dashboard/diary"
+            >
+              Diary
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="text-decoration-none me-3 nav-link-item"
+              to="/dashboard/kidapprovals"
+            >
+              Kid Approvals
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="text-decoration-none me-3 nav-link-item"
+              to="/dashboard/aboutme"
+            >
+              About Me
+            </Link>
+          </li>
+        </ul>
       </nav>
     </div>
   );

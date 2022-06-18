@@ -1,0 +1,40 @@
+.attendence-container {
+  background-color: #696984;
+  border: 5px solid #e0e0e0;
+  cursor: pointer;
+}
+
+.inner-attendence-container {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
+}
+
+.day-heading {
+  color: white;
+  font-size: 20px;
+  justify-content: right;
+  align-items: center;
+}
+
+.day-description {
+  color: white;
+  font-size: 20px;
+  justify-content: left;
+  display: block;
+  position: relative;
+  cursor: pointer;
+  background-color: #0572cd;
+  animation-duration: 0.5s;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+
+.description {
+  color: white;
+  text-align: center;
+  font-size: 10px;
+}

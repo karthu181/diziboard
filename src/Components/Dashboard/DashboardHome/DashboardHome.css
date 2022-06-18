@@ -1,0 +1,27 @@
+.db-left-container {
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+}
+.db-upper-container {
+  display: flex;
+  flex-direction: row;
+}
+.db-lower-container {
+  display: flex;
+  flex-direction: row;
+}
+.db-sub-title {
+  color: white;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 10px;
+}
+.db-sub-containers-hr-line {
+  height: 3px;
+  background-color: #ffffff;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+}

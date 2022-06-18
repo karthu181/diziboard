@@ -37,14 +37,18 @@ const Login = () => {
       body: `grant_type=password&username=${username}&password=${password}`,
     };
     const url = "http://192.168.0.116:8280/token";
-    const response = await fetch(url, options);
-    const data = await response.json();
-    console.log(data);
+    try {
+      const response = await fetch(url, options);
+      const data = await response.json();
+      console.log(data);
 
-    if (data.access_token !== undefined) {
-      navigate("/dashboard");
+      if (data.access_token !== undefined) {
+        navigate("/dashboardhome");
+      }
+    } catch (e) {
+      console.log(e);
     }
-  };
+  }; //what is the use of try catch?? only for developers to know what is error????
 
   return (
     <div className="login-bg-container">

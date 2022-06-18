@@ -1,0 +1,26 @@
+.kid-container {
+  background-color: #47bdef;
+  border: 5px solid #e0e0e0;
+}
+
+.approvals {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+}
+
+.requests {
+  display: flex;
+}
+
+.number {
+  color: #ff0000;
+  text-align: center;
+  font-size: 40px;
+}
+
+.text {
+  color: white;
+  text-align: center;
+  font-size: 25px;
+}

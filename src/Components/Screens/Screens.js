@@ -28,19 +28,43 @@ const Screens = () => {
       </p>
       <div className="screens-carousel-container">
         <Carousel controls={false}>
-          <Carousel.Item interval={1000}>
-            <img
-              className="d-block w-100 carousel-images"
-              src="https://image.shutterstock.com/image-photo/word-link-serious-businessman-hands-600w-180015809.jpg"
-              alt="First slide"
-            />
+          <Carousel.Item interval={2000}>
+            <div className="screens-img-container">
+              <img
+                className="carousel-images"
+                src="http://192.168.0.116:8080/images/eventblack.png"
+                alt="event black"
+              />
+              <img
+                className="carousel-images"
+                src="http://192.168.0.116:8080/images/attendanceblack.png"
+                alt="attendance"
+              />
+              <img
+                className="carousel-images"
+                src="http://192.168.0.116:8080/images/diary1.png"
+                alt="diary1"
+              />
+            </div>
           </Carousel.Item>
-          <Carousel.Item interval={500}>
-            <img
-              className="d-block w-100 carousel-images"
-              src="https://image.shutterstock.com/image-photo/bank-blocks-linked-money-by-600w-1937886058.jpg"
-              alt="Second slide"
-            />
+          <Carousel.Item interval={2000}>
+            <div className="screens-img-container">
+              <img
+                className="carousel-images"
+                src="http://192.168.0.116:8080/images/attendanceblack.png"
+                alt="event black"
+              />
+              <img
+                className="carousel-images"
+                src="http://192.168.0.116:8080/images/eventblack.png"
+                alt="attendance"
+              />
+              <img
+                className="carousel-images"
+                src="http://192.168.0.116:8080/images/attendanceblack.png"
+                alt="diary1"
+              />
+            </div>
           </Carousel.Item>
         </Carousel>
       </div>

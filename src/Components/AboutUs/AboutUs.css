@@ -2,6 +2,7 @@
   background-color: #ffffff;
   padding: 30px;
   padding-right: 60px;
+  min-height: 100vh;
 }
 .about-us-text {
   margin-top: 50px;

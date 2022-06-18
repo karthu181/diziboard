@@ -1,0 +1,41 @@
+.background-container {
+  background-color: #81bb5f;
+  display: flex;
+  padding: 5px;
+  border: 5px solid #e0e0e0;
+}
+
+.image-container1 {
+  display: flex;
+}
+
+.image1 {
+  border-radius: 50%;
+  border: 3px solid white;
+  width: 80px;
+  height: 80px;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 25px;
+}
+
+.db-ct2-sub-title {
+  font-size: 20px;
+  color: #ffffff;
+  margin: 0px;
+  padding: 5px;
+  text-align: left;
+}
+
+.school-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title1 {
+  color: #ffffff;
+  font-size: 15px;
+}
