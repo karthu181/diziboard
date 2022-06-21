@@ -3,7 +3,7 @@ import "./ClassTeacherDbHome.css";
 
 const ClassTeacherDbHome = () => {
   return (
-    <div className="background-container col-4">
+    <div className="background-container col-md-4 col-8">
       <div>
         <div className="image-container1">
           <img

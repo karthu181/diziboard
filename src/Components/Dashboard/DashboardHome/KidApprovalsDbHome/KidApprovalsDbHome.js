@@ -4,7 +4,7 @@ import React from "react";
 const KidApprovalsDbHome = () => {
   return (
     <>
-      <div className="kid-container col-4">
+      <div className="kid-container col-md-4 col-8">
         <div>
           <h1 className="db-sub-title">Kid Approvals&Requests</h1>
 

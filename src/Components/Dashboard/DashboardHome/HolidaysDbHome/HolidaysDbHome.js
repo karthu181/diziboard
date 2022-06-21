@@ -3,7 +3,7 @@ import React from "react";
 
 const HolidaysDbHome = () => {
   return (
-    <div className="holiday-container col-4">
+    <div className="holiday-container col-md-4 col-8">
       <div>
         <h1 className="db-sub-title">Holiday</h1>
       </div>

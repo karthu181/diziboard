@@ -1,4 +1,4 @@
-.dashboard-bg-container {
+.dashboard-nav-bg-container {
   background-image: linear-gradient(
     to right,
     #539fe1 0%,
@@ -16,16 +16,16 @@
   align-items: flex-end;
   border-style: none;
 }
-.nav-ul-list-container {
+.db-nav-ul-list-container {
   list-style-type: none;
   display: flex;
   justify-content: flex-end;
 }
 
-.nav-link-item {
+.db-nav-link-item {
   color: #ffffff;
   text-decoration: none;
 }
-.nav-logo {
+.db-nav-logo {
   width: 60px;
 }

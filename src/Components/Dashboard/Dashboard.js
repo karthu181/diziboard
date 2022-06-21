@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AboutMe from "./AboutMe/AboutMe";
 import Attendance from "./Attendance/Attendance";
+import DashboardFooter from "./DashboardFooter/DashboardFooter";
 import DashboardHome from "./DashboardHome/DashboardHome";
 import DashboardNav from "./DashboardNav/DashboardNav";
 import Diary from "./Diary/Diary";
@@ -10,13 +11,16 @@ import HolidayManagement from "./HolidayManagement/HolidayManagement";
 import KidApprovals from "./KidApprovals/KidApprovals";
 import KidMarks from "./KidMarks/KidMarks";
 import KidStatus from "./KidStatus/KidStatus";
+import "./Dashboard.css";
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className="dashboard-bg-container">
       <DashboardNav />
       <Routes>
         <Route path="/" element={<DashboardHome />} />
+        {/*path ="/" to render the component on the same path "/dashboard" 
+        this DashboardHome component will render on same path "/dashboard"*/}
         <Route path="/kidstatus" element={<KidStatus />} />
         <Route path="/eventmanagement" element={<EventManagement />} />
         <Route
@@ -40,6 +44,7 @@ const Dashboard = () => {
                  
                  */}
       </Routes>
+      <DashboardFooter />
     </div>
   );
 };

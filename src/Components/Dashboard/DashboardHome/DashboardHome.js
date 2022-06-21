@@ -10,7 +10,7 @@ import "./DashboardHome.css";
 
 const DashboardHome = () => {
   return (
-    <div className="container-fluid">
+    <div className="container-fluid dbhome-bg-container">
       <div className="row">
         <div className="col-8 db-left-container">
           <div className="col-12 db-upper-container">
@@ -27,11 +27,12 @@ const DashboardHome = () => {
             know difference between flex and grid */}
           </div>
           <div className="col-12 db-lower-container">
-            <KidApprovalsDbHome className="col-4" />
-            <EventsDbHome className="col-4" />
-            <HolidaysDbHome className="col-4" />
+            <KidApprovalsDbHome />
+            <EventsDbHome />
+            <HolidaysDbHome />
           </div>
         </div>
+        <div className="col-4 dbhome-right-container"></div>
         {/* <HomeFooter /> */}
       </div>
     </div>

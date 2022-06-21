@@ -1,8 +1,11 @@
-.db-left-container {
-  display: flex;
-  flex-direction: column;
-  width: 65%;
+.dbhome-bg-container {
 }
+.db-left-container {
+  padding: 0px !important;
+}
+
+/* user !important to override bootstrap styles */
+
 .db-upper-container {
   display: flex;
   flex-direction: row;
@@ -14,9 +17,9 @@
 .db-sub-title {
   color: white;
   font-size: 20px;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  text-align: center;
+  text-align: center; */
   margin-top: 10px;
 }
 .db-sub-containers-hr-line {
@@ -24,4 +27,7 @@
   background-color: #ffffff;
   color: #ffffff;
   border: 1px solid #ffffff;
+}
+.dbhome-right-container {
+  border: 1px solid black;
 }

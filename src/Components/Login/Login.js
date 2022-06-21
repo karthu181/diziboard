@@ -39,11 +39,11 @@ const Login = () => {
     const url = "http://192.168.0.116:8280/token";
     try {
       const response = await fetch(url, options);
-      const data = await response.json();
-      console.log(data);
+      const tokenObj = await response.json();
+      console.log(tokenObj);
 
-      if (data.access_token !== undefined) {
-        navigate("/dashboardhome");
+      if (tokenObj.access_token !== undefined) {
+        navigate("/dashboard");
       }
     } catch (e) {
       console.log(e);
