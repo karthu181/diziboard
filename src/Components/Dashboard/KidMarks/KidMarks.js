@@ -1,14 +1,27 @@
+import Cookies from "js-cookie";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Dropdown, Modal } from "react-bootstrap";
 import AddMarksButton from "./AddMarksButton/AddMarksButton";
+import SaveButton from "./SaveButton/SaveButton";
+
 import "./KidMarks.css";
 
 const KidMarks = () => {
+  let loginToken = Cookies.get("loginToken");
   const [subMaxMarks, setSubMaxMarks] = useState(0);
   const [schoolExamTypes, setSchoolExamTypes] = useState([]);
+  const [selectedExamType, setSelectedExamType] = useState();
 
   const [addExamTypeModalShow, setAddExamTypeModalShow] = useState(false);
+  const [disableSaveButton, setDisableSaveButton] = useState(true);
+
+  const [addMarksArray, setAddMarksArray] = useState([]);
+  const [classKidsList, setClassKidsList] = useState([]);
+
+  const handleJustClose = () => {
+    setAddExamTypeModalShow(false);
+  };
 
   const handleClose = async () => {
     setAddExamTypeModalShow(false);
@@ -33,7 +46,7 @@ const KidMarks = () => {
     let options = {
       method: "POST",
       headers: {
-        Authorization: "Bearer 	34913325-5924-374b-9845-cb77dfeb3d4d",
+        Authorization: `Bearer ${loginToken}`,
         Accept: "application/json",
         "Content-Type": "application/json",
       },
@@ -66,7 +79,7 @@ const KidMarks = () => {
         let options = {
           method: "POST",
           headers: {
-            Authorization: "Bearer 	34913325-5924-374b-9845-cb77dfeb3d4d",
+            Authorization: `Bearer ${loginToken}`,
             Accept: "application/json",
             "Content-Type": "application/json",
           },
@@ -81,6 +94,37 @@ const KidMarks = () => {
     };
 
     getSchoolExamTypes();
+
+    const getClasskidsList = async () => {
+      try {
+        let getClasskidsListUrl =
+          "https://192.168.0.116:8243/mas_getclasskidlist/v1/mas_getclasskidlist?mas_SchoolUniqueId=5911355945&mas_Class=SECOND%20CLASS&mas_Section=B&mas_guid=xyz&mas_geoLocation=xyz&mas_requestedFrom=xyz&mas_requestedOn=anonymous";
+        // let bodyData = {
+        //   mas_SchoolUniqueId: "5911355945",
+        //   mas_Class: "SECOND CLASS",
+        //   mas_Section: "B",
+        //   mas_guid: "xyz",
+        //   mas_requestedOn: "xyz",
+        //   mas_requestedFrom: "xyz",
+        //   mas_geoLocation: "anonymous",
+        // };
+        let options = {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${loginToken}`,
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        };
+        let response = await fetch(getClasskidsListUrl, options);
+        let classKidsListData = await response.json();
+        // setSchoolExamTypes(classKidsListData);
+        setClassKidsList(classKidsListData.body);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    getClasskidsList();
   }, []);
 
   // if u use function directly in functional component it getting called infinitely
@@ -99,6 +143,28 @@ const KidMarks = () => {
 
   const subMaxMarksHandler = (event) => {
     setSubMaxMarks(parseInt(event.target.value));
+  };
+
+  const onChangeSelectedExamType = (event) => {
+    setSelectedExamType(event.target.value);
+  };
+
+  //addMarksToTable function props
+  const addMarksToTable = (marksArray) => {
+    setAddMarksArray(marksArray);
+  };
+
+  useEffect(() => {
+    if (addMarksArray.length > 0) {
+      setDisableSaveButton(false);
+    } else {
+      setDisableSaveButton(true);
+    }
+  }, [addMarksArray]);
+
+  const [selectedKidId, setSelectedKidId] = useState("");
+  const getSelectedKidId = (id) => {
+    setSelectedKidId(id);
   };
 
   return (
@@ -136,14 +202,18 @@ const KidMarks = () => {
         </div>
         <div className="col-3">
           <label htmlFor="exam-type">Exam Type</label>
-          <select id="exam-type" value="Select Exam Type">
-            <option>Select Exam Type</option>
-            <option>Annual</option>
-            <option>Quarterly</option>
-            <option>HalfYearly</option>
-            <option>Slip Test</option>
-            <option>Unit Test</option>
-            <option>Flash Test</option>
+          <select
+            id="exam-type"
+            value={selectedExamType}
+            onChange={onChangeSelectedExamType}
+          >
+            <option value="Select Exam Type">Select Exam Type</option>
+            <option value="Annual">Annual</option>
+            <option value="Quarterly">Quarterly</option>
+            <option value="HalfYearly">HalfYearly</option>
+            <option value="Slip Test">Slip Test</option>
+            <option value="Unit Test">Unit Test</option>
+            <option value="Flash Test">Flash Test</option>
             {schoolExamTypes.map((eachObj) => (
               <option>{eachObj.mas_examtype}</option>
             ))}
@@ -154,7 +224,7 @@ const KidMarks = () => {
         </div>
         {/* modal */}
         <div>
-          <Modal show={addExamTypeModalShow} onHide={handleClose}>
+          <Modal show={addExamTypeModalShow} onHide={handleJustClose}>
             <Modal.Header closeButton>
               <Modal.Title>Add Exam Type</Modal.Title>
             </Modal.Header>
@@ -185,10 +255,13 @@ const KidMarks = () => {
       <div className="row pt-4 ">
         <div className="col-3 ms-auto">
           {/* since it is margin you should give to element directly not to container */}
-          <button>Add Marks</button>
-          <AddMarksButton />
+          <AddMarksButton
+            addMarksToTable={addMarksToTable}
+            classKidsList={classKidsList}
+            getSelectedKidId={getSelectedKidId}
+          />
           <button>Excel Upload</button>
-          <button disabled>Save</button>
+          <SaveButton addMarksArray={addMarksArray} />
         </div>
       </div>
       <div className="mt-2">
@@ -211,32 +284,34 @@ const KidMarks = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <th scope="row">3</th>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-            </tr>
+            {addMarksArray.map((eachMarksObj) => (
+              <tr>
+                <th scope="row">{eachMarksObj.selectedKidId}</th>
+                <td>SECOND CLASS</td>
+                <td>B</td>
+                <td>{eachMarksObj.addHindi}</td>
+                <td>{eachMarksObj.addLabSkills}</td>
+                <td>{eachMarksObj.addIt}</td>
+                <td>{eachMarksObj.addEnglish}</td>
+                <td>{eachMarksObj.addTelugu}</td>
+                <td>{eachMarksObj.addMaths}</td>
+                <td>{eachMarksObj.addScience}</td>
+                <td>{eachMarksObj.addSocial}</td>
+                <td>
+                  {parseInt(eachMarksObj.addHindi) +
+                    parseInt(eachMarksObj.addLabSkills) +
+                    parseInt(eachMarksObj.addIt) +
+                    parseInt(eachMarksObj.addEnglish) +
+                    parseInt(eachMarksObj.addTelugu) +
+                    parseInt(eachMarksObj.addMaths) +
+                    parseInt(eachMarksObj.addScience) +
+                    parseInt(eachMarksObj.addSocial)}
+                </td>
+                <td>{eachMarksObj.addPercentage}</td>
+              </tr>
+            ))}
+            {/* in plain js we do is element.append but here we do like this
+            but here we use state and on update, we get updated data  */}
           </tbody>
         </table>
       </div>
