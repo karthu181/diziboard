@@ -4,7 +4,12 @@ import { useState } from "react";
 import "./AddMarksButton.css";
 
 const AddMarksButton = (props) => {
-  const { addMarksToTable, classKidsList, getSelectedKidId } = props;
+  const {
+    addMarksToTable,
+    classKidsList,
+    getSelectedKidId,
+    subMaxMarks,
+  } = props;
 
   const [addHindi, setAddHindi] = useState("");
   const [addLabSkills, setAddLabskills] = useState("");
@@ -73,7 +78,7 @@ const AddMarksButton = (props) => {
           parseInt(addScience) +
           parseInt(addSocial),
         addPercentage:
-          ((parseInt(addHindi) +
+          (((parseInt(addHindi) +
             parseInt(addLabSkills) +
             parseInt(addIt) +
             parseInt(addEnglish) +
@@ -82,7 +87,8 @@ const AddMarksButton = (props) => {
             parseInt(addScience) +
             parseInt(addSocial)) *
             100) /
-          800,
+            subMaxMarks) *
+          8,
       };
       setAddedMarksArray((prevArray) => {
         return [...prevArray, newAddedMarks];
@@ -109,7 +115,10 @@ const AddMarksButton = (props) => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button
+        variant="primary addmarks-button-in-kidmarks"
+        onClick={handleShow}
+      >
         Add Marks
       </Button>
       {/* modal */}
@@ -129,6 +138,7 @@ const AddMarksButton = (props) => {
                   value={selectedKidId}
                   onChange={onChangeKidObjHandler}
                 >
+                  <option value="Select Kid Name">Select Kid Name</option>
                   {/* fullnameofKid extracted from fetched data */}
                   {classKidsList.map((eachKid) => {
                     const fullNameOfKid = `${eachKid.mas_firstName} ${eachKid.mas_lastName}`;

@@ -7,3 +7,6 @@
   flex-direction: row;
   justify-content: space-between;
 }
+.addmarks-button-in-kidmarks {
+  margin-left: 5px !important;
+}

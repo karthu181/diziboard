@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button, Dropdown, Modal } from "react-bootstrap";
 import AddMarksButton from "./AddMarksButton/AddMarksButton";
 import SaveButton from "./SaveButton/SaveButton";
+import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
 
 import "./KidMarks.css";
 
@@ -12,6 +13,8 @@ const KidMarks = () => {
   const [subMaxMarks, setSubMaxMarks] = useState(0);
   const [schoolExamTypes, setSchoolExamTypes] = useState([]);
   const [selectedExamType, setSelectedExamType] = useState();
+
+  const [inputExamType, setInputExamType] = useState("");
 
   const [addExamTypeModalShow, setAddExamTypeModalShow] = useState(false);
   const [disableSaveButton, setDisableSaveButton] = useState(true);
@@ -22,6 +25,8 @@ const KidMarks = () => {
   const handleJustClose = () => {
     setAddExamTypeModalShow(false);
   };
+
+  const [addedExamType, setAddedExamType] = useState("");
 
   const handleClose = async () => {
     setAddExamTypeModalShow(false);
@@ -39,8 +44,8 @@ const KidMarks = () => {
       },
       body: {
         mas_SchoolUniqueId: "5911355945",
-        ExamType: "abcd",
-        Shortcode: "ab",
+        ExamType: inputExamType,
+        Shortcode: inputExamTypeShortcut,
       },
     };
     let options = {
@@ -55,6 +60,7 @@ const KidMarks = () => {
 
     let response = await fetch(addExamUrl, options);
     let addedExamOrNot = await response.json();
+    setAddedExamType(addedExamOrNot);
     console.log(addedExamOrNot);
   };
   const handleShow = () => setAddExamTypeModalShow(true);
@@ -94,7 +100,9 @@ const KidMarks = () => {
     };
 
     getSchoolExamTypes();
+  }, [addedExamType]);
 
+  useEffect(() => {
     const getClasskidsList = async () => {
       try {
         let getClasskidsListUrl =
@@ -167,8 +175,18 @@ const KidMarks = () => {
     setSelectedKidId(id);
   };
 
+  const [inputExamTypeShortcut, setInputExamTypeShortcut] = useState();
+  //onChangeInputExamTypeHandler
+  const onChangeInputExamTypeHandler = (event) => {
+    setInputExamType(event.target.value);
+  };
+
+  const onChangeInputExamTypeShortcut = (event) => {
+    setInputExamTypeShortcut(event.target.value);
+  };
+
   return (
-    <div className="container-fluid">
+    <div className="container-fluid kidmarks-container">
       <div className="row pt-4">
         <div className="col-4">
           <label>User Name</label>
@@ -193,11 +211,19 @@ const KidMarks = () => {
             value={subMaxMarks > 0 ? subMaxMarks : 0}
             onChange={subMaxMarksHandler}
           />
-          <button type="button" onClick={decrease10}>
-            down
+          <button
+            className="up-down-buttons-kidmarks"
+            type="button"
+            onClick={decrease10}
+          >
+            <AiOutlineDown />
           </button>
-          <button type="button" onClick={increase10}>
-            up
+          <button
+            className="up-down-buttons-kidmarks"
+            type="button"
+            onClick={increase10}
+          >
+            <AiOutlineUp />
           </button>
         </div>
         <div className="col-3">
@@ -218,54 +244,68 @@ const KidMarks = () => {
               <option>{eachObj.mas_examtype}</option>
             ))}
           </select>
-          <Button variant="primary" onClick={handleShow}>
+        </div>
+        <div className="col-3">
+          <Button variant="primary add-exam-btn" onClick={handleShow}>
             Add Exam Type
           </Button>
-        </div>
-        {/* modal */}
-        <div>
-          <Modal show={addExamTypeModalShow} onHide={handleJustClose}>
-            <Modal.Header closeButton>
-              <Modal.Title>Add Exam Type</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <label htmlFor="examName">Exam Type:</label>
-              <input
-                className="ms-auto"
-                placeholder="Enter Type"
-                id="examName"
-                type="text"
-              />
-              <br />
-              <label htmlFor="examShort">Exam ShortCode:</label>
-              <input
-                placeholder="Enter Type ShortCode"
-                id="examShort"
-                type="text"
-              />
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="primary" onClick={handleClose}>
-                Add
-              </Button>
-            </Modal.Footer>
-          </Modal>
+          {/* modal */}
+          <div>
+            <Modal show={addExamTypeModalShow} onHide={handleJustClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>Add Exam Type</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <label htmlFor="examName">Exam Type:</label>
+                <input
+                  className="ms-auto"
+                  placeholder="Enter Type"
+                  id="examName"
+                  type="text"
+                  value={inputExamType}
+                  onChange={onChangeInputExamTypeHandler}
+                />
+                <br />
+                <label htmlFor="examShort">Exam ShortCode:</label>
+                <input
+                  placeholder="Enter Type ShortCode"
+                  id="examShort"
+                  type="text"
+                  value={inputExamTypeShortcut}
+                  onChange={onChangeInputExamTypeShortcut}
+                />
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="primary" onClick={handleClose}>
+                  Add
+                </Button>
+              </Modal.Footer>
+            </Modal>
+          </div>
         </div>
       </div>
       <div className="row pt-4 ">
-        <div className="col-3 ms-auto">
+        <div className="add-marks-exel-save-btn-container ms-auto">
           {/* since it is margin you should give to element directly not to container */}
           <AddMarksButton
             addMarksToTable={addMarksToTable}
             classKidsList={classKidsList}
             getSelectedKidId={getSelectedKidId}
+            subMaxMarks={subMaxMarks}
           />
-          <button>Excel Upload</button>
-          <SaveButton addMarksArray={addMarksArray} />
+          <button className="btn btn-primary excel-upload-btn">
+            Excel Upload
+          </button>
+          <SaveButton
+            selectedExamType={selectedExamType}
+            addMarksArray={addMarksArray}
+            disableSaveButton={disableSaveButton}
+            subMaxMarks={subMaxMarks}
+          />
         </div>
       </div>
-      <div className="mt-2">
-        <table className="table table-bordered border-dark">
+      <div className="table-in-kidmarks-container mt-2">
+        <table className="table table-bordered border-light">
           <thead className="table-header">
             <tr>
               <th scope="col">Kid Id</th>
@@ -283,7 +323,7 @@ const KidMarks = () => {
               <th scope="col">Percentage</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="table-body-in-kid-marks">
             {addMarksArray.map((eachMarksObj) => (
               <tr>
                 <th scope="row">{eachMarksObj.selectedKidId}</th>

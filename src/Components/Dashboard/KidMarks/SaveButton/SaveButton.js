@@ -5,9 +5,15 @@ import Cookies from "js-cookie";
 import "./SaveButton.css";
 
 const SaveButton = (props) => {
-  const { addMarksArray } = props;
+  const {
+    addMarksArray,
+    disableSaveButton,
+    selectedExamType,
+    subMaxMarks,
+  } = props;
   const [saveModalshow, setSaveModalShow] = useState(false);
   console.log(addMarksArray);
+  console.log(selectedExamType);
 
   let loginToken = Cookies.get("loginToken");
 
@@ -23,7 +29,7 @@ const SaveButton = (props) => {
           mas_SchoolUniqueId: "5911355945",
           mas_actualtotal: null,
           mas_class: "SECOND CLASS",
-          mas_examtype: "UnitTest",
+          mas_examtype: selectedExamType,
           mas_grade: "A",
           mas_kiduserid: eachMarksObj.selectedKidId,
           mas_lan1_obtained: eachMarksObj.addTelugu,
@@ -69,7 +75,11 @@ const SaveButton = (props) => {
   };
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button
+        variant="primary save-btn-in-kidmarks"
+        onClick={handleShow}
+        disabled={disableSaveButton}
+      >
         Save
       </Button>
 
@@ -77,7 +87,9 @@ const SaveButton = (props) => {
         <Modal.Header closeButton>
           <Modal.Title></Modal.Title>
         </Modal.Header>
-        <Modal.Body></Modal.Body>
+        <Modal.Body className="text-center">
+          Kid Marks Inserted Successfully
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Ok

@@ -1,7 +1,29 @@
+.kidmarks-container {
+  background-color: #e4e8ea;
+}
+.table-in-kidmarks-container {
+  border: 1px solid black;
+}
 .table-border {
   border: 1px solid blue !important;
 }
 .table-header {
   background-color: #177ed7 !important;
   color: #fff !important;
+}
+.add-marks-exel-save-btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.excel-upload-btn {
+  margin-left: 10px !important;
+}
+.table-body-in-kid-marks {
+  background-color: #cfe8fc;
+}
+.up-down-buttons-kidmarks {
+  border-style: none;
+  background-color: #177ed7;
+  color: #ffffff;
 }

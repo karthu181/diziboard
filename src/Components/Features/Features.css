@@ -1,5 +1,6 @@
 .features-bg-container {
   background-color: #ffffff;
+  padding-top: 20px;
   min-height: 100vh;
 }
 
@@ -12,7 +13,6 @@
   padding: 30px;
 }
 .features-heading {
-  margin-top: 50px;
   text-align: center;
   color: #333;
   font-size: 30px;
@@ -50,6 +50,10 @@
   margin-left: 10px;
   margin-right: 10px;
   width: 30%;
+}
+.iphone-black-in-features {
+  width: 100%;
+  margin-top: -25px;
 }
 .purchase-btn-des-container {
   display: flex;

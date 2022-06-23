@@ -1,14 +1,39 @@
 import React from "react";
-import DashboardNav from "../DashboardNav/DashboardNav";
 import AttendenceDbHome from "./AttendanceDbHome/AttendanceDbHome";
 import BirthdaysDbHome from "./BirthdaysDbHome/BirthdaysDbHome";
 import ClassTeacherDbHome from "./ClassTeacherDbHome/ClassTeacherDbHome";
 import EventsDbHome from "./EventsDbHome/EventsDbHome";
 import HolidaysDbHome from "./HolidaysDbHome/HolidaysDbHome";
 import KidApprovalsDbHome from "./KidApprovalsDbHome/KidApprovalsDbHome";
+import { useState, useEffect } from "react";
+import Cookies from "js-cookie";
 import "./DashboardHome.css";
 
 const DashboardHome = () => {
+  const [birthdaysObj, setBirthdaysObj] = useState({});
+
+  const loginToken = Cookies.get("loginToken");
+  useEffect(() => {
+    const getBirthdays = async () => {
+      const getBirthdaysUrl =
+        "https://192.168.0.116:8243/mas_KidBirthday/1.0/getBirthDays?mas_SchoolUniqueId=5911355945&Guid=xyz&GeoLocation=anonymous&RequestedFrom=x&RequestedOn=x&mas_class=SECOND%20CLASS&mas_section=B";
+
+      let options = {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${loginToken}`,
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      };
+
+      let response = await fetch(getBirthdaysUrl, options);
+      let birthdaysResponse = await response.json();
+      setBirthdaysObj(birthdaysResponse.body);
+    };
+    getBirthdays();
+  }, []);
+
   return (
     <div className="container-fluid dbhome-bg-container">
       <div className="row">
@@ -16,7 +41,7 @@ const DashboardHome = () => {
           <div className="col-12 db-upper-container">
             <ClassTeacherDbHome className="col-4" />
             {/*useless giving col-4 here*/}
-            <BirthdaysDbHome className="col-4" />
+            <BirthdaysDbHome birthdaysObj={birthdaysObj} />
             {/*useless giving col-4 here*/}
             <AttendenceDbHome className="col-4" />
             {/*useless giving col-4 here*/}

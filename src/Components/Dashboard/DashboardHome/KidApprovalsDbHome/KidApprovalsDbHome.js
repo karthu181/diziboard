@@ -1,10 +1,18 @@
 import "./KidApprovalsDbHome.css";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const KidApprovalsDbHome = () => {
+  const navigate = useNavigate();
+  const onClickKidApprovalsInDbHome = () => {
+    navigate("/dashboard/kidapprovals");
+  };
   return (
     <>
-      <div className="kid-container col-md-4 col-8">
+      <div
+        className="kid-container col-md-4 col-8"
+        onClick={onClickKidApprovalsInDbHome}
+      >
         <div>
           <h1 className="db-sub-title">Kid Approvals&Requests</h1>
 

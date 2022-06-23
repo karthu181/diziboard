@@ -40,6 +40,7 @@ const Features = () => {
           <img
             alt="iphone-black"
             src="http://192.168.0.116:8080/images/iphone-black.png"
+            className="iphone-black-in-features"
           />
         </div>
         <div className="features-right-text-container">
