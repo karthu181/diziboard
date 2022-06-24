@@ -103,6 +103,7 @@ const KidMarks = () => {
   }, [addedExamType]);
 
   useEffect(() => {
+    //getClasskidsList
     const getClasskidsList = async () => {
       try {
         let getClasskidsListUrl =
@@ -170,11 +171,6 @@ const KidMarks = () => {
     }
   }, [addMarksArray]);
 
-  const [selectedKidId, setSelectedKidId] = useState("");
-  const getSelectedKidId = (id) => {
-    setSelectedKidId(id);
-  };
-
   const [inputExamTypeShortcut, setInputExamTypeShortcut] = useState();
   //onChangeInputExamTypeHandler
   const onChangeInputExamTypeHandler = (event) => {
@@ -187,24 +183,56 @@ const KidMarks = () => {
 
   return (
     <div className="container-fluid kidmarks-container">
-      <div className="row pt-4">
-        <div className="col-4">
-          <label>User Name</label>
-          <input placeholder="Class Teacher2 CT " type="text" disabled />
+      <div className="row kidmarks-1st-row">
+        <div className="col-4 row-1st-column-containers">
+          <label
+            className="kidmarks-bold-input-labels"
+            htmlFor="kidmarksUsername"
+          >
+            User Name
+          </label>
+          <input
+            className="kidmarks-input no-border"
+            placeholder="Username"
+            id="kidmarksUsername"
+            value="Class Teacher2 CT"
+            type="text"
+            disabled
+          />
         </div>
-        <div className="col-4">
-          <label>Class</label>
-          <input type="text" disabled placeholder="SECOND CLASS" />
+        <div className="col-4 row-1st-column-containers">
+          <label htmlFor="kidmarksClass">Class</label>
+          <input
+            className="kidmarks-input no-border"
+            type="text"
+            disabled
+            placeholder="SECOND CLASS"
+            id="kidmarksClass"
+          />
         </div>
-        <div className="col-4">
-          <label>Section</label>
-          <input type="text" disabled placeholder="B" />
+        <div className="col-4 row-1st-column-containers">
+          <label
+            className="kidmarks-non-bold-input-labels"
+            htmlFor="kidmarksSection"
+          >
+            Section
+          </label>
+          <input
+            className="kidmarks-input no-border"
+            type="text"
+            disabled
+            placeholder="B"
+            id="kidmarksSection"
+          />
         </div>
       </div>
-      <div className="row pt-5">
-        <div className="col-4">
-          <label htmlFor="sub-max-marks">Sub Max Marks</label>
+      <div className="row kidmarks-2nd-row">
+        <div className="col-4 containers-2nd-row">
+          <label className="kidmarks-bold-input-labels" htmlFor="sub-max-marks">
+            Sub Max Marks
+          </label>
           <input
+            className="kidmarks-input "
             type="text"
             id="sub-max-marks"
             placeholder="Sub Max Marks"
@@ -226,9 +254,12 @@ const KidMarks = () => {
             <AiOutlineUp />
           </button>
         </div>
-        <div className="col-3">
-          <label htmlFor="exam-type">Exam Type</label>
+        <div className="col-4 containers-2nd-row">
+          <label className="kidmarks-bold-input-labels" htmlFor="exam-type">
+            Exam Type
+          </label>
           <select
+            className="select-exam-type-dropdown"
             id="exam-type"
             value={selectedExamType}
             onChange={onChangeSelectedExamType}
@@ -245,8 +276,8 @@ const KidMarks = () => {
             ))}
           </select>
         </div>
-        <div className="col-3">
-          <Button variant="primary add-exam-btn" onClick={handleShow}>
+        <div className="col-3 containers-2nd-row">
+          <Button variant="primary kidmarks-buttons" onClick={handleShow}>
             Add Exam Type
           </Button>
           {/* modal */}
@@ -290,7 +321,6 @@ const KidMarks = () => {
           <AddMarksButton
             addMarksToTable={addMarksToTable}
             classKidsList={classKidsList}
-            getSelectedKidId={getSelectedKidId}
             subMaxMarks={subMaxMarks}
           />
           <button className="btn btn-primary excel-upload-btn">

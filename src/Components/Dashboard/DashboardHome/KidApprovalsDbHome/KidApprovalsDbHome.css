@@ -1,6 +1,7 @@
 .kid-container {
   background-color: #47bdef;
   border: 5px solid #e0e0e0;
+  cursor: pointer;
 }
 
 .approvals {

@@ -41,6 +41,7 @@ const Login = () => {
     try {
       const response = await fetch(url, options);
       const tokenObj = await response.json();
+      console.log(tokenObj);
       Cookies.set("loginToken", tokenObj.access_token, { expires: 1 });
 
       if (tokenObj.access_token !== undefined) {

@@ -15,7 +15,9 @@
 .footer-container {
 }
 .footer-text {
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #fff;
   text-shadow: 1px 1px 1px #252525;
 }

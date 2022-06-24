@@ -4,12 +4,7 @@ import { useState } from "react";
 import "./AddMarksButton.css";
 
 const AddMarksButton = (props) => {
-  const {
-    addMarksToTable,
-    classKidsList,
-    getSelectedKidId,
-    subMaxMarks,
-  } = props;
+  const { addMarksToTable, classKidsList, subMaxMarks } = props;
 
   const [addHindi, setAddHindi] = useState("");
   const [addLabSkills, setAddLabskills] = useState("");
@@ -110,7 +105,6 @@ const AddMarksButton = (props) => {
   // onCHange kid dropdown handler
   const onChangeKidObjHandler = (event) => {
     setSelectedKidId(event.target.value);
-    getSelectedKidId(event.target.value);
   };
 
   return (
