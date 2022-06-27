@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./AddMarksButton.css";
+import { useBootstrapPrefix } from "react-bootstrap/esm/ThemeProvider";
+import { BsPrefixComponent } from "react-bootstrap/esm/helpers";
 
 const AddMarksButton = (props) => {
   const { addMarksToTable, classKidsList, subMaxMarks } = props;
@@ -100,6 +103,7 @@ const AddMarksButton = (props) => {
   useEffect(() => {
     addMarksToTable(addedMarksArray);
   }, [addedMarksArray]);
+
   const handleShow = () => setAddMarksModalShow(true);
 
   // onCHange kid dropdown handler
@@ -117,16 +121,25 @@ const AddMarksButton = (props) => {
       </Button>
       {/* modal */}
       <div>
-        <Modal show={addMarksModalShow} onHide={handleJustClose}>
+        <Modal
+          className="addmarks-modal"
+          show={addMarksModalShow}
+          onHide={handleJustClose}
+        >
           <Modal.Header closeButton>
-            <Modal.Title>Kid Marks</Modal.Title>
+            <Modal.Title>KID MARKS</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <form>
               <div className="each-input-in-add-marks">
-                <label htmlFor="examName">Kid Name:</label>
+                <label
+                  className="addmarks-modal-label-no-bold"
+                  htmlFor="examName"
+                >
+                  Kid Name:
+                </label>
                 <select
-                  className="ms-auto"
+                  className="addmarks-modal-input"
                   placeholder="Select Kid Name"
                   id="examName"
                   value={selectedKidId}
@@ -143,12 +156,25 @@ const AddMarksButton = (props) => {
                 </select>
               </div>
               <div className="each-input-in-add-marks">
-                <label htmlFor="addMarkskidId">Kid Id:</label>
-                <input id="addMarkskidId" type="text" value={selectedKidId} />
+                <label
+                  className="addmarks-modal-label-no-bold"
+                  htmlFor="addMarkskidId"
+                >
+                  Kid Id:
+                </label>
+                <input
+                  className="addmarks-modal-input"
+                  id="addMarkskidId"
+                  type="text"
+                  value={selectedKidId}
+                />
               </div>
               <div className="each-input-in-add-marks">
-                <label htmlFor="addMarksHindi">Hindi:</label>
+                <label className="addmarks-modal-label" htmlFor="addMarksHindi">
+                  Hindi:
+                </label>
                 <input
+                  className="addmarks-modal-input"
                   id="addMarksHindi"
                   type="text"
                   onChange={onChangeHindi}
@@ -156,8 +182,14 @@ const AddMarksButton = (props) => {
                 />
               </div>
               <div className="each-input-in-add-marks">
-                <label htmlFor="addMarksLabSkills">LabSkills:</label>
+                <label
+                  className="addmarks-modal-label"
+                  htmlFor="addMarksLabSkills"
+                >
+                  LabSkills:
+                </label>
                 <input
+                  className="addmarks-modal-input"
                   id="addMarksLabSkills"
                   type="text"
                   onChange={onChangeLabskills}
@@ -165,8 +197,11 @@ const AddMarksButton = (props) => {
                 />
               </div>
               <div className="each-input-in-add-marks">
-                <label htmlFor="addMarksIt">IT:</label>
+                <label className="addmarks-modal-label" htmlFor="addMarksIt">
+                  IT:
+                </label>
                 <input
+                  className="addmarks-modal-input"
                   id="addMarksIt"
                   type="text"
                   onChange={onChangeIt}
@@ -174,8 +209,14 @@ const AddMarksButton = (props) => {
                 />
               </div>
               <div className="each-input-in-add-marks">
-                <label htmlFor="addMarksEnglish">English:</label>
+                <label
+                  className="addmarks-modal-label"
+                  htmlFor="addMarksEnglish"
+                >
+                  English:
+                </label>
                 <input
+                  className="addmarks-modal-input"
                   id="addMarksEnglish"
                   type="text"
                   onChange={onChangeEnglish}
@@ -183,8 +224,14 @@ const AddMarksButton = (props) => {
                 />
               </div>
               <div className="each-input-in-add-marks">
-                <label htmlFor="addMarksTelugu">Telugu:</label>
+                <label
+                  className="addmarks-modal-label"
+                  htmlFor="addMarksTelugu"
+                >
+                  Telugu:
+                </label>
                 <input
+                  className="addmarks-modal-input"
                   id="addMarksTelugu"
                   type="text"
                   onChange={onChangeTelugu}
@@ -192,8 +239,11 @@ const AddMarksButton = (props) => {
                 />
               </div>
               <div className="each-input-in-add-marks">
-                <label htmlFor="addMarksMaths">Maths:</label>
+                <label className="addmarks-modal-label" htmlFor="addMarksMaths">
+                  Maths:
+                </label>
                 <input
+                  className="addmarks-modal-input"
                   id="addMarksMaths"
                   type="text"
                   onChange={onChangeMaths}
@@ -201,8 +251,14 @@ const AddMarksButton = (props) => {
                 />
               </div>
               <div className="each-input-in-add-marks">
-                <label htmlFor="addMarksScience">Science:</label>
+                <label
+                  className="addmarks-modal-label"
+                  htmlFor="addMarksScience"
+                >
+                  Science:
+                </label>
                 <input
+                  className="addmarks-modal-input"
                   id="addMarksScience"
                   type="text"
                   onChange={onChangeScience}
@@ -210,8 +266,14 @@ const AddMarksButton = (props) => {
                 />
               </div>
               <div className="each-input-in-add-marks">
-                <label htmlFor="addMarksSocial">Social:</label>
+                <label
+                  className="addmarks-modal-label"
+                  htmlFor="addMarksSocial"
+                >
+                  Social:
+                </label>
                 <input
+                  className="addmarks-modal-input"
                   id="addMarksSocial"
                   type="text"
                   onChange={onChangeSocial}
@@ -221,8 +283,12 @@ const AddMarksButton = (props) => {
             </form>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="primary" onClick={handleClose}>
-              Add
+            <Button
+              className="add-btn-in-addmarks-modal"
+              variant="primary"
+              onClick={handleClose}
+            >
+              Add Marks
             </Button>
           </Modal.Footer>
         </Modal>

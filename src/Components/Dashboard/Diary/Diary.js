@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
+import "./Diary.css";
 
 const Diary = () => {
   const loginToken = Cookies.get("loginToken");
@@ -51,61 +52,104 @@ const Diary = () => {
 
     // get notification by classteacher
     const getNotificationsByClassTeacher = async () => {
-      const data = {
-        header: {
-          guid: "e1dcc8fb-7728-3642-2fa2-c980bc1f9e84",
-          requestedOn: "2022-6-24.18:22:10",
-          requestedFrom:
-            "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Mobile Safari/537.36",
-          geoLocation: "anonymous",
-        },
-        body: {
-          mas_SchoolUniqueId: "5911355945",
-          mas_class: "SECOND CLASS",
-          mas_section: "B",
-          mas_createdBy: "155AAdfi",
-          mas_createdOn: "2022-6-24.18:22:10",
-          mas_modifiedBy: "155AAdfi",
-          mas_modifiedOn: "2022-6-24.18:22:10",
-        },
-      };
-      const getNotificationsByTeacherUrl =
-        "http://192.168.0.116:8280/postNotificationsInformation/v1/getNotificationsByClassTeacher";
-      let options = {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${loginToken}`,
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      };
+      try {
+        const data = {
+          header: {
+            guid: "e1dcc8fb-7728-3642-2fa2-c980bc1f9e84",
+            requestedOn: "2022-6-24.18:22:10",
+            requestedFrom:
+              "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Mobile Safari/537.36",
+            geoLocation: "anonymous",
+          },
+          body: {
+            mas_SchoolUniqueId: "5911355945",
+            mas_class: "SECOND CLASS",
+            mas_section: "B",
+            mas_createdBy: "155AAdfi",
+            mas_createdOn: "2022-6-24.18:22:10",
+            mas_modifiedBy: "155AAdfi",
+            mas_modifiedOn: "2022-6-24.18:22:10",
+          },
+        };
+        const getNotificationsByTeacherUrl =
+          "http://192.168.0.116:8280/postNotificationsInformation/v1/getNotificationsByClassTeacher";
+        let options = {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${loginToken}`,
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        };
 
-      const response = await fetch(getNotificationsByTeacherUrl, options);
-      const notificationsByTeacherData = await response.json();
-      setNotificationsByTeacher(notificationsByTeacherData);
+        const response = await fetch(getNotificationsByTeacherUrl, options);
+        const notificationsByTeacherData = await response.json();
+        setNotificationsByTeacher(notificationsByTeacherData);
+      } catch (error) {
+        console.log(error);
+      }
     };
     getNotificationsByClassTeacher();
   }, []);
 
   return (
-    <div>
-      <select
-        className="ms-auto"
-        placeholder="Select Kid Name"
-        id="examName"
-        value={selectedKidId}
-        onChange={onChangeKidObjHandler}
-      >
-        <option value="Select Kid Name">Select Kid Name</option>
-        {/* fullnameofKid extracted from fetched data */}
-        {classKidsList.map((eachKid) => {
-          const fullNameOfKid = `${eachKid.mas_firstName} ${eachKid.mas_lastName}`;
-          return <option value={eachKid.mas_kidId}>{fullNameOfKid}</option>;
-        })}
-      </select>
+    <div className="diary-bg-container">
+      <div>
+        <h1>Notifications</h1>
+      </div>
+      <div className="notifications-whole-container">
+        <div className="diary-left-tabs-container">
+          <button className="diary-left-tab-btns">Compose</button>
+          <br />
+          <button className="diary-left-tab-btns">Sent</button>
+        </div>
+        <div className="compose-container">
+          <p>Compose</p>
+          <hr />
 
-      <div></div>
+          {/* what is the use of htmlFor or For */}
+          <label>Send To:</label>
+          <br />
+
+          <select
+            className="ms-auto"
+            placeholder="Select Kid Name"
+            id="examName"
+            value={selectedKidId}
+            onChange={onChangeKidObjHandler}
+          >
+            <option value="Select Kid Name">Select Kid Name</option>
+            {/* fullnameofKid extracted from fetched data */}
+            {classKidsList.map((eachKid) => {
+              const fullNameOfKid = `${eachKid.mas_firstName} ${eachKid.mas_lastName}`;
+              return <option value={eachKid.mas_kidId}>{fullNameOfKid}</option>;
+            })}
+          </select>
+          <br />
+          <label>Subject:</label>
+          <br />
+          <input />
+          <br />
+          <label>Message:</label>
+          <br />
+          <textarea></textarea>
+          <br />
+          <button>Send</button>
+          <button>Cancel</button>
+        </div>
+      </div>
+
+      <div>
+        <div className="compose-container">
+          <div className="diary-each-notification-container">
+            <h1 className="diary-first-letter">name</h1>
+            <p>Subject sample notify</p>
+            <p>To: all kids</p>
+            <p>date</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

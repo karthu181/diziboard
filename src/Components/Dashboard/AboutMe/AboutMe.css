@@ -1,0 +1,23 @@
+/* #popup {
+    visibility: hidden;
+    opacity: 0;
+    z-index: -1;
+    transform: scale(0);
+    transition: all .5s ease-in-out;
+}
+#overlay{
+    visibility: hidden;
+    opacity: 0;
+    z-index: -1;
+}
+#popup.show{
+    visibility: visible;
+    z-index: 200;
+    opacity: 1;
+    transform: scale(1);
+}
+#popup.show ~ #overlay{
+    opacity: 1;
+    visibility: visible;
+    z-index: 100;
+} */

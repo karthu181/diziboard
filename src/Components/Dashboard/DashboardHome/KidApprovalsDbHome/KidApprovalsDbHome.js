@@ -21,13 +21,13 @@ const KidApprovalsDbHome = (props) => {
 
           <div className="requests">
             <div className="approvals">
-              <h1 className="number">{sectionDataForDashboard.kidRequests}</h1>
+              <h1 className="number">{sectionDataForDashboard.kidApprovals}</h1>
 
               <h1 className="text">Approvals</h1>
             </div>
 
             <div className="approvals">
-              <h1 className="number">{sectionDataForDashboard.kidApprovals}</h1>
+              <h1 className="number">{sectionDataForDashboard.kidRequests}</h1>
 
               <h1 className="text">Requests</h1>
             </div>

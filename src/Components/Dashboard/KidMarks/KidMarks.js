@@ -5,6 +5,7 @@ import { Button, Dropdown, Modal } from "react-bootstrap";
 import AddMarksButton from "./AddMarksButton/AddMarksButton";
 import SaveButton from "./SaveButton/SaveButton";
 import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
+import ExcelUploadButton from "./ExcelUploadButton/ExcelUploadButton";
 
 import "./KidMarks.css";
 
@@ -192,7 +193,7 @@ const KidMarks = () => {
             User Name
           </label>
           <input
-            className="kidmarks-input no-border"
+            className="kidmarks-input kidmarks-input-disabled no-border"
             placeholder="Username"
             id="kidmarksUsername"
             value="Class Teacher2 CT"
@@ -203,7 +204,7 @@ const KidMarks = () => {
         <div className="col-4 row-1st-column-containers">
           <label htmlFor="kidmarksClass">Class</label>
           <input
-            className="kidmarks-input no-border"
+            className="kidmarks-input kidmarks-input-disabled no-border"
             type="text"
             disabled
             placeholder="SECOND CLASS"
@@ -218,7 +219,7 @@ const KidMarks = () => {
             Section
           </label>
           <input
-            className="kidmarks-input no-border"
+            className="kidmarks-input kidmarks-input-disabled no-border"
             type="text"
             disabled
             placeholder="B"
@@ -282,32 +283,54 @@ const KidMarks = () => {
           </Button>
           {/* modal */}
           <div>
-            <Modal show={addExamTypeModalShow} onHide={handleJustClose}>
+            <Modal
+              className="add-exam-type-modal"
+              show={addExamTypeModalShow}
+              onHide={handleJustClose}
+            >
               <Modal.Header closeButton>
                 <Modal.Title>Add Exam Type</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <label htmlFor="examName">Exam Type:</label>
-                <input
-                  className="ms-auto"
-                  placeholder="Enter Type"
-                  id="examName"
-                  type="text"
-                  value={inputExamType}
-                  onChange={onChangeInputExamTypeHandler}
-                />
-                <br />
-                <label htmlFor="examShort">Exam ShortCode:</label>
-                <input
-                  placeholder="Enter Type ShortCode"
-                  id="examShort"
-                  type="text"
-                  value={inputExamTypeShortcut}
-                  onChange={onChangeInputExamTypeShortcut}
-                />
+                <div className="add-exam-type-modal-input-container">
+                  <label
+                    className="kidmarks-add-exam-type-label"
+                    htmlFor="examName"
+                  >
+                    Exam Type:
+                  </label>
+                  <input
+                    className="add-exam-type-modal-input"
+                    placeholder="Enter Type"
+                    id="examName"
+                    type="text"
+                    value={inputExamType}
+                    onChange={onChangeInputExamTypeHandler}
+                  />
+                </div>
+                <div className="add-exam-type-modal-input-container">
+                  <label
+                    className="kidmarks-add-exam-type-label"
+                    htmlFor="examShort"
+                  >
+                    Exam ShortCode:
+                  </label>
+                  <input
+                    placeholder="Enter Type ShortCode"
+                    className="add-exam-type-modal-input"
+                    id="examShort"
+                    type="text"
+                    value={inputExamTypeShortcut}
+                    onChange={onChangeInputExamTypeShortcut}
+                  />
+                </div>
               </Modal.Body>
               <Modal.Footer>
-                <Button variant="primary" onClick={handleClose}>
+                <Button
+                  className="kidmarks-buttons"
+                  variant="primary"
+                  onClick={handleClose}
+                >
                   Add
                 </Button>
               </Modal.Footer>
@@ -323,9 +346,7 @@ const KidMarks = () => {
             classKidsList={classKidsList}
             subMaxMarks={subMaxMarks}
           />
-          <button className="btn btn-primary excel-upload-btn">
-            Excel Upload
-          </button>
+          <ExcelUploadButton />
           <SaveButton
             selectedExamType={selectedExamType}
             addMarksArray={addMarksArray}

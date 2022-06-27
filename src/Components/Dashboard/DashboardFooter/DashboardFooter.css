@@ -8,6 +8,9 @@
     #87bcea 100%,
     #539fe1 101%
   );
+  box-sizing: border-box;
+  /* if you dont give this padding goes out of the footer and even you give 100vh to dashboard its 
+  taking more than 100vh == 100vh+padding so best practice is to use box sizing : border box; */
   padding-top: 15px;
   padding-bottom: 10px;
   margin-top: auto;

@@ -3,6 +3,7 @@ import React from "react";
 
 const AttendanceDbHome = (props) => {
   const { sectionDataForDashboard } = props;
+  console.log(sectionDataForDashboard);
 
   return (
     <div className="attendence-container col-md-4 col-8">
@@ -21,14 +22,22 @@ const AttendanceDbHome = (props) => {
         <h1 className="day-heading">
           <span className="span">.</span>Kids Present
         </h1>
-        <p className="day-description">{sectionDataForDashboard.presentkids}</p>
+        <p className="day-description">
+          {sectionDataForDashboard.presentkids === "NA"
+            ? sectionDataForDashboard.totalkids
+            : 0}
+        </p>
       </div>
       <hr className="db-sub-containers-hr-line" />
       <div className="inner-attendence-container">
         <h1 className="day-heading">
           <span className="span">.</span>Kids Absent
         </h1>
-        <p className="day-description">{sectionDataForDashboard.absentkids}</p>
+        <p className="day-description">
+          {sectionDataForDashboard.absentkids === "NA"
+            ? 0
+            : sectionDataForDashboard.absentkids}
+        </p>
       </div>
       <hr className="db-sub-containers-hr-line" />
       <div className="oj-flex-item oj-lg-12 ">

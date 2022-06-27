@@ -4,6 +4,7 @@ import "./DashboardNav.css";
 
 const DashboardNav = () => {
   return (
+    // try shortening code using map
     <div className="dashboard-nav-bg-container">
       <nav className="dashboard-nav-container">
         <div>
