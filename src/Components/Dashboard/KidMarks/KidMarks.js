@@ -39,7 +39,7 @@ const KidMarks = () => {
         responseOn: "",
         responseFrom: "",
         userRef: "",
-        geoLocation: "",
+        geoLocation: "anonymous",
         status: "success",
         statuscode: "0",
       },
