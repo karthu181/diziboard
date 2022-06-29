@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import "./Diary.css";
 
+// conditional rendering in react:
+// keep in state setShow (compose)/setshow(sent )
+// and keep condition if setShow(compose) then return <div></div>
+// else return <div></div>
+
 const Diary = () => {
   const loginToken = Cookies.get("loginToken");
   const [selectedKidId, setSelectedKidId] = useState("");
@@ -93,62 +98,108 @@ const Diary = () => {
     getNotificationsByClassTeacher();
   }, []);
 
-  return (
-    <div className="diary-bg-container">
-      <div>
-        <h1>Notifications</h1>
-      </div>
-      <div className="notifications-whole-container">
-        <div className="diary-left-tabs-container">
-          <button className="diary-left-tab-btns">Compose</button>
-          <br />
-          <button className="diary-left-tab-btns">Sent</button>
-        </div>
+  // event handlers buttons
+  const [selectedButton, setSelectedButton] = useState("compose");
+
+  const onClickComponse = () => {
+    setSelectedButton("compose");
+  };
+
+  const onClickSent = () => {
+    setSelectedButton("sent");
+  };
+
+  const displayComponent = (selected) => {
+    if (selected === "compose") {
+      return (
         <div className="compose-container">
-          <p>Compose</p>
-          <hr />
+          <p className="diary-compose-subhead">Compose</p>
 
-          {/* what is the use of htmlFor or For */}
-          <label>Send To:</label>
-          <br />
-
-          <select
-            className="ms-auto"
-            placeholder="Select Kid Name"
-            id="examName"
-            value={selectedKidId}
-            onChange={onChangeKidObjHandler}
-          >
-            <option value="Select Kid Name">Select Kid Name</option>
-            {/* fullnameofKid extracted from fetched data */}
-            {classKidsList.map((eachKid) => {
-              const fullNameOfKid = `${eachKid.mas_firstName} ${eachKid.mas_lastName}`;
-              return <option value={eachKid.mas_kidId}>{fullNameOfKid}</option>;
-            })}
-          </select>
-          <br />
-          <label>Subject:</label>
-          <br />
-          <input />
-          <br />
-          <label>Message:</label>
-          <br />
-          <textarea></textarea>
-          <br />
-          <button>Send</button>
-          <button>Cancel</button>
-        </div>
-      </div>
-
-      <div>
-        <div className="compose-container">
-          <div className="diary-each-notification-container">
-            <h1 className="diary-first-letter">name</h1>
-            <p>Subject sample notify</p>
-            <p>To: all kids</p>
-            <p>date</p>
+          <hr className="diary-hrline-below-compose" />
+          <div className="diary-compose-sub-sub-container">
+            {/* what is the use of htmlFor or For */}
+            <label className="diary-sub-sub-headings">Send To:</label>
+            <br />
+            <input type="checkbox" id="allkids" />
+            <label htmlFor="allkids" className="diary-input-allkids-checkbox">
+              All Kids
+            </label>
+            <br />
+            <select
+              className="ms-auto"
+              placeholder="Select Kid Name"
+              id="examName"
+              value={selectedKidId}
+              onChange={onChangeKidObjHandler}
+            >
+              <option value="Select Kid Name">Select Kid Name</option>
+              {/* fullnameofKid extracted from fetched data */}
+              {classKidsList.map((eachKid) => {
+                const fullNameOfKid = `${eachKid.mas_firstName} ${eachKid.mas_lastName}`;
+                return (
+                  <option value={eachKid.mas_kidId}>{fullNameOfKid}</option>
+                );
+              })}
+            </select>
+            <br />
+            <label>Subject:</label>
+            <br />
+            <input />
+            <br />
+            <label>Message:</label>
+            <br />
+            <textarea></textarea>
+            <br />
+            <button>Send</button>
+            <button>Cancel</button>
           </div>
         </div>
+      );
+    } else if (selected === "sent") {
+      return (
+        <div>
+          <div className="compose-container">
+            <div className="diary-each-notification-container">
+              <h1 className="diary-first-letter">name</h1>
+              <p>Subject sample notify</p>
+              <p>To: all kids</p>
+              <p>date</p>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  };
+
+  return (
+    <div className="diary-bg-container">
+      <div className="diary-notifi-heading-container">
+        <h1 className="diary-notifi-heading">Notifications</h1>
+      </div>
+      <div className="notifications-whole-container">
+        <ul className="diary-left-tabs-container">
+          {/* use curly braces when used string liters as class names to whole classname==>
+          means string literals gets evaluated to normal strings
+          to add string and variable as classnames, use string literals */}
+          <li
+            className={`diary-left-tab-btns ${
+              selectedButton === "compose" ? "diary-btns-selected-bg" : null
+            }`}
+            onClick={onClickComponse}
+          >
+            Compose
+          </li>
+          <br />
+          <li
+            className={`diary-left-tab-btns diary-sent-btn ${
+              selectedButton === "sent" ? "diary-btns-selected-bg" : null
+            }`}
+            onClick={onClickSent}
+          >
+            Sent
+          </li>
+        </ul>
+        {displayComponent(selectedButton)}
       </div>
     </div>
   );

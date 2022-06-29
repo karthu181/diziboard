@@ -1,27 +1,42 @@
-.kid-container {
+.dbhome-kidapprovals-container {
   background-color: #47bdef;
   border: 5px solid #e0e0e0;
   cursor: pointer;
+  width: 33%;
 }
 
-.approvals {
+.dbhome-kidapprovals {
   display: flex;
   flex-direction: column;
   padding: 8px;
 }
 
-.requests {
+.dbhome-kidrequests {
   display: flex;
 }
 
-.number {
+.dbhome-kidapprovals-number {
   color: #ff0000;
   text-align: center;
   font-size: 40px;
 }
 
-.text {
+.dbhome-kidapprovals-text {
   color: white;
   text-align: center;
   font-size: 25px;
+}
+.dbhome-kidapprovals-sub-title {
+  color: white;
+  font-size: 20px;
+  /* display: flex;
+  justify-content: center;
+  text-align: center; */
+  margin-top: 10px;
+}
+.dbhome-kidapprovals-sub-containers-hr-line {
+  height: 3.5px;
+  background-color: #ffffff;
+  color: #ffffff;
+  border: 1px solid white !important;
 }

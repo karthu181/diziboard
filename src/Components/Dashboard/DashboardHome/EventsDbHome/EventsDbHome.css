@@ -1,16 +1,11 @@
-.event-container {
+.dbhome-event-container {
   background-color: #f9bc48;
   cursor: pointer;
   border: 5px solid #e0e0e0;
+  width: 33%;
 }
 
-.hr-line {
-  color: white;
-  height: 1px;
-  background-color: white;
-}
-
-.bday-bottom-container {
+.dbhome-events-bottom-container {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -20,12 +15,26 @@
   text-align: center;
 }
 
-.bday-heading {
+.dbhome-events-heading {
   color: blue;
   font-size: 35px;
 }
 
-.bday-description {
+.dbhome-events-description {
   color: white;
   font-size: 25px;
+}
+.dbhome-events-sub-title {
+  color: white;
+  font-size: 20px;
+  /* display: flex;
+  justify-content: center;
+  text-align: center; */
+  margin-top: 10px;
+}
+.dbhome-events-sub-containers-hr-line {
+  height: 3.5px;
+  background-color: #ffffff;
+  color: #ffffff;
+  border: 1px solid white !important;
 }

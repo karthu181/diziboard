@@ -12,26 +12,27 @@ const EventsDbHome = (props) => {
   };
 
   return (
-    <div
-      className="event-container col-md-4 col-8"
-      onClick={onClickEventsDbHome}
-    >
+    <div className="dbhome-event-container" onClick={onClickEventsDbHome}>
       <div>
-        <h1 className="db-sub-title">Events</h1>
+        <h1 className="dbhome-events-sub-title">Events</h1>
       </div>
-      <hr className="db-sub-containers-hr-line" />
-      <div className="bday-bottom-container">
+      <hr className="dbhome-events-sub-containers-hr-line" />
+      <div className="dbhome-events-bottom-container">
         <div>
-          <h1 className="bday-heading">{classSectionEvents.total_events}</h1>
-          <p className="bday-description">Year</p>
+          <h1 className="dbhome-events-heading">
+            {classSectionEvents.total_events}
+          </h1>
+          <p className="dbhome-events-description">Year</p>
         </div>
         <div>
-          <h1 className="bday-heading">{classSectionEvents.month_events}</h1>
-          <p className="bday-description">Month</p>
+          <h1 className="dbhome-events-heading">
+            {classSectionEvents.month_events}
+          </h1>
+          <p className="dbhome-events-description">Month</p>
         </div>
         <div>
           <h1 className="bday-heading">{classSectionEvents.events_in_week}</h1>
-          <p className="bday-description">Week</p>
+          <p className="dbhome-events-description">Week</p>
         </div>
       </div>
     </div>

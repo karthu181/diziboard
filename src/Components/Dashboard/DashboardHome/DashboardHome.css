@@ -1,33 +1,34 @@
-.dbhome-bg-container {
+* {
+  box-sizing: border-box;
 }
-.db-left-container {
-  padding: 0px !important;
+
+.dbhome-bg-container {
+  background-color: #f3f9fe;
+  width: 98.8vw;
+  border: 1px solid black;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+}
+.dbhome-left-container {
+  width: 66.6%;
+  border: 1px solid black;
+  padding-right: 0px !important;
 }
 
 /* user !important to override bootstrap styles */
 
-.db-upper-container {
+.dbhome-upper-container {
   display: flex;
   flex-direction: row;
 }
-.db-lower-container {
+.dbhome-lower-container {
   display: flex;
   flex-direction: row;
 }
-.db-sub-title {
-  color: white;
-  font-size: 20px;
-  /* display: flex;
-  justify-content: center;
-  text-align: center; */
-  margin-top: 10px;
-}
-.db-sub-containers-hr-line {
-  height: 3px;
-  background-color: #ffffff;
-  color: #ffffff;
-  border: 1px solid #ffffff;
-}
+
 .dbhome-right-container {
   border: 1px solid black;
+  width: 33.3%;
+  box-sizing: border-box;
 }

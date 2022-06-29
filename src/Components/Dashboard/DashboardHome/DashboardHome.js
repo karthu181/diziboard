@@ -14,8 +14,31 @@ const DashboardHome = () => {
   const [sectionDataForDashboard, setSectionDataForDashboard] = useState({});
   const [classSectionEvents, setClassSectionEvents] = useState({});
   const [holidaysData, setHolidaysData] = useState({});
-
   const loginToken = Cookies.get("loginToken");
+
+  //displaying right container
+  const [rightContainerObj, setRightContainerObj] = useState({
+    display: () => {},
+  });
+
+  console.log(rightContainerObj);
+  const settingRightContainer = (toDisplayObj) => {
+    setRightContainerObj(toDisplayObj);
+    console.log(toDisplayObj.display);
+    //sending fn as argument is ok but keeping fn in useState is giving errors in dashboardHome
+  };
+  // const displayingRightContainer = () => {
+  //   if (rightContainer === "attendance") {
+  //     return <h1>Today Attendance status</h1>;
+  //   } else if (rightContainer === "holidays") {
+  //     return <h1>holidays</h1>;
+  //   } else if (rightContainer === "birthdays") {
+  //     return <h1>birthdays</h1>;
+  //   }
+  // };
+
+  //displaying right container till here
+
   useEffect(() => {
     //get birthdays on page launch
     const getBirthdays = async () => {
@@ -127,38 +150,46 @@ const DashboardHome = () => {
 
     getHolidays();
   }, []);
-  console.log(holidaysData);
 
   return (
-    <div className="container-fluid dbhome-bg-container">
-      <div className="row">
-        <div className="col-8 db-left-container">
-          <div className="col-12 db-upper-container">
-            <ClassTeacherDbHome className="col-4" />
-            {/*useless giving col-4 here*/}
-            <BirthdaysDbHome birthdaysObj={birthdaysObj} />
-            {/*useless giving col-4 here*/}
-            <AttendenceDbHome
-              sectionDataForDashboard={sectionDataForDashboard}
-            />
-            {/*useless giving col-4 here*/}
-            {/* you should give width 30%-flexobox to div inside Component
+    <div className="dbhome-bg-container">
+      <div className="dbhome-left-container">
+        <div className="dbhome-upper-container">
+          <ClassTeacherDbHome />
+          {/*
+          <ClassTeacherDbHome className="col-4" />
+          useless giving col-4 here*/}
+          <BirthdaysDbHome
+            birthdaysObj={birthdaysObj}
+            settingRightContainer={settingRightContainer}
+          />
+          {/*useless giving col-4 here*/}
+          <AttendenceDbHome
+            sectionDataForDashboard={sectionDataForDashboard}
+            settingRightContainer={settingRightContainer}
+          />
+          {/*useless giving col-4 here*/}
+          {/* you should give width 30%-flexobox to div inside Component
             not to compoenent
             similarly grid system give col-4 to div inside component not to compoenent
             eg: div inside <AttendenceDbHome/> not to <AttendenceDbHome/> directly
             know difference between flex and grid */}
-          </div>
-          <div className="col-12 db-lower-container">
-            <KidApprovalsDbHome
-              sectionDataForDashboard={sectionDataForDashboard}
-            />
-            <EventsDbHome classSectionEvents={classSectionEvents} />
-            <HolidaysDbHome holidaysData={holidaysData} />
-          </div>
         </div>
-        <div className="col-4 dbhome-right-container"></div>
-        {/* <HomeFooter /> */}
+        <div className="dbhome-lower-container">
+          <KidApprovalsDbHome
+            sectionDataForDashboard={sectionDataForDashboard}
+          />
+          <EventsDbHome classSectionEvents={classSectionEvents} />
+          <HolidaysDbHome
+            holidaysData={holidaysData}
+            settingRightContainer={settingRightContainer}
+          />
+        </div>
       </div>
+      <div className="dbhome-right-container">
+        {rightContainerObj.display()}
+      </div>
+      {/* <HomeFooter /> */}
     </div>
   );
 };

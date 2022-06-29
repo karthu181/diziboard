@@ -23,15 +23,13 @@ const Dashboard = () => {
         this DashboardHome component will render on same path "/dashboard"*/}
         <Route path="/kidstatus" element={<KidStatus />} />
         <Route path="/eventmanagement" element={<EventManagement />} />
-        <Route
-          path="/dashboard/holidaymanagement"
-          element={<HolidayManagement />}
-        />
+        <Route path="/holidaymanagement" element={<HolidayManagement />} />
         <Route path="/kidmarks" element={<KidMarks />} />
         <Route path="/attendance" element={<Attendance />} />
         <Route path="/diary" element={<Diary />} />
         <Route path="/kidapprovals" element={<KidApprovals />} />
         <Route path="/aboutme" element={<AboutMe />} />
+
         {/* 1. for nested routing,=> routing inside routing, 
               use /dashboard/* for path inside Browser router to support further routing
               to render descendant routes you need to use /* for parent Route

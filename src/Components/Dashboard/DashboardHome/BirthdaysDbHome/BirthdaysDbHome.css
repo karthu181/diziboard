@@ -1,13 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
 .birthday-container {
   background-color: #43d3f1;
   cursor: pointer;
   border: 5px solid #e0e0e0;
-}
-
-.hr-line {
-  color: white;
-  height: 1px;
-  background-color: white;
+  width: 33%;
+  box-sizing: border-box;
 }
 
 .bday-bottom-container {
@@ -28,4 +28,42 @@
 .bday-description {
   color: white;
   font-size: 25px;
+}
+.dbhome-birthdays-sub-title {
+  color: white;
+  font-size: 20px;
+  /* display: flex;
+  justify-content: center;
+  text-align: center; */
+  margin-top: 10px;
+}
+
+/* right container */
+.db-right-container-birthdays-heading {
+  padding: 12px;
+  background-color: #0074d9;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  color: #ffffff;
+  border: 1px solid rgb(214, 223, 230);
+  box-sizing: border-box;
+  text-align: center;
+  padding-top: 16px;
+  padding-bottom: 24px;
+}
+.db-birthdays-right-container-body {
+  margin-top: -8px;
+  background-color: #ffffff;
+  font-size: 14px;
+  padding-top: 6px;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-bottom: 1px;
+  text-align: left;
+}
+.dbhome-birthdays-sub-containers-hr-line {
+  height: 3.5px;
+  background-color: #ffffff;
+  color: #ffffff;
+  border: 1px solid white !important;
 }

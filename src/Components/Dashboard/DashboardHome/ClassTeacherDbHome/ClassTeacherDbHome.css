@@ -1,24 +1,32 @@
-.background-container {
+.ct-dbhome-background-container {
   background-color: #81bb5f;
-  padding: 5px;
   border: 5px solid #e0e0e0;
+  width: 33%;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
 }
 
-.image-container1 {
+.ct-db-home-image-heading-container {
+  padding: 2px;
+  margin: 10px;
   display: flex;
 }
 
-.image1 {
+.dbhome-ct-image1 {
   border-radius: 50%;
   border: 3px solid white;
-  width: 80px;
-  height: 80px;
+  width: 36%;
+  height: 36%;
 }
 
-.title-container {
+.dbhome-ct-title-container {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
   display: flex;
   flex-direction: column;
   margin-left: 25px;
+  width: 64%;
 }
 
 .db-ct2-sub-title {
@@ -29,12 +37,26 @@
   text-align: left;
 }
 
-.school-details {
+.db-ct-school-details {
   display: flex;
-  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid black;
 }
-
-.title1 {
+.db-ct-subhead-container {
+  width: 50%;
+}
+.db-ct-subhead-ans-container {
+  width: 50%;
+}
+.dbhome-ct-subhead-and-ans {
   color: #ffffff;
   font-size: 15px;
+  text-align: left;
+}
+.dbhome-ct2-sub-containers-hr-line {
+  height: 3.5px;
+  background-color: #ffffff;
+  color: #ffffff;
+  border: 1px solid white !important;
 }

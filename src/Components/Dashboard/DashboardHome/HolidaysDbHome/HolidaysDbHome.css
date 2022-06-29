@@ -1,16 +1,11 @@
-.holiday-container {
+.dbhome-holiday-container {
   background-color: #ed6647;
   cursor: pointer;
   border: 5px solid #e0e0e0;
+  width: 33%;
 }
 
-.hr-line {
-  color: white;
-  height: 1px;
-  background-color: white;
-}
-
-.bday-bottom-container {
+.dbhome-holidays-bottom-container {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -20,12 +15,54 @@
   text-align: center;
 }
 
-.bday-heading {
+.dbhome-holidays-heading {
   color: blue;
   font-size: 35px;
 }
 
-.bday-description {
+.dbhome-holidays-description {
   color: white;
   font-size: 25px;
+}
+
+/* right container */
+
+.db-right-container-holidays-heading {
+  padding: 12px;
+  background-color: #0074d9;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  color: #ffffff;
+  border: 1px solid rgb(214, 223, 230);
+  box-sizing: border-box;
+  text-align: center;
+  padding-top: 16px;
+  padding-bottom: 24px;
+}
+.dbhome-holidays-no-items-to-display {
+  margin-top: -8px;
+  background-color: #ffffff;
+  font-size: 14px;
+  padding-top: 6px;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-bottom: 6px;
+  text-align: left;
+}
+.para12 {
+  background-color: #ffffff;
+}
+.dbhome-holidays-sub-title {
+  color: white;
+  font-size: 20px;
+  /* display: flex;
+  justify-content: center;
+  text-align: center; */
+  margin-top: 10px;
+}
+.dbhome-holidays-sub-containers-hr-line {
+  height: 3.5px;
+  background-color: #ffffff;
+  color: #ffffff;
+  border: 1px solid white !important;
 }

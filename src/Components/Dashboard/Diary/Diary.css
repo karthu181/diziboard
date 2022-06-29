@@ -1,26 +1,60 @@
+* {
+  box-sizing: border-box;
+}
+
 .diary-bg-container {
   background-color: #f3f9fe;
   min-height: 100vh;
+  border: 1px solid black;
 }
 .notifications-whole-container {
   display: flex;
   flex-direction: row;
+  border: 1px solid black;
+}
+.diary-notifi-heading-container {
+  padding: 10px;
+}
+.diary-notifi-heading {
+  color: #04103d;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .compose-container {
   background-color: #ffffff;
   width: 80%;
   text-align: left;
-  padding: 10px;
+  padding: 12px;
 }
 .diary-left-tabs-container {
   width: 20%;
+  list-style-type: none;
+  border: 1px solid black;
+  padding-left: 8px;
 }
 .diary-left-tab-btns {
-  border-style: none;
+  box-sizing: border-box;
   background-color: none;
   width: 100%;
-  margin-top: 5px;
+  color: rgb(5, 114, 206);
+  font-size: 14px;
+  text-align: left;
+  padding-left: 12px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  cursor: pointer;
 }
+.diary-sent-btn {
+  margin-top: -24px;
+}
+.diary-btns-selected-bg {
+  background-color: #e4f0fa;
+  border-left-style: solid;
+  border-left-width: 3px;
+  border-left-color: rgb(5, 114, 206);
+}
+
 .diary-each-notification-container {
   display: flex;
   flex-direction: row;
@@ -31,4 +65,28 @@
   width: 50px;
   border-radius: 50%;
   padding: 5px;
+}
+.diary-compose-subhead {
+  padding-bottom: 2px;
+  color: rgb(4, 16, 61);
+  font-size: 15px;
+  font-weight: 700;
+}
+.diary-hrline-below-compose {
+  border: 1px solid rgb(51, 51, 51);
+}
+.diary-compose-sub-sub-container {
+  padding: 10px;
+}
+.diary-sub-sub-headings {
+  color: rgb(51, 51, 51);
+  font-size: 14px;
+  font-weight: 700;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.diary-input-allkids-checkbox {
+  margin-left: 5px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }

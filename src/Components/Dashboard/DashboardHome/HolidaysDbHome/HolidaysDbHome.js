@@ -3,34 +3,53 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const HolidaysDbHome = (props) => {
-  const { holidaysData } = props;
+  const { holidaysData, settingRightContainer } = props;
 
-  const navigate = useNavigate();
-  const onClickHolidayManagement = () => {
-    navigate("/dashboard/holidaymanagement");
+  //writing right side container display in this component only and passing this jsx returned
+  // fn in object as argument to fn
+
+  const displayHolidaysRight = () => {
+    return (
+      <div>
+        <h1 className="db-right-container-holidays-heading">
+          Holidays List In Week
+        </h1>
+        <p className="dbhome-holidays-no-items-to-display">
+          No items to display
+        </p>
+      </div>
+    );
+  };
+
+  const onClickHolidaysHandler = () => {
+    settingRightContainer({ display: displayHolidaysRight });
+    //sending fn as argument is ok but keeping fn in useState is giving errors in dashboardHome
   };
 
   return (
-    <div
-      className="holiday-container col-md-4 col-8"
-      onClick={onClickHolidayManagement}
-    >
+    <div className="dbhome-holiday-container" onClick={onClickHolidaysHandler}>
       <div>
-        <h1 className="db-sub-title">Holiday</h1>
+        <h1 className="dbhome-holidays-sub-title">Holiday</h1>
       </div>
-      <hr className="db-sub-containers-hr-line" />
-      <div className="bday-bottom-container">
+      <hr className="dbhome-holidays-sub-containers-hr-line" />
+      <div className="dbhome-holidays-bottom-container ">
         <div>
-          <h1 className="bday-heading">{holidaysData.yaer_holidays}</h1>
-          <p className="bday-description">Year</p>
+          <h1 className="dbhome-holidays-heading">
+            {holidaysData.yaer_holidays}
+          </h1>
+          <p className="dbhome-holidays-description">Year</p>
         </div>
         <div>
-          <h1 className="bday-heading">{holidaysData.month_holidays}</h1>
-          <p className="bday-description">Month</p>
+          <h1 className="dbhome-holidays-heading">
+            {holidaysData.month_holidays}
+          </h1>
+          <p className="dbhome-holidays-description">Month</p>
         </div>
         <div>
-          <h1 className="bday-heading">{holidaysData.week_holidays}</h1>
-          <p className="bday-description">Week</p>
+          <h1 className="dbhome-holidays-heading">
+            {holidaysData.week_holidays}
+          </h1>
+          <p className="dbhome-holidays-description">Week</p>
         </div>
       </div>
     </div>
