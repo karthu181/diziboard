@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .dbhome-attendence-container {
   background-color: #696984;
   border: 5px solid #e0e0e0;
@@ -8,20 +12,26 @@
 .dbhome-inner-attendence-container {
   display: flex;
   flex-direction: row;
-
   justify-content: space-between;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid black;
+  margin-top: -5px;
+  margin-bottom: -5px;
 }
 
 .dbhome-day-heading {
   color: white;
-  font-size: 20px;
+  font-size: 15px;
   justify-content: right;
   align-items: center;
+  border: 1px solid black;
 }
 
 .dbhome-day-description {
   color: white;
-  font-size: 20px;
+  font-size: 15px;
   justify-content: left;
   display: block;
   position: relative;
@@ -37,7 +47,7 @@
 .dbhome-description {
   color: white;
   text-align: center;
-  font-size: 10px;
+  font-size: 15px;
 }
 .dbhome-attendance-sub-title {
   color: white;
@@ -45,7 +55,8 @@
   /* display: flex;
   justify-content: center;
   text-align: center; */
-  margin-top: 10px;
+  margin-top: 15px;
+  margin-bottom: 20px;
 }
 /* right container */
 

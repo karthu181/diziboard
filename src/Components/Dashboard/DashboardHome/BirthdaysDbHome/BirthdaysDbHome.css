@@ -32,10 +32,8 @@
 .dbhome-birthdays-sub-title {
   color: white;
   font-size: 20px;
-  /* display: flex;
-  justify-content: center;
-  text-align: center; */
-  margin-top: 10px;
+  margin-top: 15px;
+  margin-bottom: 20px;
 }
 
 /* right container */

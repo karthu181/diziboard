@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
+import DiarySentRightContainer from "./DiarySentRightContainer/DiarySentRightContainer";
 import "./Diary.css";
 
 // conditional rendering in react:
@@ -20,6 +21,54 @@ const Diary = () => {
   const onChangeKidObjHandler = (event) => {
     setSelectedKidId(event.target.value);
     getSelectedKidId(event.target.value);
+  };
+
+  const [notificationPosted, setNotificationPosted] = useState("");
+  const diaryNotifiSendHandler = () => {
+    //post notification or message sending message to api
+    const postNotification = async () => {
+      const postNotificationUrl =
+        "http://192.168.0.116:8280/postNotificationsInformation/v1/postNotifications";
+      const postNotifiBody = {
+        header: {
+          guid: "fd7f8de3-559f-3281-5119-55b717d12c03",
+          requestedOn: "2022-6-29.17:17:27",
+          requestedFrom:
+            "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Mobile Safari/537.36",
+          geoLocation: "anonymous",
+        },
+        body: {
+          type: "no",
+          mas_notificationID:
+            Math.floor(Math.random() * 9000000000) + 1000000000,
+          mas_subject: subject,
+          mas_kiduserID: [{ kidId: selectedKidId }],
+          mas_SchoolUniqueId: "5911355945",
+          mas_class: "SECOND CLASS",
+          mas_section: "B",
+          mas_createdBy: "155AAdfi",
+          mas_createdOn: "2022-6-29.17:17:27",
+          mas_modifiedBy: "155AAdfi",
+          mas_modifiedOn: "2022-6-29.17:17:27",
+          mas_notificationType: "individual",
+          mas_description: message,
+        },
+      };
+      let options = {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${loginToken}`,
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(postNotifiBody),
+      };
+
+      let response = await fetch(postNotificationUrl, options);
+      let postNotificationResponse = await response.json();
+      setNotificationPosted("posted");
+    };
+    postNotification();
   };
 
   useEffect(() => {
@@ -100,7 +149,7 @@ const Diary = () => {
   // event handlers buttons
   const [selectedButton, setSelectedButton] = useState("compose");
 
-  const onClickComponse = () => {
+  const onClickCompose = () => {
     setSelectedButton("compose");
   };
 
@@ -127,53 +176,10 @@ const Diary = () => {
     setMessage(event.target.value);
   };
 
-  const [notificationPosted, setNotificationPosted] = useState("");
-  const diaryNotifiSendHandler = () => {
-    //post notification or message sending message to api
-    const postNotification = async () => {
-      const postNotificationUrl =
-        "http://192.168.0.116:8280/postNotificationsInformation/v1/postNotifications";
-      const postNotifiBody = {
-        header: {
-          guid: "fd7f8de3-559f-3281-5119-55b717d12c03",
-          requestedOn: "2022-6-29.17:17:27",
-          requestedFrom:
-            "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Mobile Safari/537.36",
-          geoLocation: "anonymous",
-        },
-        body: {
-          type: "no",
-          mas_notificationID:
-            Math.floor(Math.random() * 9000000000) + 1000000000,
-          mas_subject: subject,
-          mas_kiduserID: [{ kidId: selectedKidId }],
-          mas_SchoolUniqueId: "5911355945",
-          mas_class: "SECOND CLASS",
-          mas_section: "B",
-          mas_createdBy: "155AAdfi",
-          mas_createdOn: "2022-6-29.17:17:27",
-          mas_modifiedBy: "155AAdfi",
-          mas_modifiedOn: "2022-6-29.17:17:27",
-          mas_notificationType: "individual",
-          mas_description: message,
-        },
-      };
-      let options = {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${loginToken}`,
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(postNotifiBody),
-      };
+  //selected notification handler
 
-      let response = await fetch(postNotificationUrl, options);
-      let postNotificationResponse = await response.json();
-      setNotificationPosted("posted");
-    };
-    postNotification();
-  };
+  const [selectedNotification, setSelectedNotification] = useState({});
+  const [selectedNotifibgColor, setSelectedNotifiColor] = useState("");
 
   const displayComponent = (selected) => {
     if (selected === "compose") {
@@ -249,51 +255,65 @@ const Diary = () => {
       return (
         <div className="diary-sent-container">
           <div className="diary-sent-left-allnotifications-container">
-            <ul className="diary-each-notification-container">
+            <ul className="diary-sent-ul-container">
               {/* mapping notifications, from notification data */}
 
               {notificationsByTeacher.map((eachNotifi) => {
+                //selected notification handler
+                const selectedNotificationHandler = () => {
+                  setSelectedNotification(eachNotifi);
+                };
+                console.log(selectedNotification);
                 return (
-                  <li className="diary-each-noti-list-item">
-                    <div className="w-15">
-                      <h1 className="diary-first-letter">
-                        {eachNotifi.mas_notificationType === "single"
-                          ? eachNotifi.kidName[0]
-                          : "A"}
-                      </h1>
-                    </div>
-                    <div className="w-45">
-                      <p className="diary-sub-sub-headings">
-                        Subject
-                        <span className="diary-sent-subhead-ans">
-                          {eachNotifi.mas_subject}
-                        </span>
-                      </p>
-                    </div>
-                    <div className="15">
-                      <p className="diary-sub-sub-headings">
-                        To:
-                        <span className="diary-sent-subhead-ans">
+                  <li
+                    className="diary-each-notification-container"
+                    onClick={selectedNotificationHandler}
+                  >
+                    <div className="diary-each-noti-list-item">
+                      <div className="diary-first-letter-container w-15">
+                        <h1 className="diary-first-letter">
                           {eachNotifi.mas_notificationType === "single"
-                            ? eachNotifi.kidName
-                            : "all kids"}
-                        </span>
-                      </p>
-                    </div>
-                    <div className="w-25">
-                      <p className="diary-sub-sub-headings">
-                        date:
-                        <span className="diary-sent-subhead-ans">
-                          {eachNotifi.mas_createdOn}
-                        </span>
-                      </p>
+                            ? eachNotifi.kidName[0].toUpperCase()
+                            : "A"}
+                        </h1>
+                      </div>
+                      <div className="diary-sent-each-flex-item w-45">
+                        <p className="diary-sub-sub-headings">
+                          Subject
+                          <span className="diary-sent-subhead-ans">
+                            {eachNotifi.mas_subject}
+                          </span>
+                        </p>
+                      </div>
+                      <div className="diary-sent-each-flex-item w-15">
+                        <p className="diary-sub-sub-headings">
+                          To:
+                          <span className="diary-sent-subhead-ans">
+                            {eachNotifi.mas_notificationType === "single"
+                              ? eachNotifi.kidName
+                              : "all kids"}
+                          </span>
+                        </p>
+                      </div>
+                      <div className="diary-sent-each-flex-item w-25">
+                        <p className="diary-sub-sub-headings">
+                          date:
+                          <span className="diary-sent-subhead-ans">
+                            {eachNotifi.mas_createdOn}
+                          </span>
+                        </p>
+                      </div>
                     </div>
                   </li>
                 );
               })}
             </ul>
           </div>
-          <div className="diary-sent-right-detailed-notifi-container"></div>
+          <div className="diary-sent-right-detailed-notifi-container">
+            <DiarySentRightContainer
+              selectedNotification={selectedNotification}
+            />
+          </div>
         </div>
       );
     }
@@ -313,7 +333,7 @@ const Diary = () => {
             className={`diary-left-tab-btns ${
               selectedButton === "compose" ? "diary-btns-selected-bg" : null
             }`}
-            onClick={onClickComponse}
+            onClick={onClickCompose}
           >
             Compose
           </li>

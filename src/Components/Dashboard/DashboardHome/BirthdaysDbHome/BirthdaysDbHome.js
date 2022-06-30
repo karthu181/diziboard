@@ -29,7 +29,7 @@ const BirthdaysDbHome = (props) => {
   return (
     <div className="birthday-container" onClick={onClickBirthdaysHandler}>
       <div>
-        <h1 className="dbhome-birthdays-sub-title">Birthday</h1>
+        <h1 className="dbhome-birthdays-sub-title">Birthdays</h1>
       </div>
       <hr className="dbhome-birthdays-sub-containers-hr-line " />
       <div className="bday-bottom-container">
