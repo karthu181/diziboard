@@ -13,9 +13,24 @@ const Diary = () => {
   const [selectedKidId, setSelectedKidId] = useState("");
   const [classKidsList, setClassKidsList] = useState([]);
   const [notificationsByTeacher, setNotificationsByTeacher] = useState([]);
+  const [message, setMessage] = useState("");
+  const [subject, setSubject] = useState("");
 
   const getSelectedKidId = (id) => {
     setSelectedKidId(id);
+  };
+
+  const dateTime = function() {
+    const today = new Date();
+    const date =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
+    const time =
+      today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    return date + " " + time;
   };
 
   const onChangeKidObjHandler = (event) => {
@@ -23,52 +38,93 @@ const Diary = () => {
     getSelectedKidId(event.target.value);
   };
 
-  const [notificationPosted, setNotificationPosted] = useState("");
-  const diaryNotifiSendHandler = () => {
+  // checked or unchecked
+
+  const [allKidsChecked, setAllKidsChecked] = useState(false);
+
+  const diaryAllkidsCheckboxHandler = (event) => {
+    setAllKidsChecked(!allKidsChecked);
+  };
+
+  const [notificationPosted, setNotificationPosted] = useState(false);
+
+  //send message button handler
+  const newMessageSendBtnHandler = () => {
     //post notification or message sending message to api
     const postNotification = async () => {
-      const postNotificationUrl =
-        "http://192.168.0.116:8280/postNotificationsInformation/v1/postNotifications";
-      const postNotifiBody = {
-        header: {
-          guid: "fd7f8de3-559f-3281-5119-55b717d12c03",
-          requestedOn: "2022-6-29.17:17:27",
-          requestedFrom:
-            "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Mobile Safari/537.36",
-          geoLocation: "anonymous",
-        },
-        body: {
-          type: "no",
-          mas_notificationID:
-            Math.floor(Math.random() * 9000000000) + 1000000000,
-          mas_subject: subject,
-          mas_kiduserID: [{ kidId: selectedKidId }],
-          mas_SchoolUniqueId: "5911355945",
-          mas_class: "SECOND CLASS",
-          mas_section: "B",
-          mas_createdBy: "155AAdfi",
-          mas_createdOn: "2022-6-29.17:17:27",
-          mas_modifiedBy: "155AAdfi",
-          mas_modifiedOn: "2022-6-29.17:17:27",
-          mas_notificationType: "individual",
-          mas_description: message,
-        },
-      };
-      let options = {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${loginToken}`,
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(postNotifiBody),
-      };
+      try {
+        const postNotificationUrl =
+          "http://192.168.0.116:8280/postNotificationsInformation/v1/postNotifications";
+        const postNotifiBody = {
+          header: {
+            guid: "fd7f8de3-559f-3281-5119-55b717d12c03",
+            requestedOn: "2022-6-29.17:17:27",
+            requestedFrom:
+              "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Mobile Safari/537.36",
+            geoLocation: "anonymous",
+          },
+          body: allKidsChecked
+            ? {
+                type: "yes",
+                //only for jsx we use curly braces for expression evaluation for others no need curly braces
+                mas_notificationID:
+                  Math.floor(Math.random() * 9000000000) + 1000000000,
+                mas_subject: subject,
+                mas_SchoolUniqueId: "5911355945",
+                mas_class: "SECOND CLASS",
+                mas_section: "B",
+                mas_createdBy: "155AAdfi",
+                //get created by from local storage from role data, from userProfile api call
+                mas_createdOn: dateTime(),
+                mas_modifiedBy: "155AAdfi",
+                mas_modifiedOn: dateTime(),
+                mas_notificationType: "all",
+                mas_description: message,
+              }
+            : {
+                type: "no",
+                //only for jsx we use curly braces for expression evaluation for others no need curly braces
+                mas_notificationID:
+                  Math.floor(Math.random() * 9000000000) + 1000000000,
+                mas_subject: subject,
+                mas_kiduserID: [{ kidId: selectedKidId }],
+                mas_SchoolUniqueId: "5911355945",
+                mas_class: "SECOND CLASS",
+                mas_section: "B",
+                mas_createdBy: "155AAdfi",
+                //get created by from local storage from role data, from userProfile api call
+                mas_createdOn: dateTime(),
+                mas_modifiedBy: "155AAdfi",
+                mas_modifiedOn: dateTime(),
+                mas_notificationType: "individual",
+                mas_description: message,
+              },
+        };
+        let options = {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${loginToken}`,
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(postNotifiBody),
+        };
 
-      let response = await fetch(postNotificationUrl, options);
-      let postNotificationResponse = await response.json();
-      setNotificationPosted("posted");
+        const response = await fetch(postNotificationUrl, options);
+        const postNotificationResponse = await response.json();
+      } catch (error) {}
     };
-    postNotification();
+    //condition to send message is all fields must be entered
+    if (subject === "" || message === "") {
+      alert("all Fields are mandatory");
+    } else {
+      postNotification();
+      setNotificationPosted("yes");
+      setSubject("");
+      setMessage("");
+      setSelectedKidId("");
+      alert("sent");
+    }
   };
 
   useEffect(() => {
@@ -157,28 +213,20 @@ const Diary = () => {
     setSelectedButton("sent");
   };
 
-  // checked or unchecked
-
-  const [allKidsChecked, setAllKidsChecked] = useState(false);
-
-  const diaryAllkidsCheckboxHandler = (event) => {
-    setAllKidsChecked(!allKidsChecked);
-  };
-
   // subject input
-  const [subject, setSubject] = useState("");
+
   const subjectChangeHandler = (event) => {
     setSubject(event.target.value);
   };
   //message change handler
-  const [message, setMessage] = useState("");
+
   const messageChangeHandler = (event) => {
     setMessage(event.target.value);
   };
 
   //selected notification handler
 
-  const [selectedNotification, setSelectedNotification] = useState({});
+  const [selectedNotification, setSelectedNotification] = useState([]);
   const [selectedNotifibgColor, setSelectedNotifiColor] = useState("");
 
   const displayComponent = (selected) => {
@@ -230,6 +278,7 @@ const Diary = () => {
             <input
               className="diary-compose-inputbox"
               onChange={subjectChangeHandler}
+              value={subject}
             />
             <br />
             <label className="diary-sub-sub-headings">Message:</label>
@@ -237,12 +286,13 @@ const Diary = () => {
             <textarea
               className="diary-compose-inputbox diary-text-area"
               onChange={messageChangeHandler}
+              value={message}
             ></textarea>
             <br />
             <div className="diary-buttons-container">
               <button
                 className="diary-send-cancel-buttons"
-                onClick={diaryNotifiSendHandler}
+                onClick={newMessageSendBtnHandler}
               >
                 Send
               </button>
@@ -304,6 +354,7 @@ const Diary = () => {
                         </p>
                       </div>
                     </div>
+                    <hr className="diary-sent-each-notification-hr-line" />
                   </li>
                 );
               })}

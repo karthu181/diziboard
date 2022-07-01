@@ -3,7 +3,6 @@
 }
 
 .kidmarks-container {
-  background-color: rgb(243, 249, 254) !important;
   min-height: 70vh;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
@@ -114,7 +113,7 @@
 /* react bootstrap modal styles css */
 
 .add-exam-type-modal {
-  width: 450px;
+  /* width: 450px; */
 }
 .add-exam-type-modal .modal-header {
   background-color: #177ed7;

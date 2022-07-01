@@ -21,10 +21,12 @@
 .dbhome-upper-container {
   display: flex;
   flex-direction: row;
+  height: 312px;
 }
 .dbhome-lower-container {
   display: flex;
   flex-direction: row;
+  height: 312px;
 }
 
 .dbhome-right-container {

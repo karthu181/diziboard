@@ -55,3 +55,16 @@
   font-size: 15px;
   text-align: center;
 }
+
+.dairy-sent-right-before-click {
+  font-size: 15px;
+  font-weight: lighter;
+  text-align: center;
+  padding-top: 8px;
+}
+
+.dairy-sent-right-before-click-bottom {
+  font-size: 15px;
+  font-weight: lighter;
+  padding-left: 10px;
+}

@@ -15,8 +15,7 @@
   justify-content: space-between;
   align-items: center;
   padding-left: 10px;
-  padding-right: 10px;
-  border: 1px solid black;
+  padding-right: 60px;
   margin-top: -5px;
   margin-bottom: -5px;
 }
@@ -26,7 +25,6 @@
   font-size: 15px;
   justify-content: right;
   align-items: center;
-  border: 1px solid black;
 }
 
 .dbhome-day-description {
@@ -38,16 +36,23 @@
   cursor: pointer;
   background-color: #0572cd;
   animation-duration: 0.5s;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
+  border-radius: 50%;
+  height: 34px;
+  width: 34px;
+  padding-top: 6px;
+}
+.dbhome-day-description-green {
+  background-color: rgb(118, 180, 23);
+}
+.dbhome-day-description-red {
+  background-color: rgb(255, 0, 0);
 }
 
-.dbhome-description {
+.dbhome-attendance-bottom-description {
   color: white;
   text-align: center;
   font-size: 15px;
+  margin-top: 0px;
 }
 .dbhome-attendance-sub-title {
   color: white;
@@ -73,4 +78,34 @@
   background-color: #ffffff;
   color: #ffffff;
   border: 1px solid white !important;
+  margin-top: 4px;
+}
+.attendance-dot-blue {
+  background-color: #0572ce;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+  margin-top: -8px;
+}
+.attendance-dot-green {
+  background-color: rgb(118, 180, 23);
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+  margin-top: -8px;
+}
+.attendance-dot-red {
+  background-color: rgb(255, 0, 0);
+  height: 10px;
+  border-radius: 50%;
+  width: 10px;
+  margin-top: -8px;
+  margin-right: 8px;
+}
+.dbhome-attendance-dot-subhead-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }

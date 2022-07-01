@@ -125,6 +125,7 @@ const AddMarksButton = (props) => {
           className="addmarks-modal"
           show={addMarksModalShow}
           onHide={handleJustClose}
+          size="sm"
         >
           <Modal.Header closeButton>
             <Modal.Title>KID MARKS</Modal.Title>

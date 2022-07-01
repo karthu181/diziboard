@@ -287,6 +287,7 @@ const KidMarks = () => {
               className="add-exam-type-modal"
               show={addExamTypeModalShow}
               onHide={handleJustClose}
+              size="md"
             >
               <Modal.Header closeButton>
                 <Modal.Title>Add Exam Type</Modal.Title>

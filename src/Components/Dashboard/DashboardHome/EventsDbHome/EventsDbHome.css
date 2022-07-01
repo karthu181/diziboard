@@ -1,8 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
 .dbhome-event-container {
   background-color: #f9bc48;
   cursor: pointer;
   border: 5px solid #e0e0e0;
   width: 33%;
+  padding-top: 5px;
 }
 
 .dbhome-events-bottom-container {
@@ -33,7 +38,6 @@
   margin-top: 10px;
 }
 .dbhome-events-sub-containers-hr-line {
-  height: 3.5px;
   background-color: #ffffff;
   color: #ffffff;
   border: 1px solid white !important;

@@ -1,18 +1,96 @@
 import "./AttendanceDbHome.css";
 import React, { useEffect } from "react";
+import ReactApexChart from "react-apexcharts";
 
 const AttendanceDbHome = (props) => {
   const { sectionDataForDashboard, settingRightContainer } = props;
-  console.log(sectionDataForDashboard);
+
+  //get date time in attendance box in dashboard
+  const getDateTime = function() {
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    const dayNames = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursady",
+      "Friday",
+      "Saturday",
+    ];
+    const todayDateTimeObj = new Date();
+    const getDay = dayNames[todayDateTimeObj.getDay()];
+    const getMonth = monthNames[todayDateTimeObj.getMonth()];
+    const getTodayDateOnly = todayDateTimeObj.getDate();
+    const getYear = todayDateTimeObj.getFullYear();
+
+    return `${getDay}, ${getMonth} ${getTodayDateOnly}, ${getYear}`;
+  };
 
   //writing right side container display in this component only and passing this jsx returned
   // fn in object as argument to fn
   const displayAttendanceRight = () => {
+    let presentKidsData =
+      sectionDataForDashboard.presentkids === "NA"
+        ? sectionDataForDashboard.totalkids
+        : 0;
+
+    let absentkidsData =
+      sectionDataForDashboard.absentkids === "NA"
+        ? 0
+        : sectionDataForDashboard.absentkids;
+    console.log(sectionDataForDashboard);
+    console.log(presentKidsData);
+    console.log(absentkidsData);
+    let series = [presentKidsData, absentkidsData];
+    let options = {
+      chart: {
+        width: 380,
+        type: "pie",
+      },
+      labels: ["Kids Present", "Kids Absent"],
+      responsive: [
+        {
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200,
+            },
+            legend: {
+              position: "bottom",
+            },
+          },
+        },
+      ],
+    };
+
     return (
       <div>
         <h1 className="right-container-attendance-heading">
           Today Attendance Status
         </h1>
+        <div>
+          <div id="chart">
+            <ReactApexChart
+              options={options}
+              series={series}
+              type="pie"
+              width={420}
+            />
+          </div>
+        </div>
       </div>
     );
   };
@@ -36,19 +114,21 @@ const AttendanceDbHome = (props) => {
       </div>
       <hr className="dbhome-attendance-sub-containers-hr-line" />
       <div className="dbhome-inner-attendence-container">
-        <h1 className="dbhome-day-heading">
-          <span className="span">.</span>Total
-        </h1>
+        <div className="dbhome-attendance-dot-subhead-container">
+          <div className="attendance-dot-blue"></div>
+          <h1 className="dbhome-day-heading">Total</h1>
+        </div>
         <p className="dbhome-day-description">
           {sectionDataForDashboard.totalkids}
         </p>
       </div>
       <hr className="dbhome-attendance-sub-containers-hr-line" />
       <div className="dbhome-inner-attendence-container">
-        <h1 className="dbhome-day-heading">
-          <span className="span">.</span>Kids Present
-        </h1>
-        <p className="dbhome-day-description">
+        <div className="dbhome-attendance-dot-subhead-container">
+          <div className="attendance-dot-green"></div>
+          <h1 className="dbhome-day-heading">Kids Present</h1>
+        </div>
+        <p className="dbhome-day-description dbhome-day-description-green">
           {sectionDataForDashboard.presentkids === "NA"
             ? sectionDataForDashboard.totalkids
             : 0}
@@ -56,10 +136,11 @@ const AttendanceDbHome = (props) => {
       </div>
       <hr className="dbhome-attendance-sub-containers-hr-line" />
       <div className="dbhome-inner-attendence-container">
-        <h1 className="dbhome-day-heading">
-          <span className="span">.</span>Kids Absent
-        </h1>
-        <p className="dbhome-day-description">
+        <div className="dbhome-attendance-dot-subhead-container">
+          <div className="attendance-dot-blue"></div>
+          <h1 className="dbhome-day-heading">Kids Absent</h1>
+        </div>
+        <p className="dbhome-day-description dbhome-day-description-red">
           {sectionDataForDashboard.absentkids === "NA"
             ? 0
             : sectionDataForDashboard.absentkids}
@@ -68,8 +149,11 @@ const AttendanceDbHome = (props) => {
       <hr className="dbhome-attendance-sub-containers-hr-line" />
       <div>
         <span>
-          <h2 className="dbhome-description" data-bind="text: todaydate">
-            Wednesday, June 15, 2022
+          <h2
+            className="dbhome-attendance-bottom-description"
+            data-bind="text: todaydate"
+          >
+            {getDateTime()}
           </h2>
         </span>
       </div>

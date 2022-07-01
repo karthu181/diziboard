@@ -1,8 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
 .dbhome-holiday-container {
   background-color: #ed6647;
   cursor: pointer;
   border: 5px solid #e0e0e0;
   width: 33%;
+  padding-top: 5px;
 }
 
 .dbhome-holidays-bottom-container {
