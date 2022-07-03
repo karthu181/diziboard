@@ -13,7 +13,16 @@
   font-size: 14px;
   border-radius: 2px !important;
   border: 1px solid #045fab;
-  background-color: #177ed7;
+  background-image: linear-gradient(to bottom, #177ed7 0%, #177ed7 100%);
+}
+.excel-upload-button:hover {
+  background-image: linear-gradient(
+    to bottom,
+    #209fc8 0%,
+    #6dd2f3 50%,
+    #209fc8 100%
+  ) !important;
+  color: black;
 }
 
 /* modal css styles */

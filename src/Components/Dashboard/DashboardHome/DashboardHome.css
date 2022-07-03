@@ -4,33 +4,59 @@
 
 .dbhome-bg-container {
   background-color: #f3f9fe;
-  width: 98.8vw;
+  width: 100%;
   border: 1px solid black;
   padding: 10px;
   display: flex;
   flex-direction: row;
+}
+@media screen and (max-width: 772px) {
+  .dbhome-bg-container {
+    flex-direction: column;
+  }
 }
 .dbhome-left-container {
   width: 66.6%;
   border: 1px solid black;
   padding-right: 0px !important;
 }
+@media screen and (max-width: 772px) {
+  .dbhome-left-container {
+    width: 100%;
+    min-height: 100vh;
+  }
+}
 
 /* user !important to override bootstrap styles */
 
 .dbhome-upper-container {
   display: flex;
-  flex-direction: row;
-  height: 312px;
+  flex-direction: column;
+}
+@media screen and (min-width: 772px) {
+  .dbhome-upper-container {
+    flex-direction: row;
+    height: 312px;
+  }
 }
 .dbhome-lower-container {
   display: flex;
-  flex-direction: row;
-  height: 312px;
+  flex-direction: column;
+}
+@media screen and (min-width: 772px) {
+  .dbhome-lower-container {
+    flex-direction: row;
+    height: 312px;
+  }
 }
 
 .dbhome-right-container {
   border: 1px solid black;
   width: 33.3%;
   box-sizing: border-box;
+}
+@media screen and (max-width: 772px) {
+  .dbhome-right-container {
+    width: 100%;
+  }
 }

@@ -8,6 +8,12 @@
   cursor: pointer;
   width: 33%;
 }
+@media screen and (max-width: 772px) {
+  .dbhome-attendence-container {
+    width: 100%;
+    height: 312px;
+  }
+}
 
 .dbhome-inner-attendence-container {
   display: flex;

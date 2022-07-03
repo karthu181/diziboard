@@ -23,7 +23,9 @@ const KidApprovalsDbHome = (props) => {
 
           <div className="dbhome-kidrequests">
             <div className="dbhome-kidapprovals">
-              <h1 className="number">{sectionDataForDashboard.kidApprovals}</h1>
+              <h1 className="dbhome-kidapprovals-number">
+                {sectionDataForDashboard.kidApprovals}
+              </h1>
 
               <h1 className="dbhome-kidapprovals-text">Approvals</h1>
             </div>

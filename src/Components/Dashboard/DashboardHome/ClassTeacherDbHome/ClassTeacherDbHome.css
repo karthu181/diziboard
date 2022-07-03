@@ -5,6 +5,12 @@
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
 }
+@media screen and (max-width: 772px) {
+  .ct-dbhome-background-container {
+    width: 100%;
+    height: 312px;
+  }
+}
 
 .ct-db-home-image-heading-container {
   padding: 2px;

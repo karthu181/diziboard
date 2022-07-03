@@ -23,7 +23,8 @@ const Home = () => {
       setDisplay("d-none");
     }, 5000);
   };
-
+  const testJsonData = JSON.stringify({ a: 1, b: 2, c: 3 });
+  localStorage.setItem("test1", testJsonData);
   return (
     <div id="home" className="bg-container">
       <NavBar displayOrHide={display} />

@@ -2,15 +2,20 @@
   box-sizing: border-box;
 }
 
-.birthday-container {
+.dbhome-birthday-container {
   background-color: #43d3f1;
   cursor: pointer;
   border: 5px solid #e0e0e0;
   width: 33%;
   box-sizing: border-box;
 }
-
-.bday-bottom-container {
+@media screen and (max-width: 772px) {
+  .dbhome-birthday-container {
+    width: 100%;
+    height: 312px;
+  }
+}
+.dbhome-bday-bottom-container {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -20,12 +25,12 @@
   text-align: center;
 }
 
-.bday-heading {
+.dbhome-bday-heading {
   color: blue;
   font-size: 35px;
 }
 
-.bday-description {
+.dbhome-bday-description {
   color: white;
   font-size: 25px;
 }

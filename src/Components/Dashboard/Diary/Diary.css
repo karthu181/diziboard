@@ -4,7 +4,7 @@
 
 .diary-bg-container {
   /* background-color: #f3f9fe;   background color is given direct to dashboard component*/
-  min-height: 100vh;
+  min-height: 100%;
 }
 .notifications-whole-container {
   display: flex;
@@ -201,5 +201,16 @@
 .diary-sent-each-notification-hr-line {
   margin-bottom: -12px;
   margin-top: 5px;
+  border: 1px solid #dfe4e7;
+}
+.diary-selectedKidsList-container {
+  display: flex;
+}
+.diary-kidslist-dropdown-container {
+  height: 200px;
+  overflow-y: scroll;
+  position: absolute;
+  background-color: #ffffff;
+  width: 700px;
   border: 1px solid #dfe4e7;
 }
