@@ -11,6 +11,7 @@ import "./KidMarks.css";
 
 const KidMarks = () => {
   let loginToken = Cookies.get("loginToken");
+
   const [subMaxMarks, setSubMaxMarks] = useState(0);
   const [schoolExamTypes, setSchoolExamTypes] = useState([]);
   const [selectedExamType, setSelectedExamType] = useState();
@@ -22,6 +23,9 @@ const KidMarks = () => {
 
   const [addMarksArray, setAddMarksArray] = useState([]);
   const [classKidsList, setClassKidsList] = useState([]);
+
+  const [schoolSubjects, setSchoolSubjects] = useState([]);
+  const [addMarksClicked, setAddMarksClicked] = useState(false);
 
   const handleJustClose = () => {
     setAddExamTypeModalShow(false);
@@ -67,6 +71,7 @@ const KidMarks = () => {
   const handleShow = () => setAddExamTypeModalShow(true);
 
   useEffect(() => {
+    //get exams fetch api
     const getSchoolExamTypes = async () => {
       try {
         let getSchoolExamTypesUrl =
@@ -109,15 +114,6 @@ const KidMarks = () => {
       try {
         let getClasskidsListUrl =
           "https://192.168.0.116:8243/mas_getclasskidlist/v1/mas_getclasskidlist?mas_SchoolUniqueId=5911355945&mas_Class=SECOND%20CLASS&mas_Section=B&mas_guid=xyz&mas_geoLocation=xyz&mas_requestedFrom=xyz&mas_requestedOn=anonymous";
-        // let bodyData = {
-        //   mas_SchoolUniqueId: "5911355945",
-        //   mas_Class: "SECOND CLASS",
-        //   mas_Section: "B",
-        //   mas_guid: "xyz",
-        //   mas_requestedOn: "xyz",
-        //   mas_requestedFrom: "xyz",
-        //   mas_geoLocation: "anonymous",
-        // };
         let options = {
           method: "GET",
           headers: {
@@ -135,6 +131,33 @@ const KidMarks = () => {
       }
     };
     getClasskidsList();
+
+    //get examtypes
+
+    const getSchoolSubjects = async () => {
+      try {
+        let getSchoolSubjectsUrl =
+          "http://192.168.0.116:8280/mas_get_schoolsubjects/1.0/getexamtype?mas_SchoolUniqueId=5911355945&Guid=k&GeoLocation=kjkj&RequestedFrom=kj&RequestedOn=k";
+
+        let options = {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${loginToken}`,
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        };
+        let response = await fetch(getSchoolSubjectsUrl, options);
+        let schoolSubjectsData = await response.json();
+        // setSchoolExamTypes(classKidsListData);
+        console.log(schoolSubjectsData.body.common);
+        setSchoolSubjects(schoolSubjectsData.body.common);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
+    getSchoolSubjects();
   }, []);
 
   // if u use function directly in functional component it getting called infinitely
@@ -182,10 +205,37 @@ const KidMarks = () => {
     setInputExamTypeShortcut(event.target.value);
   };
 
+  //addMarksClickedOrNot getting as argument
+
+  const addMarksClickedOrNot = (clickedOrNot) => {
+    setAddMarksClicked(clickedOrNot);
+  };
+
+  //display red warning text to select examtype
+
+  const displayWarningToSelectExamType = () => {
+    console.log(selectedExamType);
+    console.log(addMarksClicked);
+    if (
+      (selectedExamType === "" ||
+        selectedExamType === undefined ||
+        selectedExamType === "Select Exam Type") &&
+      addMarksClicked === true
+    ) {
+      return (
+        <p style={{ "font-size": "16px" }} className="pt-3">
+          Please Select Exam Type
+        </p>
+      );
+    } else {
+      return null;
+    }
+  };
+
   return (
     <div className="container-fluid kidmarks-container">
       <div className="row kidmarks-1st-row">
-        <div className="col-4 row-1st-column-containers">
+        <div className="col-md-4 col-12 row-1st-column-containers pb-3">
           <label
             className="kidmarks-bold-input-labels"
             htmlFor="kidmarksUsername"
@@ -201,7 +251,7 @@ const KidMarks = () => {
             disabled
           />
         </div>
-        <div className="col-4 row-1st-column-containers">
+        <div className="col-md-4 col-12 row-1st-column-containers pb-3">
           <label htmlFor="kidmarksClass">Class</label>
           <input
             className="kidmarks-input kidmarks-input-disabled no-border"
@@ -211,7 +261,7 @@ const KidMarks = () => {
             id="kidmarksClass"
           />
         </div>
-        <div className="col-4 row-1st-column-containers">
+        <div className="col-md-4 col-12 row-1st-column-containers pb-3">
           <label
             className="kidmarks-non-bold-input-labels"
             htmlFor="kidmarksSection"
@@ -228,7 +278,7 @@ const KidMarks = () => {
         </div>
       </div>
       <div className="row kidmarks-2nd-row">
-        <div className="col-4 containers-2nd-row">
+        <div className="col-md-4 col-12 containers-2nd-row pb-4 ps-3">
           <label className="kidmarks-bold-input-labels" htmlFor="sub-max-marks">
             Sub Max Marks
           </label>
@@ -255,7 +305,7 @@ const KidMarks = () => {
             <AiOutlineUp />
           </button>
         </div>
-        <div className="col-4 containers-2nd-row">
+        <div className="col-md-4 col-12 containers-2nd-row pb-4">
           <label className="kidmarks-bold-input-labels" htmlFor="exam-type">
             Exam Type
           </label>
@@ -277,7 +327,7 @@ const KidMarks = () => {
             ))}
           </select>
         </div>
-        <div className="col-3 containers-2nd-row">
+        <div className="col-md-4 col-12 containers-2nd-row pb-4">
           <Button className="kidmarks-buttons" onClick={handleShow}>
             Add Exam Type
           </Button>
@@ -340,12 +390,15 @@ const KidMarks = () => {
         </div>
       </div>
       <div className="row pt-4 ">
+        <div className="text-danger">{displayWarningToSelectExamType()}</div>
         <div className="add-marks-exel-save-btn-container ms-auto">
           {/* since it is margin you should give to element directly not to container */}
           <AddMarksButton
             addMarksToTable={addMarksToTable}
             classKidsList={classKidsList}
             subMaxMarks={subMaxMarks}
+            selectedExamType={selectedExamType}
+            addMarksClickedOrNot={addMarksClickedOrNot}
           />
           <ExcelUploadButton />
           <SaveButton
@@ -356,56 +409,106 @@ const KidMarks = () => {
           />
         </div>
       </div>
-      <div className="table-in-kidmarks-container mt-2">
-        <table className="table table-bordered border-light">
-          <thead className="table-header">
-            <tr>
-              <th scope="col">Kid Id</th>
-              <th scope="col">Class</th>
-              <th scope="col">Section</th>
-              <th scope="col">Hindi</th>
-              <th scope="col">LabSkills</th>
-              <th scope="col">IT</th>
-              <th scope="col">English</th>
-              <th scope="col">Telugu</th>
-              <th scope="col">Maths</th>
-              <th scope="col">Science</th>
-              <th scope="col">Social</th>
-              <th scope="col">Total</th>
-              <th scope="col">Percentage</th>
-            </tr>
-          </thead>
-          <tbody className="table-body-in-kid-marks">
-            {addMarksArray.map((eachMarksObj) => (
-              <tr>
-                <th scope="row">{eachMarksObj.selectedKidId}</th>
-                <td>SECOND CLASS</td>
-                <td>B</td>
-                <td>{eachMarksObj.addHindi}</td>
-                <td>{eachMarksObj.addLabSkills}</td>
-                <td>{eachMarksObj.addIt}</td>
-                <td>{eachMarksObj.addEnglish}</td>
-                <td>{eachMarksObj.addTelugu}</td>
-                <td>{eachMarksObj.addMaths}</td>
-                <td>{eachMarksObj.addScience}</td>
-                <td>{eachMarksObj.addSocial}</td>
-                <td>
-                  {parseInt(eachMarksObj.addHindi) +
-                    parseInt(eachMarksObj.addLabSkills) +
-                    parseInt(eachMarksObj.addIt) +
-                    parseInt(eachMarksObj.addEnglish) +
-                    parseInt(eachMarksObj.addTelugu) +
-                    parseInt(eachMarksObj.addMaths) +
-                    parseInt(eachMarksObj.addScience) +
-                    parseInt(eachMarksObj.addSocial)}
-                </td>
-                <td>{eachMarksObj.addPercentage}</td>
-              </tr>
-            ))}
-            {/* in plain js we do is element.append but here we do like this
+      <div className="kidsmarks-table-scroll-container">
+        <div className="table-in-kidmarks-container mt-2">
+          <div className="kidmarks-table-2nd-container">
+            <table className="table table-bordered border-light">
+              <thead className="table-header">
+                <tr>
+                  <th scope="col" className="kidmarks-table-headings">
+                    Kid Id
+                  </th>
+                  <th scope="col" className="kidmarks-table-headings">
+                    Class
+                  </th>
+                  <th scope="col" className="kidmarks-table-headings">
+                    Section
+                  </th>
+                  <th scope="col" className="kidmarks-table-headings">
+                    Hindi
+                  </th>
+                  <th scope="col" className="kidmarks-table-headings">
+                    LabSkills
+                  </th>
+                  <th scope="col" className="kidmarks-table-headings">
+                    IT
+                  </th>
+                  <th scope="col" className="kidmarks-table-headings">
+                    English
+                  </th>
+                  <th scope="col" className="kidmarks-table-headings">
+                    Telugu
+                  </th>
+                  <th scope="col" className="kidmarks-table-headings">
+                    Maths
+                  </th>
+                  <th scope="col" className="kidmarks-table-headings">
+                    Science
+                  </th>
+                  <th scope="col" className="kidmarks-table-headings">
+                    Social
+                  </th>
+                  <th scope="col" className="kidmarks-table-headings">
+                    Total
+                  </th>
+                  <th scope="col" className="kidmarks-table-headings">
+                    Percentage
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="table-body-in-kid-marks">
+                {addMarksArray.map((eachMarksObj) => (
+                  <tr>
+                    <td scope="row" className="table-body-each-col">
+                      {eachMarksObj.selectedKidId}
+                    </td>
+                    <td className="table-body-each-col">SECOND CLASS</td>
+                    <td className="table-body-each-col">B</td>
+                    <td className="table-body-each-col">
+                      {eachMarksObj.addHindi}
+                    </td>
+                    <td className="table-body-each-col">
+                      {eachMarksObj.addLabSkills}
+                    </td>
+                    <td className="table-body-each-col">
+                      {eachMarksObj.addIt}
+                    </td>
+                    <td className="table-body-each-col">
+                      {eachMarksObj.addEnglish}
+                    </td>
+                    <td className="table-body-each-col">
+                      {eachMarksObj.addTelugu}
+                    </td>
+                    <td className="table-body-each-col">
+                      {eachMarksObj.addMaths}
+                    </td>
+                    <td className="table-body-each-col">
+                      {eachMarksObj.addScience}
+                    </td>
+                    <td className="table-body-each-col">
+                      {eachMarksObj.addSocial}
+                    </td>
+                    <td className="table-body-each-col">
+                      {parseInt(eachMarksObj.addHindi) +
+                        parseInt(eachMarksObj.addLabSkills) +
+                        parseInt(eachMarksObj.addIt) +
+                        parseInt(eachMarksObj.addEnglish) +
+                        parseInt(eachMarksObj.addTelugu) +
+                        parseInt(eachMarksObj.addMaths) +
+                        parseInt(eachMarksObj.addScience) +
+                        parseInt(eachMarksObj.addSocial)}
+                    </td>
+                    <td className="table-body-each-col">
+                      {eachMarksObj.addPercentage}
+                    </td>
+                  </tr>
+                ))}
+                {/* in plain js we do is element.append but here we do like this
             but here we use state and on update, we get updated data  */}
-          </tbody>
-        </table>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   );

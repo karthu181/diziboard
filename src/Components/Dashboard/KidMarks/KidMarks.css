@@ -9,16 +9,28 @@
   min-height: 100%;
   max-width: 99%;
 }
+.kidsmarks-table-scroll-container {
+  overflow-x: scroll;
+}
+.kidmarks-table-2nd-container {
+  background-color: transparent;
+  padding: 5px;
+  border: 1px solid rgb(239, 239, 239);
+  padding-bottom: 0px !important;
+}
 .table-in-kidmarks-container {
+  padding-left: 10px;
+  padding-right: 10px;
   border: 1px solid black;
-  overflow: scroll;
 }
 .table-border {
   border: 1px solid blue !important;
 }
+
 .table-header {
   background-color: #177ed7 !important;
   color: #fff !important;
+  border-bottom-style: none !important;
 }
 .add-marks-exel-save-btn-container {
   display: flex;
@@ -29,7 +41,14 @@
   margin-left: 10px !important;
 }
 .table-body-in-kid-marks {
-  background-color: rgb(243, 249, 254);
+  background-color: #00c1ff0a;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(214, 223, 230);
+  border-bottom-width: 1px;
+  border-top-style: none !important;
+}
+.table-body-each-col {
+  border: 1px solid rgb(214, 223, 230);
 }
 .up-down-buttons-kidmarks {
   border: 1px solid rgb(1, 97, 128);
@@ -61,7 +80,7 @@
   font-size: 14px;
   min-width: 112px;
   max-width: 252px;
-  width: 240px;
+  width: 66.66%;
   height: 32px;
   color: #666;
   margin-left: 5px;
@@ -77,16 +96,19 @@
   border-style: none !important;
 }
 .kidmarks-1st-row {
-  padding-top: 10px !important;
+  padding-top: 13px;
+  padding-left: 22px;
 }
+
 .kidmarks-2nd-row {
   padding-top: 25px;
-
+  padding-left: 20px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
+
 .containers-2nd-row {
   /* border: 1px solid black; */
   display: flex;
@@ -129,27 +151,23 @@
   /* border: 1px solid black; */
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
   align-items: center;
+}
+@media screen and (min-width: 501px) {
+  .row-1st-column-containers {
+    padding-left: 50px;
+  }
 }
 
 /* react bootstrap modal styles css */
-.addmarks-modal {
-  transform: scale(0) !important ;
-  transition: all 0.5s ease-in-out !important;
-}
-.addmarks-modal.show {
-  transform: scale(1) !important;
-  transition: all 0.5s ease-in-out !important;
-}
 
 .add-exam-type-modal {
   transform: scale(0) !important ;
-  transition: all 0.5s ease-in-out !important;
+  transition: all 0.4s ease-in-out !important;
 }
 .add-exam-type-modal.show {
   transform: scale(1) !important;
-  transition: all 0.5s ease-in-out !important;
+  transition: all 0.4s ease-in-out !important;
   top: 25%;
 }
 
@@ -188,4 +206,12 @@
 }
 .kidmarks-add-exam-type-label {
   color: #666;
+}
+.kidmarks-table-headings {
+  font-size: 14px;
+  font-weight: 400;
+}
+.kidmarks-table-headings:hover {
+  background-color: #d6d7d8;
+  color: black;
 }

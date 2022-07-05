@@ -5,7 +5,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./AddMarksButton.css";
 
 const AddMarksButton = (props) => {
-  const { addMarksToTable, classKidsList, subMaxMarks } = props;
+  const {
+    addMarksToTable,
+    classKidsList,
+    subMaxMarks,
+    selectedExamType,
+    addMarksClickedOrNot,
+  } = props;
 
   const [addHindi, setAddHindi] = useState("");
   const [addLabSkills, setAddLabskills] = useState("");
@@ -102,7 +108,14 @@ const AddMarksButton = (props) => {
     addMarksToTable(addedMarksArray);
   }, [addedMarksArray]);
 
-  const handleShow = () => setAddMarksModalShow(true);
+  const handleShow = () => {
+    console.log(selectedExamType);
+    selectedExamType !== "" &&
+      selectedExamType !== undefined &&
+      setAddMarksModalShow(true);
+
+    addMarksClickedOrNot(true);
+  };
 
   // onCHange kid dropdown handler
   const onChangeKidObjHandler = (event) => {

@@ -12,8 +12,6 @@ const SaveButton = (props) => {
     subMaxMarks,
   } = props;
   const [saveModalshow, setSaveModalShow] = useState(false);
-  console.log(addMarksArray);
-  console.log(selectedExamType);
 
   let loginToken = Cookies.get("loginToken");
 
