@@ -5,6 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./AddMarksButton.css";
 
 const AddMarksButton = (props) => {
+  const loggedInUserProfile = localStorage.getItem("diziUserProfile");
+
   const {
     addMarksToTable,
     classKidsList,

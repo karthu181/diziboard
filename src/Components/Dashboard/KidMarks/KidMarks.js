@@ -6,11 +6,12 @@ import AddMarksButton from "./AddMarksButton/AddMarksButton";
 import SaveButton from "./SaveButton/SaveButton";
 import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
 import ExcelUploadButton from "./ExcelUploadButton/ExcelUploadButton";
-
+import { v4 as uuidv4 } from "uuid";
 import "./KidMarks.css";
 
 const KidMarks = () => {
   let loginToken = Cookies.get("loginToken");
+  const loggedInUserProfile = localStorage.getItem("diziUserProfile");
 
   const [subMaxMarks, setSubMaxMarks] = useState(0);
   const [schoolExamTypes, setSchoolExamTypes] = useState([]);
@@ -35,20 +36,22 @@ const KidMarks = () => {
 
   const handleClose = async () => {
     setAddExamTypeModalShow(false);
+    //dont give query parameters as hardcode (in string static) add params and in variables
+    //params must be dynamic, that varibale might change==> parameters might change
     const addExamUrl =
       "https://192.168.0.116:8243/mas-examtypes/1.0/insertexamtypes";
     const addExamBody = {
       header: {
-        guid: "",
+        guid: uuidv4(),
         responseOn: "",
         responseFrom: "",
-        userRef: "",
+        userRef: loggedInUserProfile.mas_userRef,
         geoLocation: "anonymous",
         status: "success",
         statuscode: "0",
       },
       body: {
-        mas_SchoolUniqueId: "5911355945",
+        mas_SchoolUniqueId: loggedInUserProfile.mas_schoolUniqueId,
         ExamType: inputExamType,
         Shortcode: inputExamTypeShortcut,
       },
@@ -74,19 +77,21 @@ const KidMarks = () => {
     //get exams fetch api
     const getSchoolExamTypes = async () => {
       try {
+        //dont give query parameters as hardcode (in string static) add params and in variables
+        //params must be dynamic, that varibale might change==> parameters might change
         let getSchoolExamTypesUrl =
           "https://192.168.0.116:8243/mas-examtypes/1.0/getexamtypes";
         let bodyData = {
           header: {
-            guid: "",
+            guid: uuidv4(),
             responseOn: "",
             responseFrom: "",
-            userRef: "",
+            userRef: loggedInUserProfile.mas_userRef,
             geoLocation: "",
             status: "success",
             statuscode: "0",
           },
-          body: { mas_SchoolUniqueId: "5911355945" },
+          body: { mas_SchoolUniqueId: loggedInUserProfile.mas_schoolUniqueId },
         };
         let options = {
           method: "POST",
@@ -112,6 +117,8 @@ const KidMarks = () => {
     //getClasskidsList
     const getClasskidsList = async () => {
       try {
+        //dont give query parameters as hardcode (in string static) add params and in variables
+        //params must be dynamic, that varibale might change==> parameters might change
         let getClasskidsListUrl =
           "https://192.168.0.116:8243/mas_getclasskidlist/v1/mas_getclasskidlist?mas_SchoolUniqueId=5911355945&mas_Class=SECOND%20CLASS&mas_Section=B&mas_guid=xyz&mas_geoLocation=xyz&mas_requestedFrom=xyz&mas_requestedOn=anonymous";
         let options = {
@@ -136,6 +143,8 @@ const KidMarks = () => {
 
     const getSchoolSubjects = async () => {
       try {
+        //dont give query parameters as hardcode (in string static) add params and in variables
+        //params must be dynamic, that varibale might change==> parameters might change
         let getSchoolSubjectsUrl =
           "http://192.168.0.116:8280/mas_get_schoolsubjects/1.0/getexamtype?mas_SchoolUniqueId=5911355945&Guid=k&GeoLocation=kjkj&RequestedFrom=kj&RequestedOn=k";
 

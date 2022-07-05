@@ -7,9 +7,12 @@ import HolidaysDbHome from "./HolidaysDbHome/HolidaysDbHome";
 import KidApprovalsDbHome from "./KidApprovalsDbHome/KidApprovalsDbHome";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
+import { v4 as uuidv4 } from "uuid";
 import "./DashboardHome.css";
 
 const DashboardHome = () => {
+  const loggedInUserProfile = localStorage.getItem("diziUserProfile");
+
   const [birthdaysObj, setBirthdaysObj] = useState({});
   const [sectionDataForDashboard, setSectionDataForDashboard] = useState({});
   const [classSectionEvents, setClassSectionEvents] = useState({});
@@ -122,13 +125,16 @@ const DashboardHome = () => {
       try {
         const data = {
           header: {
-            guid: "5d06f101-1066-07e7-d3ca-8fdf4c1f7d64",
+            guid: uuidv4(),
             requestedOn: "2022-06-24T09:57:02.690Z",
             requestedFrom:
               "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Mobile Safari/537.36",
             geoLocation: "anonymous",
           },
-          body: { mas_SchoolUniqueId: "5911355945", date: "2022-06-24" },
+          body: {
+            mas_SchoolUniqueId: loggedInUserProfile.mas_schoolUniqueId,
+            date: "2022-06-24",
+          },
         };
         const getHolidaysUrl =
           "http://192.168.0.116:8280/ssa_sttendance/1.0/ssa_holidays";

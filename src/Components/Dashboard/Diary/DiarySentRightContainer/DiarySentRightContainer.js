@@ -20,9 +20,9 @@ const DiarySentRightContainer = (props) => {
         <div className="diary-sent-right-container-heading">
           <div className="diary-right-container-first-letter-container">
             <h1 className="diary-right-container-first-letter">
-              {selectedNotification.mas_notificationType === "single"
-                ? selectedNotification.kidName[0].toUpperCase()
-                : "A"}
+              {selectedNotification.kidName === null
+                ? "A"
+                : selectedNotification.kidName[0].toUpperCase()}
             </h1>
           </div>
           <p className="dairy-right-paragraph-kidname">

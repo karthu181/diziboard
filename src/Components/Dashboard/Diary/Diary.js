@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import DiarySentRightContainer from "./DiarySentRightContainer/DiarySentRightContainer";
+import { v4 as uuidv4 } from "uuid";
 import "./Diary.css";
 
 // conditional rendering in react:
@@ -10,6 +11,8 @@ import "./Diary.css";
 
 const Diary = () => {
   const loginToken = Cookies.get("loginToken");
+  const loggedInUserProfile = localStorage.getItem("diziUserProfile");
+
   const [selectedKidsArr, setSelectedKidsArr] = useState([]);
   const [displayKidsListDropdown, setDisplayKidsListDropdown] = useState(false);
   const [classKidsList, setClassKidsList] = useState([]);
@@ -48,7 +51,7 @@ const Diary = () => {
     selectedKidsArr.forEach((selectedKid) => {
       selectedKidIdsArr.push({ kidId: selectedKid.mas_kidId });
     });
-    console.log(selectedKidIdsArr);
+    return selectedKidIdsArr;
   };
 
   //send message button handler
@@ -56,11 +59,13 @@ const Diary = () => {
     //post notification or message sending message to api
     const postNotification = async () => {
       try {
+        //dont give query parameters as hardcode (in string static) add params and in variables
+        //params must be dynamic, that varibale might change==> parameters might change
         const postNotificationUrl =
           "http://192.168.0.116:8280/postNotificationsInformation/v1/postNotifications";
         const postNotifiBody = {
           header: {
-            guid: "fd7f8de3-559f-3281-5119-55b717d12c03",
+            guid: uuidv4(),
             requestedOn: "2022-6-29.17:17:27",
             requestedFrom:
               "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Mobile Safari/537.36",
@@ -73,13 +78,13 @@ const Diary = () => {
                 mas_notificationID:
                   Math.floor(Math.random() * 9000000000) + 1000000000,
                 mas_subject: subject,
-                mas_SchoolUniqueId: "5911355945",
-                mas_class: "SECOND CLASS",
-                mas_section: "B",
-                mas_createdBy: "155AAdfi",
+                mas_SchoolUniqueId: loggedInUserProfile.mas_schoolUniqueId,
+                mas_class: loggedInUserProfile.mas_class,
+                mas_section: loggedInUserProfile.mas_section,
+                mas_createdBy: loggedInUserProfile.mas_userRef,
                 //get created by from local storage from role data, from userProfile api call
                 mas_createdOn: currentDateAndTime(),
-                mas_modifiedBy: "155AAdfi",
+                mas_modifiedBy: loggedInUserProfile.mas_userRef,
                 mas_modifiedOn: currentDateAndTime(),
                 mas_notificationType: "all",
                 mas_description: message,
@@ -91,13 +96,13 @@ const Diary = () => {
                   Math.floor(Math.random() * 9000000000) + 1000000000,
                 mas_subject: subject,
                 mas_kiduserID: getSelectedKidIdsArr(),
-                mas_SchoolUniqueId: "5911355945",
-                mas_class: "SECOND CLASS",
-                mas_section: "B",
-                mas_createdBy: "155AAdfi",
+                mas_SchoolUniqueId: loggedInUserProfile.mas_schoolUniqueId,
+                mas_class: loggedInUserProfile.mas_class,
+                mas_section: loggedInUserProfile.mas_section,
+                mas_createdBy: loggedInUserProfile.mas_userRef,
                 //get created by from local storage from role data, from userProfile api call
                 mas_createdOn: currentDateAndTime(),
-                mas_modifiedBy: "155AAdfi",
+                mas_modifiedBy: loggedInUserProfile.mas_userRef,
                 mas_modifiedOn: currentDateAndTime(),
                 mas_notificationType: "individual",
                 mas_description: message,
@@ -115,6 +120,7 @@ const Diary = () => {
 
         const response = await fetch(postNotificationUrl, options);
         const postNotificationResponse = await response.json();
+        console.log(postNotificationResponse);
       } catch (error) {}
     };
     //condition to send message is all fields must be entered
@@ -122,7 +128,7 @@ const Diary = () => {
       alert("all Fields are mandatory");
     } else {
       postNotification();
-      setNotificationPosted("yes");
+      setNotificationPosted(!notificationPosted);
       setSubject("");
       setMessage("");
       setSelectedKidsArr([]);
@@ -133,17 +139,11 @@ const Diary = () => {
   useEffect(() => {
     const getClasskidsList = async () => {
       try {
+        //dont give query parameters as hardcode (in string static) add params and in variables
+        //params must be dynamic, that varibale might change==> parameters might change
         let getClasskidsListUrl =
           "https://192.168.0.116:8243/mas_getclasskidlist/v1/mas_getclasskidlist?mas_SchoolUniqueId=5911355945&mas_Class=SECOND%20CLASS&mas_Section=B&mas_guid=xyz&mas_geoLocation=xyz&mas_requestedFrom=xyz&mas_requestedOn=anonymous";
-        // let bodyData = {
-        //   mas_SchoolUniqueId: "5911355945",
-        //   mas_Class: "SECOND CLASS",
-        //   mas_Section: "B",
-        //   mas_guid: "xyz",
-        //   mas_requestedOn: "xyz",
-        //   mas_requestedFrom: "xyz",
-        //   mas_geoLocation: "anonymous",
-        // };
+
         let options = {
           method: "GET",
           headers: {
@@ -160,25 +160,27 @@ const Diary = () => {
       } catch (e) {}
     };
     getClasskidsList();
+  }, []);
 
+  useEffect(() => {
     // get notification by classteacher
     const getNotificationsByClassTeacher = async () => {
       try {
         const data = {
           header: {
-            guid: "e1dcc8fb-7728-3642-2fa2-c980bc1f9e84",
+            guid: uuidv4(),
             requestedOn: "2022-6-24.18:22:10",
             requestedFrom:
               "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Mobile Safari/537.36",
             geoLocation: "anonymous",
           },
           body: {
-            mas_SchoolUniqueId: "5911355945",
-            mas_class: "SECOND CLASS",
-            mas_section: "B",
-            mas_createdBy: "155AAdfi",
+            mas_SchoolUniqueId: loggedInUserProfile.mas_schoolUniqueId,
+            mas_class: loggedInUserProfile.mas_class,
+            mas_section: loggedInUserProfile.mas_section,
+            mas_createdBy: loggedInUserProfile.mas_userRef,
             mas_createdOn: "2022-6-24.18:22:10",
-            mas_modifiedBy: "155AAdfi",
+            mas_modifiedBy: loggedInUserProfile.mas_userRef,
             mas_modifiedOn: "2022-6-24.18:22:10",
           },
         };
@@ -238,8 +240,6 @@ const Diary = () => {
     setMessage("");
     setSelectedKidsArr([]);
   };
-
-  console.log(selectedKidsArr);
 
   //search input kids list handler in dropdown
   const searchInputKidlistHandler = (event) => {
@@ -419,6 +419,7 @@ const Diary = () => {
               {/* mapping notifications, from notification data */}
 
               {notificationsByTeacher.map((eachNotifi) => {
+                console.log(eachNotifi);
                 //selected notification handler
                 const selectedNotificationHandler = () => {
                   setSelectedNotification(eachNotifi);
@@ -432,9 +433,9 @@ const Diary = () => {
                     <div className="diary-each-noti-list-item">
                       <div className="diary-first-letter-container w-15">
                         <h1 className="diary-first-letter">
-                          {eachNotifi.mas_notificationType === "single"
-                            ? eachNotifi.kidName[0].toUpperCase()
-                            : "A"}
+                          {eachNotifi.kidName === null
+                            ? "A"
+                            : eachNotifi.kidName[0].toUpperCase()}
                         </h1>
                       </div>
                       <div className="diary-sent-each-flex-item w-45">

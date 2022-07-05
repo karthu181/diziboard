@@ -5,6 +5,8 @@ import Cookies from "js-cookie";
 import "./SaveButton.css";
 
 const SaveButton = (props) => {
+  const loggedInUserProfile = localStorage.getItem("diziUserProfile");
+
   const {
     addMarksArray,
     disableSaveButton,
@@ -25,9 +27,9 @@ const SaveButton = (props) => {
 
         let toAddMarksArray = addMarksArray.map((eachMarksObj) => {
           return {
-            mas_SchoolUniqueId: "5911355945",
+            mas_SchoolUniqueId: loggedInUserProfile.mas_schoolUniqueId,
             mas_actualtotal: null,
-            mas_class: "SECOND CLASS",
+            mas_class: loggedInUserProfile.mas_class,
             mas_examtype: selectedExamType,
             mas_grade: "A",
             mas_kiduserid: eachMarksObj.selectedKidId,
@@ -38,7 +40,7 @@ const SaveButton = (props) => {
             mas_lan5_obtained: eachMarksObj.addLabSkills,
             mas_obtainedtotal: eachMarksObj.addTotal,
             mas_percentage: "NaN %",
-            mas_section: "B",
+            mas_section: loggedInUserProfile.mas_section,
             mas_sub1_obtained: eachMarksObj.addMaths,
             mas_sub2_obtained: eachMarksObj.addScience,
             mas_sub3_obtained: eachMarksObj.addSocial,
