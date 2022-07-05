@@ -37,15 +37,7 @@ const ExcelUploadButton = () => {
           </button>
           <br />
           <div className="choose-file-btn-text-container">
-            <button
-              type="button"
-              className="excel-upload-modal-choose-file-btn"
-            >
-              Choose File
-            </button>
-            <p className="excel-upload-modal-no-file-chosen-text">
-              No file chosen
-            </p>
+            <input type="file" className="excel-upload-modal-choose-file-btn" />
           </div>
         </Modal.Body>
         <Modal.Footer>

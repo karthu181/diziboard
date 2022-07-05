@@ -3,8 +3,6 @@ import { Button, Modal } from "react-bootstrap";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./AddMarksButton.css";
-import { useBootstrapPrefix } from "react-bootstrap/esm/ThemeProvider";
-import { BsPrefixComponent } from "react-bootstrap/esm/helpers";
 
 const AddMarksButton = (props) => {
   const { addMarksToTable, classKidsList, subMaxMarks } = props;

@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 const EventsDbHome = (props) => {
   const { classSectionEvents } = props;
-  console.log(classSectionEvents);
 
   const navigate = useNavigate();
   const onClickEventsDbHome = () => {

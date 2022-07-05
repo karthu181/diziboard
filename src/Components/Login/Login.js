@@ -40,7 +40,10 @@ const Login = () => {
       // this will be stored in browser in our application, references to our application
       // this data will not have accss to other applications in browser??
       //you must store in string format in local storage
-      localStorage.setItem("diziUserProfile", JSON.stringify(userProfileObj));
+      localStorage.setItem(
+        "diziUserProfile",
+        JSON.stringify(userProfileObj.body)
+      );
     } catch (error) {
       console.log(error);
     }

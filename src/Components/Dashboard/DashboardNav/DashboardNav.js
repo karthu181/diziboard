@@ -9,6 +9,7 @@ const DashboardNav = () => {
       <nav className="dashboard-nav-container">
         <div>
           <img
+            alt="db nav logo"
             className="db-nav-logo"
             src="http://192.168.0.116:8080/css/images/logo.png"
           />

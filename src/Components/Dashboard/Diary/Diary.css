@@ -161,6 +161,7 @@
   margin-right: 10px;
   font-size: 14px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding-left: 10px;
 }
 .diary-text-area {
   height: 115px !important;
@@ -172,6 +173,9 @@
   flex-direction: row;
 }
 .diary-send-cancel-buttons {
+  margin-left: 2px !important;
+  padding-left: 10px;
+  padding-right: 10px;
   height: 32px;
   display: flex;
   flex-direction: row;
@@ -179,11 +183,18 @@
   align-items: center;
   font-size: 14px;
   border-radius: 2px !important;
-  border: 1px solid rgb(1, 97, 128);
-  background-color: #177ed7;
+  border: 1px solid #045fab;
   color: #ffffff;
-  padding-left: 12px;
-  padding-right: 12px;
+  background-image: linear-gradient(to bottom, #177ed7 0%, #177ed7 100%);
+}
+.diary-send-cancel-buttons:hover {
+  background-image: linear-gradient(
+    to bottom,
+    #209fc8 0%,
+    #6dd2f3 50%,
+    #209fc8 100%
+  ) !important;
+  color: black;
 }
 .diary-each-noti-list-item {
   display: flex;
@@ -205,12 +216,29 @@
 }
 .diary-selectedKidsList-container {
   display: flex;
+  cursor: pointer;
 }
-.diary-kidslist-dropdown-container {
-  height: 200px;
-  overflow-y: scroll;
+.diary-kidslist-dropdown-search-container {
   position: absolute;
   background-color: #ffffff;
   width: 700px;
   border: 1px solid #dfe4e7;
+  padding-left: 8px;
+  font-size: 14px;
+}
+.diary-kidlist-only-dropdown-container {
+  max-height: 185px;
+  overflow-y: scroll;
+}
+.diary-eachkid-name-in-dropdown {
+  margin-top: 4px;
+  margin-bottom: 0px;
+  cursor: pointer;
+}
+.diary-search-in-dropdown {
+  width: 99%;
+  border: 1px solid #dfe4e7;
+  outline: none;
+  margin-top: 5px;
+  margin-bottom: 8px;
 }

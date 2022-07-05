@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { Button, Dropdown, Modal } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import AddMarksButton from "./AddMarksButton/AddMarksButton";
 import SaveButton from "./SaveButton/SaveButton";
 import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
@@ -278,7 +278,7 @@ const KidMarks = () => {
           </select>
         </div>
         <div className="col-3 containers-2nd-row">
-          <Button variant="primary kidmarks-buttons" onClick={handleShow}>
+          <Button className="kidmarks-buttons" onClick={handleShow}>
             Add Exam Type
           </Button>
           {/* modal */}

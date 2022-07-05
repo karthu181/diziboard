@@ -51,9 +51,6 @@ const AttendanceDbHome = (props) => {
       sectionDataForDashboard.absentkids === "NA"
         ? 0
         : sectionDataForDashboard.absentkids;
-    console.log(sectionDataForDashboard);
-    console.log(presentKidsData);
-    console.log(absentkidsData);
     let series = [presentKidsData, absentkidsData];
     let options = {
       chart: {

@@ -16,15 +16,17 @@ const DashboardHome = () => {
   const [holidaysData, setHolidaysData] = useState({});
   const loginToken = Cookies.get("loginToken");
 
+  //getUserProfile from local storage
+  const diziUserProfile = JSON.parse(localStorage.getItem("diziUserProfile"));
+  console.log(diziUserProfile);
+
   //displaying right container
   const [rightContainerObj, setRightContainerObj] = useState({
     display: () => {},
   });
 
-  console.log(rightContainerObj);
   const settingRightContainer = (toDisplayObj) => {
     setRightContainerObj(toDisplayObj);
-    console.log(toDisplayObj.display);
     //sending fn as argument is ok but keeping fn in useState is giving errors in dashboardHome
   };
   // const displayingRightContainer = () => {

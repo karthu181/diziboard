@@ -80,7 +80,7 @@ const SaveButton = (props) => {
   return (
     <>
       <Button
-        variant="primary save-btn-in-kidmarks"
+        className="save-btn-in-kidmarks"
         onClick={handleShow}
         disabled={disableSaveButton}
       >

@@ -3,7 +3,6 @@ import React from "react";
 
 const BirthdaysDbHome = (props) => {
   const { birthdaysObj, settingRightContainer } = props;
-  console.log(birthdaysObj);
 
   //writing right side container display in this component only and passing this jsx returned
   // fn in object as argument to fn

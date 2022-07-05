@@ -5,6 +5,8 @@
 
 .excel-upload-button {
   margin-left: 2px !important;
+  padding-left: 10px;
+  padding-right: 10px;
   height: 32px;
   display: flex;
   flex-direction: row;
@@ -26,7 +28,15 @@
 }
 
 /* modal css styles */
+
 .excel-upload-modal {
+  transform: scale(0) !important ;
+  transition: all 0.5s ease-in-out !important;
+}
+.excel-upload-modal.show {
+  transform: scale(1) !important;
+  transition: all 0.5s ease-in-out !important;
+  top: 25%;
 }
 .excel-upload-modal .modal-header {
   background-color: #177ed7;
@@ -75,19 +85,17 @@
 .excel-upload-modal-choose-file-btn {
   height: 26px;
   padding-left: 10px;
-  padding-right: 10px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   font-size: 13px;
-  border-radius: 2px !important;
+  border-radius: 1px !important;
   outline: none;
-  border: 1px solid black;
   margin-bottom: 0px;
   margin-right: 8px;
   padding-bottom: 0px;
-  border-radius: 4px;
+  margin-left: -10px;
 }
 .excel-upload-modal-update-marks-btn {
   margin-top: -40px;

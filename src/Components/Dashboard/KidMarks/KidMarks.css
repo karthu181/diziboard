@@ -96,6 +96,8 @@
 }
 .kidmarks-buttons {
   margin-left: -80px;
+  padding-left: 10px;
+  padding-right: 10px;
   height: 32px;
   display: flex;
   flex-direction: row;
@@ -104,6 +106,7 @@
   font-size: 14px;
   border-radius: 2px !important;
   border: 1px solid rgb(1, 97, 128);
+  color: #ffffff;
   background-image: linear-gradient(to bottom, #177ed7 0%, #177ed7 100%);
 }
 .kidmarks-buttons:hover {
@@ -131,10 +134,25 @@
 }
 
 /* react bootstrap modal styles css */
+.addmarks-modal {
+  transform: scale(0) !important ;
+  transition: all 0.5s ease-in-out !important;
+}
+.addmarks-modal.show {
+  transform: scale(1) !important;
+  transition: all 0.5s ease-in-out !important;
+}
 
 .add-exam-type-modal {
-  /* width: 450px; */
+  transform: scale(0) !important ;
+  transition: all 0.5s ease-in-out !important;
 }
+.add-exam-type-modal.show {
+  transform: scale(1) !important;
+  transition: all 0.5s ease-in-out !important;
+  top: 25%;
+}
+
 .add-exam-type-modal .modal-header {
   background-color: #177ed7;
   height: 55px;

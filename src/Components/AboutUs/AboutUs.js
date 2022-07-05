@@ -21,7 +21,7 @@ const AboutUs = () => {
             src="http://192.168.0.116:8080/images/why%20iphone.png"
           />
         </div>
-        <div>
+        <div className="animated fadeInRight">
           <h2 className="why-choose-dizi-text">WHY CHOOSE DIZI BOARD?</h2>
           <div className="why-choose-us-text-container">
             <div className="why-choose-us-icons">

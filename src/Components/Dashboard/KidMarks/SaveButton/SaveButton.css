@@ -1,5 +1,7 @@
 .save-btn-in-kidmarks {
   margin-left: 2px !important;
+  padding-left: 10px;
+  padding-right: 10px;
   height: 32px;
   display: flex;
   flex-direction: row;
