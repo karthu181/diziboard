@@ -80,7 +80,23 @@
   color: #ffffff;
   border-radius: 2px !important;
   border: 1px solid #045fab;
-  background-color: #177ed7;
+  background-image: linear-gradient(to bottom, #177ed7 0%, #177ed7 100%);
+}
+.excel-upload-modal-sample-file-btn:hover {
+  background-image: linear-gradient(
+    to bottom,
+    #209fc8 0%,
+    #6dd2f3 50%,
+    #209fc8 100%
+  ) !important;
+  color: black;
+}
+.excel-download-btn-link {
+  color: #ffffff;
+  text-decoration: none !important;
+}
+.excel-download-btn-link:hover {
+  color: black;
 }
 .excel-upload-modal-choose-file-btn {
   height: 26px;
@@ -96,25 +112,16 @@
   margin-right: 8px;
   padding-bottom: 0px;
   margin-left: -10px;
+  cursor: pointer;
 }
-.excel-upload-modal-update-marks-btn {
-  margin-top: -40px;
-  height: 32px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  font-size: 14px;
-  border-radius: 2px !important;
-  border: 1px solid rgb(1, 97, 128);
-  background-color: #177ed7;
-}
+
 .choose-file-btn-text-container {
   margin-top: -18px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
+  cursor: pointer;
 }
 .excel-upload-modal-no-file-chosen-text {
   font-size: 13px;

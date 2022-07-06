@@ -1,6 +1,7 @@
 import React from "react";
 import { FaRegCalendarAlt, FaRegFlag } from "react-icons/fa";
 import { HiUserGroup } from "react-icons/hi";
+import "animate.css";
 import "./AboutUs.css";
 
 const AboutUs = () => {
@@ -21,8 +22,10 @@ const AboutUs = () => {
             src="http://192.168.0.116:8080/images/why%20iphone.png"
           />
         </div>
-        <div className="animated fadeInRight">
-          <h2 className="why-choose-dizi-text">WHY CHOOSE DIZI BOARD?</h2>
+        <div>
+          <div className="why-chose-dizi-text-container">
+            <h2 className="why-choose-dizi-text">WHY CHOOSE DIZI BOARD?</h2>
+          </div>
           <div className="why-choose-us-text-container">
             <div className="why-choose-us-icons">
               <FaRegCalendarAlt />

@@ -4,6 +4,7 @@ import "./Attendance.css";
 import "react-calendar/dist/Calendar.css";
 import Popup from "reactjs-popup";
 import Cookies from "js-cookie";
+import { v4 as uuidv4 } from "uuid";
 
 const Attendance = () => {
   const [calendarDate, setCalendarDate] = useState("");
@@ -16,6 +17,9 @@ const Attendance = () => {
   const [deleteAttendance, setDeleteAttendance] = useState([]);
 
   const loginToken = Cookies.get("loginToken");
+  const loggedInUserProfile = JSON.parse(
+    localStorage.getItem("diziUserProfile")
+  );
 
   const handleShow = (date) => {
     let month = date.getMonth() + 1;
@@ -39,19 +43,19 @@ const Attendance = () => {
           },
           body: JSON.stringify({
             header: {
-              guid: "0ade4dc8-df9a-b55c-3300-2c7cb870b677",
+              guid: uuidv4(),
               responseOn: "2022-7-4.11:3:29",
               responseFrom:
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36",
-              userRef: "155AAdfi",
+              userRef: loggedInUserProfile.mas_userRef,
               geoLocation: "anonymous",
               status: "success",
               statuscode: "0",
             },
             body: {
-              mas_SchoolUniqueId: "5911355945",
-              mas_class: "SECOND CLASS",
-              mas_section: "B",
+              mas_SchoolUniqueId: loggedInUserProfile.mas_schoolUniqueId,
+              mas_class: loggedInUserProfile.mas_class,
+              mas_section: loggedInUserProfile.mas_section,
               date: reqDate,
             },
           }),
@@ -103,27 +107,27 @@ const Attendance = () => {
         },
         body: JSON.stringify({
           header: {
-            guid: "a7843082-60f1-1301-a041-0f72e6675525",
+            guid: uuidv4(),
             responseOn: "2022-7-1.17:8:21",
             responseFrom:
               "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36",
-            userRef: "155AAdfi",
+            userRef: loggedInUserProfile.mas_userRef,
             geoLocation: "anonymous",
             status: "success",
             statuscode: "0",
           },
           body: {
-            mas_SchoolUniqueId: "5911355945",
+            mas_SchoolUniqueId: loggedInUserProfile.mas_SchoolUniqueId,
             mas_kiduserID: currentAbsentArr,
-            mas_class: "SECOND CLASS",
-            mas_section: "B",
+            mas_class: loggedInUserProfile.mas_class,
+            mas_section: loggedInUserProfile.mas_section,
             mas_date: "",
             mas_noofdaysabs: "1",
             mas_month: "July",
             mas_year: "2022",
-            mas_createdby: "155AAdfi",
+            mas_createdby: loggedInUserProfile.userRef,
             mas_createdon: "2022-07-1",
-            mas_modifiedby: "155AAdfi",
+            mas_modifiedby: loggedInUserProfile.userRef,
             mas_modifiedon: "2022-07-1",
             appFor: "web",
           },

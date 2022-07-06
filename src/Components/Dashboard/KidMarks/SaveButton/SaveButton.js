@@ -2,6 +2,7 @@ import React from "react";
 import { Modal, Button } from "react-bootstrap";
 import { useState } from "react";
 import Cookies from "js-cookie";
+import { v4 as uuidv4 } from "uuid";
 import "./SaveButton.css";
 
 const SaveButton = (props) => {
@@ -49,7 +50,7 @@ const SaveButton = (props) => {
 
         const bodyData = {
           header: {
-            guid: "a",
+            guid: uuidv4(),
             requestedOn: "b",
             requestedFrom: "c",
             geoLocation: "d",

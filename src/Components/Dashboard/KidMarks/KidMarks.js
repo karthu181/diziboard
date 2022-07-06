@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal, OverlayTrigger, Popover } from "react-bootstrap";
 import AddMarksButton from "./AddMarksButton/AddMarksButton";
 import SaveButton from "./SaveButton/SaveButton";
 import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
@@ -11,7 +11,10 @@ import "./KidMarks.css";
 
 const KidMarks = () => {
   let loginToken = Cookies.get("loginToken");
-  const loggedInUserProfile = localStorage.getItem("diziUserProfile");
+  const loggedInUserProfile = JSON.parse(
+    localStorage.getItem("diziUserProfile")
+  );
+  console.log(loggedInUserProfile.mas_userRef);
 
   const [subMaxMarks, setSubMaxMarks] = useState(0);
   const [schoolExamTypes, setSchoolExamTypes] = useState([]);
@@ -104,6 +107,7 @@ const KidMarks = () => {
         };
         let response = await fetch(getSchoolExamTypesUrl, options);
         let schoolExamTypesData = await response.json();
+        console.log(schoolExamTypesData);
         setSchoolExamTypes(schoolExamTypesData.body);
       } catch (e) {
         console.log("Failed to fetch schoolExamtypes");
@@ -241,6 +245,13 @@ const KidMarks = () => {
     }
   };
 
+  //warning popup to enter marks >=0 subMax marks
+  const popoverMarksWarningSubMaxMarks = (
+    <Popover id="popover-positioned-right" className="max-sub-marks-popover">
+      <strong>Enter a number greater than or equal to 0.</strong>
+    </Popover>
+  );
+
   return (
     <div className="container-fluid kidmarks-container">
       <div className="row kidmarks-1st-row">
@@ -291,14 +302,21 @@ const KidMarks = () => {
           <label className="kidmarks-bold-input-labels" htmlFor="sub-max-marks">
             Sub Max Marks
           </label>
-          <input
-            className="kidmarks-input "
-            type="text"
-            id="sub-max-marks"
-            placeholder="Sub Max Marks"
-            value={subMaxMarks > 0 ? subMaxMarks : 0}
-            onChange={subMaxMarksHandler}
-          />
+          <OverlayTrigger
+            trigger="focus"
+            placement="bottom"
+            overlay={popoverMarksWarningSubMaxMarks}
+            arrowOffsetLeft="top"
+          >
+            <input
+              className="kidmarks-input "
+              type="text"
+              id="sub-max-marks"
+              placeholder="Sub Max Marks"
+              value={subMaxMarks > 0 ? subMaxMarks : 0}
+              onChange={subMaxMarksHandler}
+            />
+          </OverlayTrigger>
           <button
             className="up-down-buttons-kidmarks"
             type="button"
@@ -324,7 +342,9 @@ const KidMarks = () => {
             value={selectedExamType}
             onChange={onChangeSelectedExamType}
           >
-            <option value="Select Exam Type">Select Exam Type</option>
+            <option value="Select Exam Type" className="italic">
+              Select Exam Type
+            </option>
             <option value="Annual">Annual</option>
             <option value="Quarterly">Quarterly</option>
             <option value="HalfYearly">HalfYearly</option>
@@ -420,7 +440,7 @@ const KidMarks = () => {
       </div>
       <div className="kidsmarks-table-scroll-container">
         <div className="table-in-kidmarks-container mt-2">
-          <div className="kidmarks-table-2nd-container">
+          <div className="table-responsive kidmarks-table-2nd-container">
             <table className="table table-bordered border-light">
               <thead className="table-header">
                 <tr>

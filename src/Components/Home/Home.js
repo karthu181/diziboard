@@ -2,12 +2,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
 import NavBar from "../NavBar/NavBar";
 import { FaAngleDown } from "react-icons/fa";
-import "./Home.css";
+
 import AboutUs from "../AboutUs/AboutUs";
 import Features from "../Features/Features";
 import Screens from "../Screens/Screens";
 import Download from "../Download/Download";
 import Contact from "../Contact/Contact";
+import "animate.css";
+import "./Home.css";
 
 const Home = () => {
   const [display, setDisplay] = useState("d-block");

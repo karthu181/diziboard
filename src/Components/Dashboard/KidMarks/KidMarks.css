@@ -9,9 +9,7 @@
   min-height: 100%;
   max-width: 99%;
 }
-.kidsmarks-table-scroll-container {
-  overflow-x: scroll;
-}
+
 .kidmarks-table-2nd-container {
   background-color: transparent;
   padding: 5px;
@@ -23,6 +21,7 @@
   padding-right: 10px;
   border: 1px solid black;
 }
+
 .table-border {
   border: 1px solid blue !important;
 }
@@ -72,6 +71,12 @@
   font-size: 14px;
   color: rgb(102, 102, 102);
 }
+@media screen and (max-width: 768px) {
+  .kidmarks-bold-input-labels {
+    margin-right: auto;
+  }
+}
+
 .kidmarks-non-bold-input-labels {
   font-size: 14px;
 }
@@ -86,8 +91,15 @@
   margin-left: 5px;
   border: 1px solid #d6dfe6;
   outline: none;
-
+  padding-left: 8px;
   border-radius: 2px;
+}
+@media screen and (max-width: 768px) {
+  .kidmarks-input {
+    margin-left: 0px !important;
+    margin-bottom: 20px;
+    margin-top: 8px;
+  }
 }
 .kidmarks-input-disabled {
   background-color: #f0f0f0;
@@ -98,6 +110,12 @@
 .kidmarks-1st-row {
   padding-top: 13px;
   padding-left: 22px;
+  border: 1px solid black;
+}
+@media screen and (max-width: 768px) {
+  .kidmarks-1st-row {
+    padding-left: 5px !important;
+  }
 }
 
 .kidmarks-2nd-row {
@@ -152,10 +170,14 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  border: 1px solid black;
+  padding-left: 50px;
 }
-@media screen and (min-width: 501px) {
+@media screen and (max-width: 768px) {
   .row-1st-column-containers {
-    padding-left: 50px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 15px !important;
   }
 }
 
@@ -214,4 +236,17 @@
 .kidmarks-table-headings:hover {
   background-color: #d6d7d8;
   color: black;
+}
+.max-sub-marks-popover {
+  border: 1px solid red;
+  border-radius: 0px !important;
+  padding: 8px;
+  color: red;
+  font-size: 14px;
+  font-weight: 300;
+  height: 50px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.italic {
+  font-style: italic;
 }

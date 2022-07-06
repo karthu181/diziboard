@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal, OverlayTrigger, Popover } from "react-bootstrap";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./AddMarksButton.css";
 
 const AddMarksButton = (props) => {
-  const loggedInUserProfile = localStorage.getItem("diziUserProfile");
+  const loggedInUserProfile = JSON.stringify(
+    localStorage.getItem("diziUserProfile")
+  );
 
   const {
     addMarksToTable,
@@ -124,6 +126,17 @@ const AddMarksButton = (props) => {
     setSelectedKidId(event.target.value);
   };
 
+  //warning popup to enter marks >=0
+  const popoverMarksWarning = (
+    <Popover
+      id="popover-positioned-right"
+      positionTop={50}
+      className="kidmarks-warning-marks-popover"
+    >
+      <strong>Enter a number greater than or equal to 0.</strong>
+    </Popover>
+  );
+
   return (
     <>
       <Button
@@ -187,13 +200,19 @@ const AddMarksButton = (props) => {
                 <label className="addmarks-modal-label" htmlFor="addMarksHindi">
                   Hindi:
                 </label>
-                <input
-                  className="addmarks-modal-input"
-                  id="addMarksHindi"
-                  type="text"
-                  onChange={onChangeHindi}
-                  value={addHindi}
-                />
+                <OverlayTrigger
+                  trigger="focus"
+                  placement="right"
+                  overlay={popoverMarksWarning}
+                >
+                  <input
+                    className="addmarks-modal-input"
+                    id="addMarksHindi"
+                    type="text"
+                    onChange={onChangeHindi}
+                    value={addHindi}
+                  />
+                </OverlayTrigger>
               </div>
               <div className="each-input-in-add-marks">
                 <label
@@ -202,25 +221,37 @@ const AddMarksButton = (props) => {
                 >
                   LabSkills:
                 </label>
-                <input
-                  className="addmarks-modal-input"
-                  id="addMarksLabSkills"
-                  type="text"
-                  onChange={onChangeLabskills}
-                  value={addLabSkills}
-                />
+                <OverlayTrigger
+                  trigger="focus"
+                  placement="right"
+                  overlay={popoverMarksWarning}
+                >
+                  <input
+                    className="addmarks-modal-input"
+                    id="addMarksLabSkills"
+                    type="text"
+                    onChange={onChangeLabskills}
+                    value={addLabSkills}
+                  />
+                </OverlayTrigger>
               </div>
               <div className="each-input-in-add-marks">
                 <label className="addmarks-modal-label" htmlFor="addMarksIt">
                   IT:
                 </label>
-                <input
-                  className="addmarks-modal-input"
-                  id="addMarksIt"
-                  type="text"
-                  onChange={onChangeIt}
-                  value={addIt}
-                />
+                <OverlayTrigger
+                  trigger="focus"
+                  placement="right"
+                  overlay={popoverMarksWarning}
+                >
+                  <input
+                    className="addmarks-modal-input"
+                    id="addMarksIt"
+                    type="text"
+                    onChange={onChangeIt}
+                    value={addIt}
+                  />
+                </OverlayTrigger>
               </div>
               <div className="each-input-in-add-marks">
                 <label
@@ -229,13 +260,19 @@ const AddMarksButton = (props) => {
                 >
                   English:
                 </label>
-                <input
-                  className="addmarks-modal-input"
-                  id="addMarksEnglish"
-                  type="text"
-                  onChange={onChangeEnglish}
-                  value={addEnglish}
-                />
+                <OverlayTrigger
+                  trigger="focus"
+                  placement="right"
+                  overlay={popoverMarksWarning}
+                >
+                  <input
+                    className="addmarks-modal-input"
+                    id="addMarksEnglish"
+                    type="text"
+                    onChange={onChangeEnglish}
+                    value={addEnglish}
+                  />
+                </OverlayTrigger>
               </div>
               <div className="each-input-in-add-marks">
                 <label
@@ -244,25 +281,37 @@ const AddMarksButton = (props) => {
                 >
                   Telugu:
                 </label>
-                <input
-                  className="addmarks-modal-input"
-                  id="addMarksTelugu"
-                  type="text"
-                  onChange={onChangeTelugu}
-                  value={addTelugu}
-                />
+                <OverlayTrigger
+                  trigger="focus"
+                  placement="right"
+                  overlay={popoverMarksWarning}
+                >
+                  <input
+                    className="addmarks-modal-input"
+                    id="addMarksTelugu"
+                    type="text"
+                    onChange={onChangeTelugu}
+                    value={addTelugu}
+                  />
+                </OverlayTrigger>
               </div>
               <div className="each-input-in-add-marks">
                 <label className="addmarks-modal-label" htmlFor="addMarksMaths">
                   Maths:
                 </label>
-                <input
-                  className="addmarks-modal-input"
-                  id="addMarksMaths"
-                  type="text"
-                  onChange={onChangeMaths}
-                  value={addMaths}
-                />
+                <OverlayTrigger
+                  trigger="focus"
+                  placement="right"
+                  overlay={popoverMarksWarning}
+                >
+                  <input
+                    className="addmarks-modal-input"
+                    id="addMarksMaths"
+                    type="text"
+                    onChange={onChangeMaths}
+                    value={addMaths}
+                  />
+                </OverlayTrigger>
               </div>
               <div className="each-input-in-add-marks">
                 <label
@@ -271,13 +320,19 @@ const AddMarksButton = (props) => {
                 >
                   Science:
                 </label>
-                <input
-                  className="addmarks-modal-input"
-                  id="addMarksScience"
-                  type="text"
-                  onChange={onChangeScience}
-                  value={addScience}
-                />
+                <OverlayTrigger
+                  trigger="focus"
+                  placement="right"
+                  overlay={popoverMarksWarning}
+                >
+                  <input
+                    className="addmarks-modal-input"
+                    id="addMarksScience"
+                    type="text"
+                    onChange={onChangeScience}
+                    value={addScience}
+                  />
+                </OverlayTrigger>
               </div>
               <div className="each-input-in-add-marks">
                 <label
@@ -286,13 +341,19 @@ const AddMarksButton = (props) => {
                 >
                   Social:
                 </label>
-                <input
-                  className="addmarks-modal-input"
-                  id="addMarksSocial"
-                  type="text"
-                  onChange={onChangeSocial}
-                  value={addSocial}
-                />
+                <OverlayTrigger
+                  trigger="focus"
+                  placement="right"
+                  overlay={popoverMarksWarning}
+                >
+                  <input
+                    className="addmarks-modal-input"
+                    id="addMarksSocial"
+                    type="text"
+                    onChange={onChangeSocial}
+                    value={addSocial}
+                  />
+                </OverlayTrigger>
               </div>
             </form>
           </Modal.Body>

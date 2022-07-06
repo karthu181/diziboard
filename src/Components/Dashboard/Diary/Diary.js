@@ -11,8 +11,10 @@ import "./Diary.css";
 
 const Diary = () => {
   const loginToken = Cookies.get("loginToken");
-  const loggedInUserProfile = localStorage.getItem("diziUserProfile");
-
+  const loggedInUserProfile = JSON.parse(
+    localStorage.getItem("diziUserProfile")
+  );
+  // in selectedKidsArr whole kid objects are stored not just ids of kids selected
   const [selectedKidsArr, setSelectedKidsArr] = useState([]);
   const [displayKidsListDropdown, setDisplayKidsListDropdown] = useState(false);
   const [classKidsList, setClassKidsList] = useState([]);
@@ -44,7 +46,7 @@ const Diary = () => {
 
   const [notificationPosted, setNotificationPosted] = useState(false);
 
-  // get only selected kid ids not other details for fetching
+  // get only selected kid ids not other details ==> kid objects are stored in selectedKidArr for fetching
 
   const getSelectedKidIdsArr = () => {
     let selectedKidIdsArr = [];
@@ -124,7 +126,7 @@ const Diary = () => {
       } catch (error) {}
     };
     //condition to send message is all fields must be entered
-    if (subject === "" || message === "") {
+    if (subject === "" || message === "" || selectedKidsArr.length === 0) {
       alert("all Fields are mandatory");
     } else {
       postNotification();
@@ -431,14 +433,14 @@ const Diary = () => {
                     onClick={selectedNotificationHandler}
                   >
                     <div className="diary-each-noti-list-item">
-                      <div className="diary-first-letter-container w-15">
+                      <div className="diary-first-letter-container">
                         <h1 className="diary-first-letter">
                           {eachNotifi.kidName === null
                             ? "A"
                             : eachNotifi.kidName[0].toUpperCase()}
                         </h1>
                       </div>
-                      <div className="diary-sent-each-flex-item w-45">
+                      <div className="diary-sent-each-flex-item">
                         <p className="diary-sub-sub-headings">
                           Subject
                           <span className="diary-sent-subhead-ans">
@@ -446,7 +448,7 @@ const Diary = () => {
                           </span>
                         </p>
                       </div>
-                      <div className="diary-sent-each-flex-item w-15">
+                      <div className="w-25 diary-sent-each-flex-item">
                         <p className="diary-sub-sub-headings">
                           To:
                           <span className="diary-sent-subhead-ans">
@@ -456,7 +458,7 @@ const Diary = () => {
                           </span>
                         </p>
                       </div>
-                      <div className="diary-sent-each-flex-item w-25">
+                      <div className="diary-sent-each-flex-item">
                         <p className="diary-sub-sub-headings">
                           date:
                           <span className="diary-sent-subhead-ans">

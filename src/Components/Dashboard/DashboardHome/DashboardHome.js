@@ -11,7 +11,9 @@ import { v4 as uuidv4 } from "uuid";
 import "./DashboardHome.css";
 
 const DashboardHome = () => {
-  const loggedInUserProfile = localStorage.getItem("diziUserProfile");
+  const loggedInUserProfile = JSON.parse(
+    localStorage.getItem("diziUserProfile")
+  );
 
   const [birthdaysObj, setBirthdaysObj] = useState({});
   const [sectionDataForDashboard, setSectionDataForDashboard] = useState({});

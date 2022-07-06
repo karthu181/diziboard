@@ -26,10 +26,17 @@
   margin-bottom: 100px;
 }
 .about-iphone-container {
+  /* animated css, without animation-duration, animation wont work*/
+  animation: fadeInLeft;
+  animation-duration: 2s; /* don't forget to set a duration! */
   width: 100vw;
 }
 .about-iphone {
   width: 80%;
+}
+.why-chose-dizi-text-container {
+  animation: fadeInRight;
+  animation-duration: 2s;
 }
 .why-choose-dizi-text {
   font-weight: 700;
@@ -44,6 +51,9 @@
   justify-content: center;
 }
 .why-choose-us-text-container {
+  animation: fadeInUp;
+  animation-duration: 0.5s;
+  animation-delay: 1s;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

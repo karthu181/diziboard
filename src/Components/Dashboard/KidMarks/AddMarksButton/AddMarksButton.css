@@ -37,6 +37,7 @@
   transform: scale(0) !important ;
   transition: all 0.4s ease-in-out !important;
 }
+
 .addmarks-modal.show {
   transform: scale(1) !important;
   transition: all 0.4s ease-in-out !important;
@@ -46,6 +47,11 @@
   height: 55px;
   color: #ffffff;
   margin-bottom: 10px;
+
+  /* to get gull border==> to remove default border to bootstrap react modal */
+  -webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
 }
 
 .addmarks-modal .modal-title {
@@ -57,6 +63,9 @@
 
 .addmarks-modal .modal-footer {
   border-top: 0 none;
+  -webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
 }
 /*end of modal styles css */
 
@@ -100,4 +109,15 @@
     #209fc8 100%
   ) !important;
   color: black;
+}
+.kidmarks-warning-marks-popover {
+  width: 74px;
+  border: 1px solid red;
+  border-radius: 0px !important;
+  padding: 10px;
+  color: red;
+  font-size: 14px;
+  font-weight: 300;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
