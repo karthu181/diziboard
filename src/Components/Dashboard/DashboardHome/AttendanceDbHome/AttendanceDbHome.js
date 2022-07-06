@@ -1,7 +1,7 @@
 import "./AttendanceDbHome.css";
 import React, { useEffect } from "react";
 import ReactApexChart from "react-apexcharts";
-
+import Chart from "react-google-charts";
 const AttendanceDbHome = (props) => {
   const { sectionDataForDashboard, settingRightContainer } = props;
 
@@ -87,6 +87,25 @@ const AttendanceDbHome = (props) => {
               width={420}
             />
           </div>
+        </div>
+        <div>
+          <Chart
+            width={"500px"}
+            height={"500px"}
+            chartType="PieChart"
+            loader={<div>Loading Pie Chart</div>}
+            data={[
+              ["Student", "English", "Maths", "History", "Geography"],
+              ["A", 80, 70, 45, 87],
+              ["B", 90, 47, 88, 90],
+              ["C", 88, 67, 82, 95],
+              ["D", 50, 70, 56, 63],
+            ]}
+            options={{
+              title: "Exam Performance",
+              is3D: true,
+            }}
+          />
         </div>
       </div>
     );
