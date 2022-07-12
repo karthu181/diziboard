@@ -30,13 +30,15 @@
 /* modal css styles */
 
 .excel-upload-modal {
-  transform: scale(0) !important ;
+  transform: scale(-0.2) !important ;
+  opacity: 0 !important;
   transition: all 0.4s ease-in-out !important;
 }
 .excel-upload-modal.show {
+  opacity: 1 !important;
   transform: scale(1) !important;
   transition: all 0.4s ease-in-out !important;
-  top: 25%;
+  top: 26%;
 }
 .excel-upload-modal .modal-header {
   background-color: #177ed7;
@@ -45,6 +47,7 @@
   margin-bottom: 10px;
   margin-bottom: -6px !important;
   text-align: center;
+  border-radius: 0px !important;
 }
 .excel-dialog {
   width: 650px;
@@ -60,7 +63,7 @@
   background-color: #ffffff;
 }
 .excel-upload-modal .modal-footer {
-  border-top: 0 none;
+  border-bottom: 0 none;
 }
 
 /* react bootstrap modal css styles */

@@ -121,28 +121,28 @@ const Login = () => {
         />
 
         <h1 className="login-text">Login</h1>
-        <form className="form-container" onSubmit={letMeInHandler}>
-          <div className="user-name-container">
-            <div className="fa-envelope-container">
+        <form className="login-form-container" onSubmit={letMeInHandler}>
+          <div className="login-user-name-container">
+            <div className="login-fa-envelope-container">
               <FaEnvelope />
             </div>
-            <div className="input-container">
+            <div className="login-input-container">
               <input
                 onChange={onUserInputChange}
-                className="input-box"
+                className="login-input-box"
                 placeholder="Username"
                 type="text"
               />
             </div>
           </div>
-          <div className="user-name-container">
-            <div className="fa-envelope-container">
+          <div className="login-user-name-container">
+            <div className="login-fa-envelope-container">
               <FaKey />
             </div>
-            <div className="input-container">
+            <div className="login-input-container">
               <input
                 onChange={onPasswordChange}
-                className="input-box"
+                className="login-input-box"
                 placeholder="Password"
                 type="password"
               />
@@ -150,15 +150,15 @@ const Login = () => {
           </div>
           <div>
             <button
-              className="btn btn-primary btn-block btn-large let-me-in-button"
+              className="btn btn-primary btn-block btn-large login-let-me-in-button"
               type="submit"
             >
               Let me in
             </button>
           </div>
-          <div className="forgot-signup-container">
-            <p className="white-text">Forgot Password?</p>
-            <p className="white-text">Sign up</p>
+          <div className="login-forgot-signup-container">
+            <p className="login-white-text">Forgot Password?</p>
+            <p className="login-white-text">Sign up</p>
           </div>
         </form>
       </div>

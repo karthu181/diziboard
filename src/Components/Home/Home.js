@@ -27,43 +27,47 @@ const Home = () => {
   };
 
   return (
-    <div id="home" className="bg-container">
-      <NavBar displayOrHide={display} />
-      <div onMouseMove={onMouseMoveHandler}>
-        <div className="home-bg">
+    <div className="bg-container">
+      <section id="home">
+        <NavBar displayOrHide={display} />
+        <div onMouseMove={onMouseMoveHandler}>
+          <div className="home-bg">
+            <div>
+              <img
+                src="http://192.168.0.116:8080/images/logo_big.png"
+                alt="logo-big"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="home-text-image-container">
+          <div>
+            <h2 className="transform-text">
+              TRANSFORM YOUR SCHOOL TO
+              <br />
+              DIZITAL WORLD
+            </h2>
+            <div className="buttons-container">
+              <button className="download-button">DOWNLOAD</button>
+              <button className="take-a-tour-button">
+                TAKE A TOUR
+                <span className="btn-tour">
+                  <FaAngleDown />
+                </span>
+              </button>
+            </div>
+          </div>
           <div>
             <img
-              src="http://192.168.0.116:8080/images/logo_big.png"
-              alt="logo-big"
+              src="http://192.168.0.116:8080/images/iphone-black.png"
+              alt="iphone-black"
             />
           </div>
         </div>
-      </div>
-      <div className="home-text-image-container">
-        <div>
-          <h2 className="transform-text">
-            TRANSFORM YOUR SCHOOL TO
-            <br />
-            DIZITAL WORLD
-          </h2>
-          <div className="buttons-container">
-            <button className="download-button">DOWNLOAD</button>
-            <button className="take-a-tour-button">
-              TAKE A TOUR
-              <span className="btn-tour">
-                <FaAngleDown />
-              </span>
-            </button>
-          </div>
-        </div>
-        <div>
-          <img
-            src="http://192.168.0.116:8080/images/iphone-black.png"
-            alt="iphone-black"
-          />
-        </div>
-      </div>
-      <AboutUs />
+      </section>
+      <section id="about">
+        <AboutUs />
+      </section>
       <Features />
       <Screens />
       <Download />

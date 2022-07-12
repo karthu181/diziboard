@@ -7,21 +7,21 @@ const HolidaysDbHome = (props) => {
   //writing right side container display in this component only and passing this jsx returned
   // fn in object as argument to fn
 
-  const displayHolidaysRight = () => {
-    return (
-      <div>
-        <h1 className="db-right-container-holidays-heading">
-          Holidays List In Week
-        </h1>
-        <p className="dbhome-holidays-no-items-to-display">
-          No items to display
-        </p>
-      </div>
-    );
-  };
+  // const displayHolidaysRight = () => {
+  //   return (
+  //     <div>
+  //       <h1 className="db-right-container-holidays-heading">
+  //         Holidays List In Week
+  //       </h1>
+  //       <p className="dbhome-holidays-no-items-to-display">
+  //         No items to display
+  //       </p>
+  //     </div>
+  //   );
+  // };
 
   const onClickHolidaysHandler = () => {
-    settingRightContainer({ display: displayHolidaysRight });
+    settingRightContainer("holidaysClicked");
     //sending fn as argument is ok but keeping fn in useState is giving errors in dashboardHome
   };
 

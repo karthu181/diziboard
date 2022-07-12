@@ -1,7 +1,6 @@
 import "./AttendanceDbHome.css";
 import React, { useEffect } from "react";
-import ReactApexChart from "react-apexcharts";
-import Chart from "react-google-charts";
+
 const AttendanceDbHome = (props) => {
   const { sectionDataForDashboard, settingRightContainer } = props;
 
@@ -39,84 +38,82 @@ const AttendanceDbHome = (props) => {
     return `${getDay}, ${getMonth} ${getTodayDateOnly}, ${getYear}`;
   };
 
-  //writing right side container display in this component only and passing this jsx returned
-  // fn in object as argument to fn
-  const displayAttendanceRight = () => {
-    let presentKidsData =
-      sectionDataForDashboard.presentkids === "NA"
-        ? sectionDataForDashboard.totalkids
-        : 0;
+  // const displayAttendanceRight = () => {
+  //   let presentKidsData =
+  //     sectionDataForDashboard.presentkids === "NA"
+  //       ? sectionDataForDashboard.totalkids
+  //       : 0;
 
-    let absentkidsData =
-      sectionDataForDashboard.absentkids === "NA"
-        ? 0
-        : sectionDataForDashboard.absentkids;
-    let series = [presentKidsData, absentkidsData];
-    let options = {
-      chart: {
-        width: 380,
-        type: "pie",
-      },
-      labels: ["Kids Present", "Kids Absent"],
-      responsive: [
-        {
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200,
-            },
-            legend: {
-              position: "bottom",
-            },
-          },
-        },
-      ],
-    };
+  //   let absentkidsData =
+  //     sectionDataForDashboard.absentkids === "NA"
+  //       ? 0
+  //       : sectionDataForDashboard.absentkids;
+  //   let series = [presentKidsData, absentkidsData];
+  //   let options = {
+  //     chart: {
+  //       width: 380,
+  //       type: "pie",
+  //     },
+  //     labels: ["Kids Present", "Kids Absent"],
+  //     responsive: [
+  //       {
+  //         breakpoint: 480,
+  //         options: {
+  //           chart: {
+  //             width: 200,
+  //           },
+  //           legend: {
+  //             position: "bottom",
+  //           },
+  //         },
+  //       },
+  //     ],
+  //   };
 
-    return (
-      <div>
-        <h1 className="right-container-attendance-heading">
-          Today Attendance Status
-        </h1>
-        <div>
-          <div id="chart">
-            <ReactApexChart
-              options={options}
-              series={series}
-              type="pie"
-              width={420}
-            />
-          </div>
-        </div>
-        <div>
-          <Chart
-            width={"500px"}
-            height={"500px"}
-            chartType="PieChart"
-            loader={<div>Loading Pie Chart</div>}
-            data={[
-              ["Student", "English", "Maths", "History", "Geography"],
-              ["A", 80, 70, 45, 87],
-              ["B", 90, 47, 88, 90],
-              ["C", 88, 67, 82, 95],
-              ["D", 50, 70, 56, 63],
-            ]}
-            options={{
-              title: "Exam Performance",
-              is3D: true,
-            }}
-          />
-        </div>
-      </div>
-    );
-  };
+  //   return (
+  //     <div>
+  //       <h1 className="right-container-attendance-heading">
+  //         Today Attendance Status
+  //       </h1>
+  //       <div>
+  //         <div id="chart">
+  //           <ReactApexChart
+  //             options={options}
+  //             series={series}
+  //             type="pie"
+  //             width={420}
+  //           />
+  //         </div>
+  //       </div>
+
+  //       <div>
+  //         <h1>3D Pie Chart for Student marks in subjects</h1>
+  //         <Chart
+  //           width={"500px"}
+  //           height={"500px"}
+  //           chartType="PieChart"
+  //           loader={<div>Loading Pie Chart</div>}
+  //           data={[
+  //             ["total", "value"],
+  //             ["present", 10],
+  //             ["absent", 5],
+  //           ]}
+  //           options={{
+  //             title: "Exam Performance",
+  //             is3D: true,
+  //           }}
+  //         />
+  //       </div>
+  //     </div>
+  //   );
+  // };
   const onClickAttendanceHandler = () => {
-    settingRightContainer({ display: displayAttendanceRight });
+    settingRightContainer("attendanceClicked");
     //sending fn as argument is ok but keeping fn in useState is giving errors in dashboardHome
   };
 
   useEffect(() => {
-    settingRightContainer({ display: displayAttendanceRight });
+    settingRightContainer("attendanceClicked");
     //sending fn as argument is ok but keeping fn in useState is giving errors in dashboardHome
   }, []);
 

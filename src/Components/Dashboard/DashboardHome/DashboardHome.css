@@ -5,7 +5,7 @@
 .dbhome-bg-container {
   background-color: #f3f9fe;
   width: 100%;
-  border: 1px solid black;
+
   padding: 10px;
   display: flex;
   flex-direction: row;
@@ -17,7 +17,7 @@
 }
 .dbhome-left-container {
   width: 66.6%;
-  border: 1px solid black;
+
   padding-right: 0px !important;
 }
 @media screen and (max-width: 772px) {
@@ -59,4 +59,56 @@
   .dbhome-right-container {
     width: 100%;
   }
+}
+.right-container-attendance-heading {
+  color: #04103d;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.db-right-container-holidays-heading {
+  padding: 12px;
+  background-color: #0074d9;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  color: #ffffff;
+  border: 1px solid rgb(214, 223, 230);
+  box-sizing: border-box;
+  text-align: center;
+  padding-top: 16px;
+  padding-bottom: 24px;
+}
+.dbhome-holidays-no-items-to-display {
+  margin-top: -8px;
+  background-color: #ffffff;
+  font-size: 14px;
+  padding-top: 6px;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-bottom: 6px;
+  text-align: left;
+}
+.db-right-container-birthdays-heading {
+  padding: 12px;
+  background-color: #0074d9;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  color: #ffffff;
+  border: 1px solid rgb(214, 223, 230);
+  box-sizing: border-box;
+  text-align: center;
+  padding-top: 16px;
+  padding-bottom: 24px;
+}
+.db-birthdays-right-container-body {
+  margin-top: -8px;
+  background-color: #ffffff;
+  font-size: 14px;
+  padding-top: 6px;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-bottom: 1px;
+  text-align: left;
 }

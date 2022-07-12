@@ -110,7 +110,7 @@
 .kidmarks-1st-row {
   padding-top: 13px;
   padding-left: 22px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 @media screen and (max-width: 768px) {
   .kidmarks-1st-row {
@@ -170,7 +170,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  border: 1px solid black;
+
   padding-left: 50px;
 }
 @media screen and (max-width: 768px) {
@@ -184,13 +184,15 @@
 /* react bootstrap modal styles css */
 
 .add-exam-type-modal {
-  transform: scale(0) !important ;
+  opacity: 0;
+  transform: scale(-0.2) !important ;
   transition: all 0.4s ease-in-out !important;
 }
 .add-exam-type-modal.show {
+  opacity: 1;
   transform: scale(1) !important;
   transition: all 0.4s ease-in-out !important;
-  top: 25%;
+  top: 26%;
 }
 
 .add-exam-type-modal .modal-header {
@@ -198,14 +200,18 @@
   height: 55px;
   color: #ffffff;
   margin-bottom: 10px;
+  transition: all 0.4s ease-in-out !important;
+  border-radius: 0px !important;
 }
 .add-exam-type-modal .modal-title {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 20px;
   font-weight: 500;
+  transition: all 0.4s ease-in-out !important;
 }
 .add-exam-type-modal .modal-footer {
   border-top: 0 none;
+  transition: all 0.4s ease-in-out !important;
 }
 
 /* modal css sytles till here   */

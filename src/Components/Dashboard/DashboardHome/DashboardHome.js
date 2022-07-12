@@ -27,12 +27,13 @@ const DashboardHome = () => {
   console.log(diziUserProfile);
 
   //displaying right container
-  const [rightContainerObj, setRightContainerObj] = useState({
+  const [rightContainerItemSelected, setRightContainerItemSelected] = useState({
     display: () => {},
   });
 
-  const settingRightContainer = (toDisplayObj) => {
-    setRightContainerObj(toDisplayObj);
+  const settingRightContainer = (dashboardItemSelected) => {
+    setRightContainerItemSelected(dashboardItemSelected);
+    console.log(dashboardItemSelected);
     //sending fn as argument is ok but keeping fn in useState is giving errors in dashboardHome
   };
   // const displayingRightContainer = () => {
@@ -162,6 +163,103 @@ const DashboardHome = () => {
     getHolidays();
   }, []);
 
+  //displaying right container based on click of dashboard items
+
+  const [threeD, setThreeD] = useState(true);
+
+  const displayRightContainer = () => {
+    switch (rightContainerItemSelected) {
+      case "attendanceClicked":
+        let presentKidsData =
+          sectionDataForDashboard.presentkids === "NA"
+            ? sectionDataForDashboard.totalkids
+            : 0;
+
+        let absentkidsData =
+          sectionDataForDashboard.absentkids === "NA"
+            ? 0
+            : sectionDataForDashboard.absentkids;
+        let series = [presentKidsData, absentkidsData];
+        let options = {
+          chart: {
+            width: 380,
+            type: "pie",
+          },
+          labels: ["Kids Present", "Kids Absent"],
+          responsive: [
+            {
+              breakpoint: 480,
+              options: {
+                chart: {
+                  width: 200,
+                },
+                legend: {
+                  position: "bottom",
+                },
+              },
+            },
+          ],
+        };
+        //handlers
+        const handler2d = () => {
+          setThreeD(false);
+        };
+        const handler3d = () => {
+          setThreeD(true);
+        };
+        return (
+          <div>
+            <div>
+              <h1>3D Pie Chart for Student marks in subjects</h1>
+              <Chart
+                width={"500px"}
+                height={"500px"}
+                chartType="PieChart"
+                loader={<div>Loading Pie Chart</div>}
+                data={[
+                  ["total", "value"],
+                  ["present", 10],
+                  ["absent", 5],
+                ]}
+                options={{
+                  title: "Exam Performance",
+                  is3D: true,
+                  animation: {
+                    duration: 1000,
+                    easing: "out",
+                  },
+                  vAxis: { minValue: 0, maxValue: 1000 },
+                }}
+              />
+            </div>
+          </div>
+        );
+        break;
+      case "birthdaysClicked":
+        return (
+          <div>
+            <h1 className="db-right-container-birthdays-heading">
+              Birthdays Today
+            </h1>
+            <div className="db-birthdays-right-container-body">
+              <p>No items to display</p>
+            </div>
+          </div>
+        );
+      case "holidaysClicked":
+        return (
+          <div>
+            <h1 className="db-right-container-holidays-heading">
+              Holidays List In Week
+            </h1>
+            <p className="dbhome-holidays-no-items-to-display">
+              No items to display
+            </p>
+          </div>
+        );
+    }
+  };
+
   return (
     <div className="dbhome-bg-container">
       <div className="dbhome-left-container">
@@ -197,58 +295,9 @@ const DashboardHome = () => {
           />
         </div>
       </div>
-      <div className="dbhome-right-container">
-        {rightContainerObj.display()}
-      </div>
-      {/* <HomeFooter /> */}
+      <div className="dbhome-right-container">{displayRightContainer()}</div>
     </div>
   );
 };
 
 export default DashboardHome;
-
-// import "./AllPages.css";
-
-// import ClassTeacher from "../ClassTeacher/ClassTeacher";
-
-// import Birthday from "../Birthday/Birthday";
-
-// import Attendence from "../Attendence/Attendence";
-
-// import Events from "../Events/Events";
-
-// import Holiday from "../Holiday/Holiday";
-
-// import KidApprovals from "../KidApprovals/KidApprovals";
-
-// import HomeFooter from "../../HomeFooter/HomeFooter";
-
-// import Header from "../../Header/Header";
-
-// const AllPages = () => {
-//   return (
-//     <div className="allpage-bg-container">
-//       <Header />
-
-//       <div className="upper-container">
-//         <ClassTeacher />
-
-//         <Birthday />
-
-//         <Attendence />
-//       </div>
-
-//       <div className="lower-container">
-//         <KidApprovals />
-
-//         <Events />
-
-//         <Holiday />
-//       </div>
-
-//       <HomeFooter />
-//     </div>
-//   );
-// };
-
-// export default AllPages;

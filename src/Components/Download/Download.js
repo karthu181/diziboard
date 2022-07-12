@@ -3,7 +3,7 @@ import "./Download.css";
 
 const Download = () => {
   return (
-    <div id="download" className="download-bg-container">
+    <section id="download" className="download-bg-container">
       <h1 className="about-us-text">DOWNLOAD NOW</h1>
       <hr className="about-us-hr-line" />
       <p className="about-us-description">
@@ -11,7 +11,7 @@ const Download = () => {
         functions with the convenience of being able to operate it from your
         smartphone. Download now!.
       </p>
-    </div>
+    </section>
   );
 };
 

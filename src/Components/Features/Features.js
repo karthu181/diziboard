@@ -3,7 +3,7 @@ import React from "react";
 
 const Features = () => {
   return (
-    <div id="features" className="features-bg-container">
+    <section id="features" className="features-bg-container">
       <h1 className="features-heading">FEATURES</h1>
       <hr className="features-hr-line" />
       <p className="features-description">
@@ -81,7 +81,7 @@ const Features = () => {
           <button className="btn btn-primary purchase-btn">PURCHASE NOW</button>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
