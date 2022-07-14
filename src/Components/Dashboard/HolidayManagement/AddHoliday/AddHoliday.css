@@ -1,0 +1,158 @@
+.add-holiday-add-popup-button {
+  background-color: #3e94de;
+
+  border: solid 1px black;
+}
+
+.add-holiday-plus-button:hover {
+  background-image: linear-gradient(
+    to bottom,
+    #209fc8 0%,
+    #6dd2f3 50%,
+    #209fc8 100%
+  ) !important;
+
+  color: black;
+}
+
+.add-holiday-span-button {
+  color: white;
+  font-weight: bold;
+}
+
+.add-holiday-span-button:hover {
+  color: black;
+}
+
+.add-holiday-holiday-container {
+  height: 400px;
+  width: 400px;
+  border: solid 1px black;
+}
+
+.add-holiday-plus-button {
+  height: 30px;
+  width: 30px;
+  background-color: #3e94de;
+
+  border: solid 1px black;
+}
+
+.add-holiday-pop-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #3e94de;
+}
+
+.add-holiday-popup-container {
+  height: 60vh;
+  width: 60vw;
+  background-color: white;
+  position: absolute;
+  top: 25%;
+  right: 25%;
+  border: solid 1px black;
+}
+
+@media screen and (min-width: 768px) {
+  .add-holiday-popup-container {
+    height: 60vh;
+    width: 45vw;
+    background-color: white;
+    position: absolute;
+  }
+}
+.add-holiday-form-container {
+  padding-top: 30px;
+}
+
+.add-holiday-input-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+
+  margin-bottom: 8px;
+}
+
+.add-holiday-button-container {
+  display: flex;
+}
+
+.add-holiday-holy-head {
+  color: white;
+  font-size: 25px;
+  font-weight: lighter;
+  padding-top: 10px;
+  padding-left: 20px;
+}
+
+.add-holiday-cross {
+  font-size: 17px;
+  height: 25px;
+  width: 25px;
+  margin-top: 15px;
+  border: solid 1px black;
+  justify-content: end;
+  color: white;
+  text-align: center;
+}
+
+.add-holiday-cross:hover {
+  background-image: linear-gradient(
+    to bottom,
+    #209fc8 0%,
+    #6dd2f3 50%,
+    #209fc8 100%
+  ) !important;
+
+  color: black;
+}
+.add-holiday-label-headings {
+  width: 50%;
+  text-align: left;
+}
+.add-holiday-lable-head {
+  color: dimgray;
+  padding-left: 30px;
+}
+
+.add-holiday-btn-form {
+  background-color: #3e94de;
+  margin: 5px;
+  color: white;
+}
+.add-holiday-btn-form:hover {
+  background-image: linear-gradient(
+    to bottom,
+    #209fc8 0%,
+    #6dd2f3 50%,
+    #209fc8 100%
+  ) !important;
+
+  color: black;
+}
+
+.add-holiday-button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add-holiday-label-headings {
+  width: 50%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.add-holiday-input-subans {
+  width: 50%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  text-align: left;
+}
+
+.add-holiday-checkbox-container {
+  padding-left: 30px;
+  text-align: left;
+  margin-top: -45px;
+}

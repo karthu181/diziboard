@@ -14,50 +14,54 @@ const AboutUs = () => {
         encourage excellence in the use of technology in schools.
       </p>
 
-      <div className="why-choose-us-img-text-container">
-        <div className="about-iphone-container">
+      <div className="about-us-why-choose-us-img-text-container">
+        <div className="about-us-iphone-container">
           <img
-            className="about-iphone "
+            className="about-us-iphone "
             alt="iphone"
             src="http://192.168.0.116:8080/images/why%20iphone.png"
           />
         </div>
         <div>
-          <div className="why-chose-dizi-text-container">
-            <h2 className="why-choose-dizi-text">WHY CHOOSE DIZI BOARD?</h2>
+          <div className="about-us-why-chose-dizi-text-container">
+            <h2 className="about-us-why-choose-dizi-text">
+              WHY CHOOSE DIZI BOARD?
+            </h2>
           </div>
-          <div className="why-choose-us-text-container">
-            <div className="why-choose-us-icons">
+          <div className="about-us-why-choose-us-text-container">
+            <div className="about-us-why-choose-us-icons">
               <FaRegCalendarAlt />
             </div>
             <div>
-              <h3 className="dizital-subheadings">DIZITAL DIARY</h3>
-              <p className="dizital-sub-des">
+              <h3 className="about-us-dizital-subheadings">DIZITAL DIARY</h3>
+              <p className="about-us-dizital-sub-des">
                 "Dizital Diary", makes parent-school easy, engaging and
                 effective communication. It provided real time updates to
                 Parents.
               </p>
             </div>
           </div>
-          <div className="why-choose-us-text-container">
-            <div className="why-choose-us-icons">
+          <div className="about-us-why-choose-us-text-container">
+            <div className="about-us-why-choose-us-icons">
               <HiUserGroup />
             </div>
             <div>
-              <h3 className="dizital-subheadings">DIZITAL ATTENDANCE</h3>
-              <p className="dizital-sub-des">
+              <h3 className="about-us-dizital-subheadings">
+                DIZITAL ATTENDANCE
+              </h3>
+              <p className="about-us-dizital-sub-des">
                 "Dizital Attendance", makes teacher job easy. It helps schools
                 easily capture and share attendance with parents.
               </p>
             </div>
           </div>
-          <div className="why-choose-us-text-container">
-            <div className="why-choose-us-icons">
+          <div className="about-us-why-choose-us-text-container">
+            <div className="about-us-why-choose-us-icons">
               <FaRegFlag />
             </div>
             <div>
-              <h3 className="dizital-subheadings">DIZITAL EVENT</h3>
-              <p className="dizital-sub-des">
+              <h3 className="about-us-dizital-subheadings">DIZITAL EVENT</h3>
+              <p className="about-us-dizital-sub-des">
                 "Dizital Event", It is a mobile-first platform that enables the
                 parent to reminds them of key events at the right moments. A
                 scheduling option that schools can use to send pre-composed
@@ -65,19 +69,19 @@ const AboutUs = () => {
               </p>
             </div>
           </div>
-          <div className="why-choose-us-text-container">
+          <div className="about-us-why-choose-us-text-container">
             <div>
               <img
-                className="track-img"
+                className="about-us-track-img"
                 alt="tracxk"
                 src="http://192.168.0.116:8080/images/tracxk.png"
               />
             </div>
             <div>
-              <h3 className="dizital-subheadings dizital-subheadings-track">
+              <h3 className="about-us-dizital-subheadings dizital-subheadings-track">
                 DIZITAL TRACKING
               </h3>
-              <p className="dizital-sub-des">
+              <p className="about-us-dizital-sub-des">
                 "Dizital Tracking", It is a mobile-first platform that will
                 enable tracking and monitor of kids transportation. It will give
                 instant notification to parent and school about bus location,

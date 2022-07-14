@@ -36,16 +36,16 @@
 .dbhome-day-description {
   color: white;
   font-size: 15px;
-  justify-content: left;
-  display: block;
-  position: relative;
   cursor: pointer;
   background-color: #0572cd;
   animation-duration: 0.5s;
   border-radius: 50%;
   height: 34px;
   width: 34px;
-  padding-top: 6px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .dbhome-day-description-green {
   background-color: rgb(118, 180, 23);
@@ -66,7 +66,7 @@
   /* display: flex;
   justify-content: center;
   text-align: center; */
-  margin-top: 15px;
+  margin-top: 12px;
   margin-bottom: 20px;
 }
 
@@ -75,7 +75,7 @@
   background-color: #ffffff;
   color: #ffffff;
   border: 1px solid white !important;
-  margin-top: 4px;
+  margin-top: 12px;
 }
 .attendance-dot-blue {
   background-color: #0572ce;

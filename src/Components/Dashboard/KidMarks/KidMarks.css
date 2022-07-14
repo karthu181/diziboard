@@ -22,11 +22,11 @@
   border: 1px solid black;
 }
 
-.table-border {
+.kidmarks-table-border {
   border: 1px solid blue !important;
 }
 
-.table-header {
+.kidmarks-table-header {
   background-color: #177ed7 !important;
   color: #fff !important;
   border-bottom-style: none !important;
@@ -36,9 +36,7 @@
   flex-direction: row;
   justify-content: flex-end;
 }
-.excel-upload-btn {
-  margin-left: 10px !important;
-}
+
 .table-body-in-kid-marks {
   background-color: #00c1ff0a;
   border-bottom-style: solid;
@@ -46,7 +44,7 @@
   border-bottom-width: 1px;
   border-top-style: none !important;
 }
-.table-body-each-col {
+.kidmarks-table-body-each-col {
   border: 1px solid rgb(214, 223, 230);
 }
 .up-down-buttons-kidmarks {
@@ -104,7 +102,7 @@
 .kidmarks-input-disabled {
   background-color: #f0f0f0;
 }
-.no-border {
+.kidmarks-no-border {
   border-style: none !important;
 }
 .kidmarks-1st-row {
@@ -127,7 +125,7 @@
   align-items: center;
 }
 
-.containers-2nd-row {
+.kidmarks-containers-2nd-row {
   /* border: 1px solid black; */
   display: flex;
   flex-direction: row;
@@ -158,14 +156,14 @@
   ) !important;
   color: black;
 }
-.select-exam-type-dropdown {
+.kidmarks-select-exam-type-dropdown {
   margin-left: 5px;
   width: 252px;
   height: 32px;
   border: 1px solid #d6dfe6;
   outline: none;
 }
-.row-1st-column-containers {
+.kidmarks-row-1st-column-containers {
   /* border: 1px solid black; */
   display: flex;
   flex-direction: row;
@@ -174,7 +172,7 @@
   padding-left: 50px;
 }
 @media screen and (max-width: 768px) {
-  .row-1st-column-containers {
+  .kidmarks-row-1st-column-containers {
     flex-direction: column;
     align-items: flex-start;
     padding-left: 15px !important;
@@ -243,7 +241,7 @@
   background-color: #d6d7d8;
   color: black;
 }
-.max-sub-marks-popover {
+.kidmarks-max-sub-marks-popover {
   border: 1px solid red;
   border-radius: 0px !important;
   padding: 8px;
@@ -253,6 +251,11 @@
   height: 50px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-.italic {
+.kidmarks-italic {
   font-style: italic;
+}
+.kidmarks-text-danger {
+  text-align: center;
+  color: red;
+  font-size: 16px;
 }

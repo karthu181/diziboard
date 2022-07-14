@@ -1,0 +1,155 @@
+.event-bg-container {
+  background-color: rgb(243, 248, 254);
+  background-size: cover;
+  height: 100vh;
+}
+
+@media screen and (min-width: 768px) {
+  .event-bg-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.move-container {
+  display: flex;
+  padding-top: 10px;
+  flex-direction: column;
+  width: 100vw;
+}
+
+@media screen and (min-width: 768px) {
+  .move-container {
+    display: flex;
+  }
+}
+
+.move-head {
+  border: solid none;
+  background-color: #3e94de;
+  color: black;
+  font-size: 17px;
+  font-weight: bold;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+@media screen and (min-width: 768px) {
+  .move-head {
+    display: none;
+  }
+}
+
+.move-head-mobile {
+  border: solid none;
+  background-color: #3e94de;
+  color: black;
+  font-size: 17px;
+  font-weight: bold;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.move-head-mobile {
+  border: solid none;
+  background-color: #3e94de;
+  color: black;
+  width: 270px;
+  margin-top: -30px !important;
+}
+
+@media screen and (max-width: 768px) {
+  .move-head-mobile {
+    display: none;
+  }
+}
+
+.scroll {
+  color: #3e94de;
+  padding-top: 5px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+  .scroll {
+    display: none;
+  }
+}
+
+.move-container-mobile-view {
+  display: flex;
+}
+
+.scroll-mobile-view {
+  color: #3e94de;
+  padding-top: 10px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 768px) {
+  .scroll-mobile-view {
+    display: none;
+  }
+}
+
+.move-bottom-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.manage-event {
+  color: black;
+  font-size: 17px;
+  font-weight: bold;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+.add-event {
+  color: black;
+  font-size: 20px;
+  margin-top: 5px;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+.span-para {
+  display: flex;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.data-table-container {
+  background-color: white;
+  border: solid 1px #d6dfe6;
+  padding: 10px;
+  margin: 10px;
+}
+
+/* @media screen and (max-width: 1380px) {
+    .data-table-container{
+        overflow-x: scroll !important;
+    }
+} */
+
+.data-table-inner-border {
+  background-color: white;
+  border: solid 1px #d6dfe6;
+  padding: 5px;
+  margin: 5px;
+}
+
+/* @media screen and (max-width: 1380px) {
+    .data-table-inner-border{
+        overflow-x: auto;
+    }
+} */
+
+.scroll-bg {
+  background-color: white;
+}

@@ -1,4 +1,4 @@
-.bg-container {
+.home-bg-container {
   background-image: url("http://192.168.0.116:8080/images/shutterstock_246299713.jpg");
   width: 100%;
   min-height: 100vh;
@@ -9,7 +9,7 @@
 .home-heading {
   color: #b5b5b5;
 }
-.navbar-custom {
+.home-navbar-custom {
   color: #b5b5b5;
   font-family: "Raleway", sans-serif;
   transition: all 1s;
@@ -17,7 +17,7 @@
   -o-transition: all 1s;
   -webkit-transition: all 1s;
 }
-.navbar-logo {
+.home-navbar-logo {
   height: 50px;
 }
 .home-bg {
@@ -27,13 +27,13 @@
   justify-content: center;
   align-items: center;
 }
-.buttons-container {
+.home-buttons-container {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   margin-top: 100px;
 }
-.download-button {
+.home-download-button {
   animation-name: fadeInLeft;
   animation-duration: 1s;
 
@@ -47,7 +47,7 @@
   font-size: 19px;
   border-radius: 3px;
 }
-.btn-tour {
+.home-btn-tour {
   font-size: 20px;
   padding-left: 5px;
   color: #129cf3;
@@ -59,7 +59,7 @@
   justify-content: space-around;
   align-items: center;
 }
-.transform-text {
+.home-transform-text {
   color: #fff;
   font-size: 35px;
   font-weight: 300;
@@ -67,7 +67,7 @@
   padding-top: 30px;
   text-align: left;
 }
-.take-a-tour-button {
+.home-take-a-tour-button {
   animation-name: fadeInRight;
   animation-duration: 2s;
 
@@ -78,9 +78,9 @@
   font-weight: 400;
   background: transparent;
 }
-.hide {
+.home-hide {
   display: none;
 }
-.display {
+.home-display {
   display: block;
 }

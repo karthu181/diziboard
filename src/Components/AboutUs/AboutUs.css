@@ -25,32 +25,32 @@
   margin-top: 22px;
   margin-bottom: 100px;
 }
-.about-iphone-container {
+.about-us-iphone-container {
   /* animated css, without animation-duration, animation wont work*/
   animation: fadeInLeft;
   animation-duration: 2s; /* don't forget to set a duration! */
   width: 100vw;
 }
-.about-iphone {
+.about-us-iphone {
   width: 80%;
 }
-.why-chose-dizi-text-container {
+.about-us-why-chose-dizi-text-container {
   animation: fadeInRight;
   animation-duration: 2s;
 }
-.why-choose-dizi-text {
+.about-us-why-choose-dizi-text {
   font-weight: 700;
   font-size: 30px;
   line-height: 37px;
   text-align: left;
   margin-bottom: 20px;
 }
-.why-choose-us-img-text-container {
+.about-us-why-choose-us-img-text-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
-.why-choose-us-text-container {
+.about-us-why-choose-us-text-container {
   animation: fadeInUp;
   animation-duration: 0.5s;
   animation-delay: 1s;
@@ -59,27 +59,27 @@
   justify-content: flex-start;
   align-items: flex-start;
 }
-.dizital-subheadings {
+.about-us-dizital-subheadings {
   text-align: left;
   color: #343434;
   font-size: 20px;
   font-weight: 700;
   margin-top: 15px;
 }
-.dizital-subheadings-track {
+.about-us-dizital-subheadings-track {
   margin-top: 0px;
 }
-.track-img {
+.about-us-track-img {
   width: 50px;
   height: 50px;
   margin-right: 15px;
 }
-.dizital-sub-des {
+.about-us-dizital-sub-des {
   text-align: left;
   color: #727272;
   font-size: 15px;
 }
-.why-choose-us-icons {
+.about-us-why-choose-us-icons {
   font-size: 55px;
   color: #129cf3;
   margin-right: 15px;

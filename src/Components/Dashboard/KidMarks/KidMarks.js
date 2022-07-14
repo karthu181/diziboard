@@ -16,7 +16,7 @@ const KidMarks = () => {
   );
   console.log(loggedInUserProfile.mas_userRef);
 
-  const [subMaxMarks, setSubMaxMarks] = useState(0);
+  const [subMaxMarks, setSubMaxMarks] = useState();
   const [schoolExamTypes, setSchoolExamTypes] = useState([]);
   const [selectedExamType, setSelectedExamType] = useState();
 
@@ -227,8 +227,6 @@ const KidMarks = () => {
   //display red warning text to select examtype
 
   const displayWarningToSelectExamType = () => {
-    console.log(selectedExamType);
-    console.log(addMarksClicked);
     if (
       (selectedExamType === "" ||
         selectedExamType === undefined ||
@@ -236,9 +234,7 @@ const KidMarks = () => {
       addMarksClicked === true
     ) {
       return (
-        <p style={{ "font-size": "16px" }} className="pt-3">
-          Please Select Exam Type
-        </p>
+        <p className="kidmarks-text-danger pt-3">Please Select Exam Type</p>
       );
     } else {
       return null;
@@ -247,7 +243,10 @@ const KidMarks = () => {
 
   //warning popup to enter marks >=0 subMax marks
   const popoverMarksWarningSubMaxMarks = (
-    <Popover id="popover-positioned-right" className="max-sub-marks-popover">
+    <Popover
+      id="popover-positioned-right"
+      className="kidmarks-max-sub-marks-popover"
+    >
       <strong>Enter a number greater than or equal to 0.</strong>
     </Popover>
   );
@@ -255,7 +254,7 @@ const KidMarks = () => {
   return (
     <div className="container-fluid kidmarks-container">
       <div className="row kidmarks-1st-row">
-        <div className="col-md-4 col-12 row-1st-column-containers pb-3">
+        <div className="col-md-4 col-12 kidmarks-row-1st-column-containers pb-3">
           <label
             className="kidmarks-bold-input-labels"
             htmlFor="kidmarksUsername"
@@ -263,7 +262,7 @@ const KidMarks = () => {
             User Name
           </label>
           <input
-            className="kidmarks-input kidmarks-input-disabled no-border"
+            className="kidmarks-input kidmarks-input-disabled kidmarks-no-border"
             placeholder="Username"
             id="kidmarksUsername"
             value="Class Teacher2 CT"
@@ -271,17 +270,17 @@ const KidMarks = () => {
             disabled
           />
         </div>
-        <div className="col-md-4 col-12 row-1st-column-containers pb-3">
+        <div className="col-md-4 col-12 kidmarks-row-1st-column-containers pb-3">
           <label htmlFor="kidmarksClass">Class</label>
           <input
-            className="kidmarks-input kidmarks-input-disabled no-border"
+            className="kidmarks-input kidmarks-input-disabled kidmarks-no-border"
             type="text"
             disabled
             placeholder="SECOND CLASS"
             id="kidmarksClass"
           />
         </div>
-        <div className="col-md-4 col-12 row-1st-column-containers pb-3">
+        <div className="col-md-4 col-12 kidmarks-row-1st-column-containers pb-3">
           <label
             className="kidmarks-non-bold-input-labels"
             htmlFor="kidmarksSection"
@@ -289,7 +288,7 @@ const KidMarks = () => {
             Section
           </label>
           <input
-            className="kidmarks-input kidmarks-input-disabled no-border"
+            className="kidmarks-input kidmarks-input-disabled kidmarks-no-border"
             type="text"
             disabled
             placeholder="B"
@@ -298,7 +297,7 @@ const KidMarks = () => {
         </div>
       </div>
       <div className="row kidmarks-2nd-row">
-        <div className="col-md-4 col-12 containers-2nd-row pb-4 ps-3">
+        <div className="col-md-4 col-12 kidmarks-containers-2nd-row pb-4 ps-3">
           <label className="kidmarks-bold-input-labels" htmlFor="sub-max-marks">
             Sub Max Marks
           </label>
@@ -332,17 +331,17 @@ const KidMarks = () => {
             <AiOutlineUp />
           </button>
         </div>
-        <div className="col-md-4 col-12 containers-2nd-row pb-4">
+        <div className="col-md-4 col-12 kidmarks-containers-2nd-row pb-4">
           <label className="kidmarks-bold-input-labels" htmlFor="exam-type">
             Exam Type
           </label>
           <select
-            className="select-exam-type-dropdown"
+            className="kidmarks-select-exam-type-dropdown"
             id="exam-type"
             value={selectedExamType}
             onChange={onChangeSelectedExamType}
           >
-            <option value="Select Exam Type" className="italic">
+            <option value="Select Exam Type" className="kidmarks-italic">
               Select Exam Type
             </option>
             <option value="Annual">Annual</option>
@@ -356,7 +355,7 @@ const KidMarks = () => {
             ))}
           </select>
         </div>
-        <div className="col-md-4 col-12 containers-2nd-row pb-4">
+        <div className="col-md-4 col-12 kidmarks-containers-2nd-row pb-4">
           <Button className="kidmarks-buttons" onClick={handleShow}>
             Add Exam Type
           </Button>
@@ -419,7 +418,7 @@ const KidMarks = () => {
         </div>
       </div>
       <div className="row pt-4 ">
-        <div className="text-danger">{displayWarningToSelectExamType()}</div>
+        <div>{displayWarningToSelectExamType()}</div>
         <div className="add-marks-exel-save-btn-container ms-auto">
           {/* since it is margin you should give to element directly not to container */}
           <AddMarksButton
@@ -442,7 +441,7 @@ const KidMarks = () => {
         <div className="table-in-kidmarks-container mt-2">
           <div className="table-responsive kidmarks-table-2nd-container">
             <table className="table table-bordered border-light">
-              <thead className="table-header">
+              <thead className="kidmarks-table-header">
                 <tr>
                   <th scope="col" className="kidmarks-table-headings">
                     Kid Id
@@ -488,36 +487,38 @@ const KidMarks = () => {
               <tbody className="table-body-in-kid-marks">
                 {addMarksArray.map((eachMarksObj) => (
                   <tr>
-                    <td scope="row" className="table-body-each-col">
+                    <td scope="row" className="kidmarks-table-body-each-col">
                       {eachMarksObj.selectedKidId}
                     </td>
-                    <td className="table-body-each-col">SECOND CLASS</td>
-                    <td className="table-body-each-col">B</td>
-                    <td className="table-body-each-col">
+                    <td className="kidmarks-table-body-each-col">
+                      SECOND CLASS
+                    </td>
+                    <td className="kidmarks-table-body-each-col">B</td>
+                    <td className="kidmarks-table-body-each-col">
                       {eachMarksObj.addHindi}
                     </td>
-                    <td className="table-body-each-col">
+                    <td className="kidmarks-table-body-each-col">
                       {eachMarksObj.addLabSkills}
                     </td>
-                    <td className="table-body-each-col">
+                    <td className="kidmarks-table-body-each-col">
                       {eachMarksObj.addIt}
                     </td>
-                    <td className="table-body-each-col">
+                    <td className="kidmarks-table-body-each-col">
                       {eachMarksObj.addEnglish}
                     </td>
-                    <td className="table-body-each-col">
+                    <td className="kidmarks-table-body-each-col">
                       {eachMarksObj.addTelugu}
                     </td>
-                    <td className="table-body-each-col">
+                    <td className="kidmarks-table-body-each-col">
                       {eachMarksObj.addMaths}
                     </td>
-                    <td className="table-body-each-col">
+                    <td className="kidmarks-table-body-each-col">
                       {eachMarksObj.addScience}
                     </td>
-                    <td className="table-body-each-col">
+                    <td className="kidmarks-table-body-each-col">
                       {eachMarksObj.addSocial}
                     </td>
-                    <td className="table-body-each-col">
+                    <td className="kidmarks-table-body-each-col">
                       {parseInt(eachMarksObj.addHindi) +
                         parseInt(eachMarksObj.addLabSkills) +
                         parseInt(eachMarksObj.addIt) +
@@ -527,7 +528,7 @@ const KidMarks = () => {
                         parseInt(eachMarksObj.addScience) +
                         parseInt(eachMarksObj.addSocial)}
                     </td>
-                    <td className="table-body-each-col">
+                    <td className="kidmarks-table-body-each-col">
                       {eachMarksObj.addPercentage}
                     </td>
                   </tr>

@@ -87,7 +87,6 @@
 import "./HolidayManagement.css";
 import React from "react";
 import AddHoliday from "./AddHoliday/AddHoliday";
-
 const HolidayManagement = () => {
   return (
     <div>
@@ -98,9 +97,9 @@ const HolidayManagement = () => {
           </h1>
         </div>
         <div>
-          <div className="bottom-head-container">
-            <h1 className="bottom-head">Manage Holiday</h1>
-            <p className="span-para">
+          <div className="holiday-bottom-head-container">
+            <h1 className="holiday-bottom-head">Manage Holiday</h1>
+            <p className="holiday-span-para">
               <span className="holiday-pop-up-button">
                 <AddHoliday />
               </span>
@@ -108,10 +107,10 @@ const HolidayManagement = () => {
             </p>
           </div>
         </div>
-        <div className="table-container">
-          <div className="tbe-container">
+        <div className="holiday-table-container">
+          <div className="holiday-tbe-container">
             <table className="table table-bordered">
-              <thead>
+              <thead style={{ width: "100%", overflow: "auto" }}>
                 <tr className="holiday-management-table-head">
                   <th className="holiday-management-table-heading-hover">
                     Action
@@ -130,27 +129,27 @@ const HolidayManagement = () => {
                   </th>
                 </tr>
               </thead>
-              <tbody className="table-data-holiday">
+              <tbody className="holiday-table-data-holiday">
                 <tr>
-                  <td className="table-body">No data to display</td>
+                  <td className="holiday-table-body">No data to display</td>
                 </tr>
               </tbody>
             </table>
             <nav aria-label="Page navigation example">
-              <ul class="pagination">
-                <li class="page-item">
-                  <a class="page-link" href="#1" aria-label="Previous">
+              <ul className="pagination">
+                <li className="page-item">
+                  <a className="page-link" href="#1" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                   </a>
                 </li>
-                <li class="page-item">
-                  <a class="page-link" href="#2">
+                <li className="page-item">
+                  <a className="page-link" href="#2">
                     1
                   </a>
                 </li>
 
-                <li class="page-item">
-                  <a class="page-link" href="#3" aria-label="Next">
+                <li className="page-item">
+                  <a className="page-link" href="#3" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                   </a>
                 </li>

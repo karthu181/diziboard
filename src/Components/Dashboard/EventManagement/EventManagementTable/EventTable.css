@@ -1,0 +1,35 @@
+/* .table{
+    border-collapse: collapse;
+   max-width: 900px;
+   width: 100%;
+    margin: 2rem auto;
+    padding: 10px;
+}
+
+.table th, table td{
+    border:  1px solid #ddd;
+    padding: 8px;
+}
+
+.table-head{
+    text-align: center;
+    background-color: #0a77d5;
+    text-align: center;
+    height: 10px;
+
+
+}
+
+.table-head:hover {
+    background-color: #ddd;
+}
+
+.body{
+   
+    background-color: rgba(0, 193, 255, 0.04);
+    flex-wrap: wrap;
+}
+
+.table-bg-contane{
+    border: solid 10px black;
+} */

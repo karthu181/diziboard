@@ -64,7 +64,7 @@ const ResetPassword = () => {
         <h1 className="reset-text">Reset Password</h1>
         <form className="reset-form-container" onSubmit={resetPasswordHandler}>
           <div className="reset-passwords-container">
-            <div className="fa-envelope-container">
+            <div className="reset-fa-envelope-container">
               <FaKey />
             </div>
             <div className="reset-password1-input-container">
@@ -76,8 +76,8 @@ const ResetPassword = () => {
               />
             </div>
           </div>
-          <div className="user-name-container">
-            <div className="fa-envelope-container">
+          <div className="reset-passwords-container">
+            <div className="reset-fa-envelope-container">
               <FaKey />
             </div>
             <div className="reset-password1-input-container">

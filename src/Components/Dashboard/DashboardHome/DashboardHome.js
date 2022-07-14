@@ -9,7 +9,13 @@ import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { v4 as uuidv4 } from "uuid";
 import Chart from "react-google-charts";
+import HighchartsReact from "highcharts-react-official";
+import Highcharts from "highcharts";
+import highcharts3d from "highcharts/highcharts-3d";
+import "highcharts/modules/accessibility";
 import "./DashboardHome.css";
+
+highcharts3d(Highcharts);
 
 const DashboardHome = () => {
   const loggedInUserProfile = JSON.parse(
@@ -24,27 +30,16 @@ const DashboardHome = () => {
 
   //getUserProfile from local storage
   const diziUserProfile = JSON.parse(localStorage.getItem("diziUserProfile"));
-  console.log(diziUserProfile);
 
   //displaying right container
-  const [rightContainerItemSelected, setRightContainerItemSelected] = useState({
-    display: () => {},
-  });
+  const [rightContainerItemSelected, setRightContainerItemSelected] = useState(
+    "attendanceClicked"
+  );
 
   const settingRightContainer = (dashboardItemSelected) => {
     setRightContainerItemSelected(dashboardItemSelected);
-    console.log(dashboardItemSelected);
     //sending fn as argument is ok but keeping fn in useState is giving errors in dashboardHome
   };
-  // const displayingRightContainer = () => {
-  //   if (rightContainer === "attendance") {
-  //     return <h1>Today Attendance status</h1>;
-  //   } else if (rightContainer === "holidays") {
-  //     return <h1>holidays</h1>;
-  //   } else if (rightContainer === "birthdays") {
-  //     return <h1>birthdays</h1>;
-  //   }
-  // };
 
   //displaying right container till here
 
@@ -165,76 +160,154 @@ const DashboardHome = () => {
 
   //displaying right container based on click of dashboard items
 
-  const [threeD, setThreeD] = useState(true);
+  //easeOutBounce is an animation is used in piechart
+  var easeOutBounce = function(pos) {
+    if (pos < 1 / 2.75) {
+      return 7.5625 * pos * pos;
+    }
+    if (pos < 2 / 2.75) {
+      return 7.5625 * (pos -= 1.5 / 2.75) * pos + 0.75;
+    }
+    if (pos < 2.5 / 2.75) {
+      return 7.5625 * (pos -= 2.25 / 2.75) * pos + 0.9375;
+    }
+    return 7.5625 * (pos -= 2.625 / 2.75) * pos + 0.984375;
+  };
 
+  Math.easeOutBounce = easeOutBounce;
+
+  //maintaining chartOptions in state to render chat again on small change in chartOptions
+  const [threeD, setThreeD] = useState(true);
+  const chartOptions = {
+    chart: {
+      backgroundColor: "#f3f9fe",
+      type: "pie",
+      options3d: {
+        enabled: true,
+        alpha: 30,
+        beta: 0,
+        animation: {
+          duration: 1000,
+          easing: "easeOutBounce",
+        },
+      },
+    },
+    legend: {
+      //legend meand labels outside chart with color boxes
+      layout: "vertical",
+      align: "right",
+      verticalAlign: "middle",
+      itemMarginTop: 0,
+      itemMarginBottom: 5,
+      symbolRadius: 0, // changes circle default to square
+    },
+    credits: { enabled: false }, //to disable highcharts logo from chart
+    title: {
+      text: "",
+    },
+    accessibility: {
+      point: {
+        valueSuffix: "%",
+      },
+    },
+    tooltip: {
+      pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>",
+    },
+    plotOptions: {
+      pie: {
+        showInLegend: true,
+        allowPointSelect: true,
+        cursor: "pointer",
+        depth: threeD ? 60 : 0,
+        dataLabels: {
+          enabled: true,
+          distance: -50,
+          connectorWidth: 0,
+          format: "<b>{point.percentage:.1f}%</b>",
+        },
+        animation: {
+          duration: 1000,
+          easing: "easeOutBounce",
+        },
+      },
+    },
+    series: [
+      {
+        type: "pie",
+        name: "Browser share",
+        data: [
+          ["Kids Present", 45.0],
+          ["Kids Absent", 26.8],
+        ],
+      },
+    ],
+  };
+
+  const Handler2d = () => {
+    setThreeD(false);
+  };
+
+  const Handler3d = () => {
+    setThreeD(true);
+  };
+
+  //present and absent kids data from sectionDataForDashboard to display
+  //sectionDataForDashboard is already stored in state, so no need to store present/absent data in state again
+  //this present/absent data is sub data of sectionDataForDashboard
+  let presentKidsData =
+    sectionDataForDashboard.presentkids === "NA"
+      ? sectionDataForDashboard.totalkids
+      : 0;
+
+  let absentkidsData =
+    sectionDataForDashboard.absentkids === "NA"
+      ? 0
+      : sectionDataForDashboard.absentkids;
+
+  //displaying right container fn
   const displayRightContainer = () => {
+    //switch statement to display which item is clicked attendace or holiday or birthdays
     switch (rightContainerItemSelected) {
       case "attendanceClicked":
-        let presentKidsData =
-          sectionDataForDashboard.presentkids === "NA"
-            ? sectionDataForDashboard.totalkids
-            : 0;
-
-        let absentkidsData =
-          sectionDataForDashboard.absentkids === "NA"
-            ? 0
-            : sectionDataForDashboard.absentkids;
-        let series = [presentKidsData, absentkidsData];
-        let options = {
-          chart: {
-            width: 380,
-            type: "pie",
-          },
-          labels: ["Kids Present", "Kids Absent"],
-          responsive: [
-            {
-              breakpoint: 480,
-              options: {
-                chart: {
-                  width: 200,
-                },
-                legend: {
-                  position: "bottom",
-                },
-              },
-            },
-          ],
-        };
-        //handlers
-        const handler2d = () => {
-          setThreeD(false);
-        };
-        const handler3d = () => {
-          setThreeD(true);
-        };
         return (
-          <div>
+          <div className="dbhome-right-attendance-piechart-container">
             <div>
-              <h1>3D Pie Chart for Student marks in subjects</h1>
-              <Chart
-                width={"500px"}
-                height={"500px"}
-                chartType="PieChart"
-                loader={<div>Loading Pie Chart</div>}
-                data={[
-                  ["total", "value"],
-                  ["present", 10],
-                  ["absent", 5],
-                ]}
-                options={{
-                  title: "Exam Performance",
-                  is3D: true,
-                  animation: {
-                    duration: 1000,
-                    easing: "out",
-                  },
-                  vAxis: { minValue: 0, maxValue: 1000 },
-                }}
-              />
+              <h1 className="db-right-container-attendance-heading">
+                Today Attendance Status
+              </h1>
+              <div className="dbhome-piechart-container">
+                <HighchartsReact
+                  highcharts={Highcharts}
+                  options={chartOptions}
+                />
+              </div>
+              <div className="dbhome-piechart-btns-container">
+                <button onClick={Handler2d}>2D</button>
+                <button onClick={Handler3d}>3D</button>
+              </div>
+
+              <div>
+                <Chart
+                  width={"500px"}
+                  height={"500px"}
+                  chartType="PieChart"
+                  loader={<div></div>}
+                  data={[
+                    ["total", "value"],
+                    ["presint", 10],
+                    ["absent", 5],
+                  ]}
+                  options={{
+                    title: "Exam Performance",
+                    is3D: false,
+                    hAxis: { direction: { min: 0, max: 5 } },
+                  }}
+                />
+              </div>
             </div>
           </div>
         );
-        break;
+        break; // no use of break statement when used return statement, it comes out of switch on return statement
       case "birthdaysClicked":
         return (
           <div>
@@ -257,6 +330,8 @@ const DashboardHome = () => {
             </p>
           </div>
         );
+      default:
+        return null;
     }
   };
 

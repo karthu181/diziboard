@@ -36,11 +36,11 @@ const Features = () => {
             examine, transform and modify scheduling school time table
           </p>
         </div>
-        <div className="iphone-black-container">
+        <div className="features-iphone-black-container">
           <img
             alt="iphone-black"
             src="http://192.168.0.116:8080/images/iphone-black.png"
-            className="iphone-black-in-features"
+            className="features-iphone-black-in-features"
           />
         </div>
         <div className="features-right-text-container">
@@ -66,9 +66,9 @@ const Features = () => {
         </div>
       </div>
 
-      <div className="purchase-btn-des-container">
-        <div className="purchase-des-container">
-          <p className="purchase-des">
+      <div className="features-purchase-btn-des-container">
+        <div className="features-purchase-des-container">
+          <p className="features-purchase-des">
             Apps are pieces of software that run on any device, such as laptop,
             smart phone, or an iPod or iPad. As devices increase in popularity -
             at home and business, as well as in the classroom - a seemingly
@@ -77,8 +77,10 @@ const Features = () => {
             students.
           </p>
         </div>
-        <div className="purchase-btn-container">
-          <button className="btn btn-primary purchase-btn">PURCHASE NOW</button>
+        <div className="features-purchase-btn-container">
+          <button className="btn btn-primary features-purchase-btn">
+            PURCHASE NOW
+          </button>
         </div>
       </div>
     </section>

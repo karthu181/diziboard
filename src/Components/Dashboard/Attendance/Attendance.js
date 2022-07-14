@@ -4,7 +4,6 @@ import "./Attendance.css";
 import "react-calendar/dist/Calendar.css";
 import Popup from "reactjs-popup";
 import Cookies from "js-cookie";
-import { v4 as uuidv4 } from "uuid";
 
 const Attendance = () => {
   const [calendarDate, setCalendarDate] = useState("");
@@ -17,10 +16,8 @@ const Attendance = () => {
   const [deleteAttendance, setDeleteAttendance] = useState([]);
 
   const loginToken = Cookies.get("loginToken");
-  const loggedInUserProfile = JSON.parse(
-    localStorage.getItem("diziUserProfile")
-  );
 
+  const current = new Date();
   const handleShow = (date) => {
     let month = date.getMonth() + 1;
     let date1 = date.getDate();
@@ -31,6 +28,8 @@ const Attendance = () => {
       date1 = `0${date1}`;
     }
     const reqDate = `${date.getFullYear()}-${month}-${date1}`;
+
+    setCalendarDate(reqDate);
 
     const getDailyAttendance = async () => {
       const responseObj = await fetch(
@@ -43,19 +42,19 @@ const Attendance = () => {
           },
           body: JSON.stringify({
             header: {
-              guid: uuidv4(),
+              guid: "0ade4dc8-df9a-b55c-3300-2c7cb870b677",
               responseOn: "2022-7-4.11:3:29",
               responseFrom:
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36",
-              userRef: loggedInUserProfile.mas_userRef,
+              userRef: "155AAdfi",
               geoLocation: "anonymous",
               status: "success",
               statuscode: "0",
             },
             body: {
-              mas_SchoolUniqueId: loggedInUserProfile.mas_schoolUniqueId,
-              mas_class: loggedInUserProfile.mas_class,
-              mas_section: loggedInUserProfile.mas_section,
+              mas_SchoolUniqueId: "5911355945",
+              mas_class: "SECOND CLASS",
+              mas_section: "B",
               date: reqDate,
             },
           }),
@@ -94,11 +93,11 @@ const Attendance = () => {
       setAttendence(kidsListObj.body);
     };
     getClassKidsList();
-  }, [currentAbsentArr]);
+  }, []);
 
   const onSubmit = () => {
     fetch(
-      "http://192.168.0.116:8280/mas_daily_attendance/1.0/mas_postdailyattendance",
+      "http://192.168.0.116:8280/mas_deletekidabsencedata/1.0/mas_deletekidabsencedata",
       {
         method: "POST",
         headers: {
@@ -107,28 +106,28 @@ const Attendance = () => {
         },
         body: JSON.stringify({
           header: {
-            guid: uuidv4(),
+            guid: "a7843082-60f1-1301-a041-0f72e6675525",
             responseOn: "2022-7-1.17:8:21",
             responseFrom:
               "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36",
-            userRef: loggedInUserProfile.mas_userRef,
+            userRef: "155AAdfi",
             geoLocation: "anonymous",
             status: "success",
             statuscode: "0",
           },
           body: {
-            mas_SchoolUniqueId: loggedInUserProfile.mas_SchoolUniqueId,
+            mas_SchoolUniqueId: "5911355945",
             mas_kiduserID: currentAbsentArr,
-            mas_class: loggedInUserProfile.mas_class,
-            mas_section: loggedInUserProfile.mas_section,
-            mas_date: "",
+            mas_class: "SECOND CLASS",
+            mas_section: "B",
+            mas_date: calendarDate,
             mas_noofdaysabs: "1",
             mas_month: "July",
             mas_year: "2022",
-            mas_createdby: loggedInUserProfile.userRef,
-            mas_createdon: "2022-07-1",
-            mas_modifiedby: loggedInUserProfile.userRef,
-            mas_modifiedon: "2022-07-1",
+            mas_createdby: "155AAdfi",
+            mas_createdon: new Date(),
+            mas_modifiedby: "155AAdfi",
+            mas_modifiedon: new Date(),
             appFor: "web",
           },
         }),
@@ -142,69 +141,149 @@ const Attendance = () => {
       .catch((error) => {
         console.error(error);
       });
+
+    fetch(
+      "http://192.168.0.116:8280/mas_daily_attendance/1.0/mas_postdailyattendance",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${loginToken}`,
+        },
+        body: JSON.stringify({
+          header: {
+            guid: "730ab2ac-9d9f-ef04-62a9-9b56f111443a",
+            responseOn: "2022-7-5.11:55:29",
+            responseFrom:
+              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36",
+            userRef: "155AAdfi",
+            geoLocation: "anonymous",
+            status: "success",
+            statuscode: "0",
+          },
+          body: {
+            mas_SchoolUniqueId: "5911355945",
+            mas_kiduserID: absentArray,
+            mas_class: "SECOND CLASS",
+            mas_section: "B",
+            mas_date: calendarDate,
+            mas_noofdaysabs: "1",
+            mas_month: "July",
+            mas_year: 2022,
+            mas_createdby: "155AAdfi",
+            mas_createdon: new Date(),
+            mas_modifiedby: "155AAdfi",
+            mas_modifiedon: new Date(),
+            appFor: "web",
+          },
+        }),
+      }
+    )
+      .then((data) => {
+        setCurrentAttendance(data);
+        console.log(data);
+      })
+
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
     <>
       <Popup
+        modal
         trigger={
-          <div className="header1">
-            <Calendar
-              className="calendar1"
-              onChange={handleShow}
-              value={calendarDate}
-            />
+          // <button type="button" className={buttons}  disabled = {buttonsDisable}>
+          //     DEACTIVATE
+          // </button>
+
+          <div className="attendence-calendar-container">
+            <div className="attendence-calendar-header1">
+              <Calendar
+                className="attendence-calendar1"
+                onChange={handleShow}
+              />
+            </div>
           </div>
         }
+
+        // trigger={
+        //   <div className="header1">
+        //     <Calendar className='calendar1' onChange={handleShow} />
+        //   </div>
+        // } >
       >
-        <div className="attendance-container">
-          <div className="attendance-popup">
-            <div className="attendance-popup-inner">
-              {attendences.map((eachObj) => {
-                const changeImage = (event) => {
-                  setAbsentArray((prevArr) => {
-                    let filteredArray = prevArr;
-                    if (prevArr.includes(eachObj.mas_kidId)) {
-                      filteredArray = prevArr.filter(
-                        (each) => each !== eachObj.mas_kidId
-                      );
-                      return filteredArray;
-                    }
-                    return [...filteredArray, eachObj.mas_kidId];
-                  });
+        {(close) => (
+          <div className="attendance-popup-container ">
+            <div className="attendance-popup ">
+              <button
+                type="button"
+                className="attendence-close-button"
+                aria-label="Close"
+                onClick={close}
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <div className="attendance-popup-inner ">
+                {attendences.map((eachObj) => {
+                  const changeImage = (event) => {
+                    setAbsentArray((prevArr) => {
+                      let filteredArray = prevArr;
+                      if (prevArr.includes(eachObj.mas_kidId)) {
+                        filteredArray = prevArr.filter(
+                          (each) => each !== eachObj.mas_kidId
+                        );
+                        return filteredArray;
+                      }
+                      return [...filteredArray, eachObj.mas_kidId];
+                    });
 
-                  setCurrentAbsentArr(eachObj.mas_kidId);
-                };
+                    setCurrentAbsentArr(eachObj.mas_kidId);
+                  };
 
-                return (
-                  <li className="image-container">
-                    {absentArray.includes(eachObj.mas_kidId) ? (
-                      <img
-                        src="http://192.168.0.116:8080/css/images/kidImages/Absent_seat.png"
-                        onClick={changeImage}
-                      />
-                    ) : (
-                      <img
-                        src="http://192.168.0.116:8080/css/images/kidImages/Present_seat.png"
-                        onClick={changeImage}
-                      />
-                    )}
+                  return (
+                    <li className="attendence-image-container">
+                      {absentArray.includes(eachObj.mas_kidId) ? (
+                        <img
+                          src="http://192.168.0.116:8080/css/images/kidImages/Absent_seat.png"
+                          onClick={changeImage}
+                        />
+                      ) : (
+                        <img
+                          src="http://192.168.0.116:8080/css/images/kidImages/Present_seat.png"
+                          onClick={changeImage}
+                        />
+                      )}
 
-                    <p className="text-name">{eachObj.mas_kidId}</p>
-                  </li>
-                );
-              })}
+                      <p className="attendence-text-name">
+                        {eachObj.mas_kidId}
+                      </p>
+                    </li>
+                  );
+                })}
+              </div>
+              <div className="attendence-submit-button1">
+                <button
+                  className="attendence-submit-button"
+                  data-dismiss="modal"
+                  onClick={() => onSubmit(close())}
+                >
+                  Submit
+                </button>
+              </div>
             </div>
-            <button className="submit-button" onClick={() => onSubmit()}>
-              Submit
-            </button>
           </div>
-        </div>
+        )}
       </Popup>
 
-      <h1 className="festival-heading">Festive Holidays List</h1>
+      <div className="attendence-holidays-heading">
+        <h1 className="attendence-festival-heading">Festive Holidays List</h1>
 
-      <p className="festival-heading1">No Holidays in this Month</p>
+        <p className="attendence-festival-heading1">
+          No Holidays in this Month
+        </p>
+      </div>
     </>
   );
 };

@@ -17,9 +17,9 @@ const Screens = () => {
 
   return (
     <div id="screens" className="screens-bg-container">
-      <h1 className="about-us-text">SCREENS</h1>
+      <h1 className="screens-text">SCREENS</h1>
       <hr className="screens-hr-line" />
-      <p className="about-us-description">
+      <p className="screens-description">
         A simple yet ever so useful motivational guide and help application that
         we had developed. Indian Thoughts looks to refresh and rejuvenate the
         minds of its readers. Who are looking to take a break from their routine
@@ -30,17 +30,17 @@ const Screens = () => {
           <Carousel.Item interval={2000}>
             <div className="screens-img-container">
               <img
-                className="carousel-images"
+                className="screen-carousel-images"
                 src="http://192.168.0.116:8080/images/eventblack.png"
                 alt="event black"
               />
               <img
-                className="carousel-images"
+                className="screen-carousel-images"
                 src="http://192.168.0.116:8080/images/attendanceblack.png"
                 alt="attendance"
               />
               <img
-                className="carousel-images"
+                className="screen-carousel-images"
                 src="http://192.168.0.116:8080/images/diary1.png"
                 alt="diary1"
               />
@@ -49,17 +49,17 @@ const Screens = () => {
           <Carousel.Item interval={2000}>
             <div className="screens-img-container">
               <img
-                className="carousel-images"
+                className="screen-carousel-images"
                 src="http://192.168.0.116:8080/images/attendanceblack.png"
                 alt="event black"
               />
               <img
-                className="carousel-images"
+                className="screen-carousel-images"
                 src="http://192.168.0.116:8080/images/eventblack.png"
                 alt="attendance"
               />
               <img
-                className="carousel-images"
+                className="screen-carousel-images"
                 src="http://192.168.0.116:8080/images/attendanceblack.png"
                 alt="diary1"
               />

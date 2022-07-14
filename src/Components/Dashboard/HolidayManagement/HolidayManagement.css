@@ -1,0 +1,135 @@
+.holiday-move {
+  background-color: aqua;
+  border: solid 2px black;
+}
+
+.holiday-scroll-bg {
+  border: solid 2px black;
+  height: 25px;
+  width: 100%;
+  background-image: linear-gradient(
+    to right,
+    #539fe1 0%,
+    #73b1e7 24%,
+    #0a77d5 53%,
+    #539fe1 100%,
+    #87bcea 100%,
+    #539fe1 101%
+  );
+}
+
+.holiday-scroll-bg:hover {
+  background-color: #87bcea;
+}
+
+.holiday-bg-container {
+  background-color: rgb(243, 248, 254);
+  background-size: cover;
+  height: 100vh;
+}
+
+.holiday-head {
+  font-size: 17px;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 15px;
+}
+
+.holiday-bottom-head-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.holiday-bottom-head {
+  font-size: 15px;
+  font-weight: bold;
+  padding-left: 10px;
+  justify-content: flex-start;
+}
+
+@media screen and (min-width: 654) {
+  .holiday-bottom-head {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.holiday-span-para {
+  display: flex;
+  font-size: 15px;
+  font-weight: bold;
+  padding-right: 10px;
+  padding-top: 5px;
+  justify-content: flex-end;
+}
+
+.holiday-table-container {
+  background-color: white;
+  border: solid 1px rgb(200, 193, 193);
+  padding: 10px;
+  margin: 10px;
+}
+
+.holiday-tbe-container {
+  border: solid 1px rgb(200, 193, 193);
+  margin: 5px;
+  background-color: white;
+
+  padding: 5px;
+}
+
+@media screen and (min-width: 654) {
+  .holiday-tbe-container {
+    overflow-x: scroll;
+  }
+}
+@media screen and (min-width: 654) {
+  .holiday-table-container {
+    overflow-x: scroll;
+  }
+}
+.holiday-table-body {
+  background-color: rgb(243, 248, 254);
+}
+
+.holiday-table-head {
+  background-color: #0a77d5;
+}
+
+.holiday-span-holiday:hover {
+  background-image: linear-gradient(
+    to bottom,
+    #177ed7 0%,
+    #177ed7 100%
+  ) !important;
+}
+
+.holiday-pop-up-button {
+  background-image: linear-gradient(
+    to bottom,
+    #177ed7 0%,
+    #177ed7 100%
+  ) !important;
+}
+
+.holiday-management-table-head {
+  background-color: #3e94de;
+  font-size: 15px;
+}
+
+.holiday-management-table-heading-hover:hover {
+  background-color: #d6d7d8;
+  color: black;
+}
+
+.holiday-management-table-heading-hover {
+  color: white;
+  font-size: 15px;
+  font-weight: lighter;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.holiday-table-data-holiday {
+  border-top-style: none !important;
+}

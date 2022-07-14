@@ -14,7 +14,7 @@ const ExcelUploadButton = () => {
   return (
     <>
       <Button
-        className="excel-upload-button"
+        className="kidmarks-excel-upload-button"
         variant="primary"
         onClick={handleShow}
       >
@@ -22,7 +22,7 @@ const ExcelUploadButton = () => {
       </Button>
 
       <Modal
-        className="excel-upload-modal"
+        className="kidmarks-excel-upload-modal"
         show={excelUploadPopupShow}
         onHide={handleClose}
       >
@@ -30,14 +30,17 @@ const ExcelUploadButton = () => {
           <Modal.Title>Excel Upload</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p className="excel-upload-green-text">
+          <p className="kidmarks-excel-upload-green-text">
             Please Take Reference of Sample File Before Uploading Marks
           </p>
-          <button type="button" className="excel-upload-modal-sample-file-btn">
+          <button
+            type="button"
+            className="kidmarks-excel-upload-modal-sample-file-btn"
+          >
             {/* to acess public folder, to link or adress any file in public folder you dont need any path, direct
             file name will be addressed to public folder path */}
             <Link
-              className="excel-download-btn-link"
+              className="kidmarks-excel-download-btn-link"
               to="/markssheet.xlsx"
               target="blank"
               download
@@ -46,12 +49,18 @@ const ExcelUploadButton = () => {
             </Link>
           </button>
           <br />
-          <div className="choose-file-btn-text-container">
-            <input type="file" className="excel-upload-modal-choose-file-btn" />
+          <div className="kidmarks-choose-file-btn-text-container">
+            <input
+              type="file"
+              className="kidmarks-excel-upload-modal-choose-file-btn"
+            />
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button className="excel-upload-button" onClick={handleClose}>
+          <Button
+            className="kidmarks-excel-upload-button"
+            onClick={handleClose}
+          >
             Update Marks
           </Button>
         </Modal.Footer>

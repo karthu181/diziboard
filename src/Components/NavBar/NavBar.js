@@ -34,7 +34,6 @@ const NavBar = (props) => {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      {/* <hr classNameName="hr-line" /> */}
     </div>
   );
 };

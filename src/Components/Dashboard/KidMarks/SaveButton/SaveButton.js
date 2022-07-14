@@ -8,12 +8,7 @@ import "./SaveButton.css";
 const SaveButton = (props) => {
   const loggedInUserProfile = localStorage.getItem("diziUserProfile");
 
-  const {
-    addMarksArray,
-    disableSaveButton,
-    selectedExamType,
-    subMaxMarks,
-  } = props;
+  const { addMarksArray, disableSaveButton, selectedExamType } = props;
   const [saveModalshow, setSaveModalShow] = useState(false);
 
   let loginToken = Cookies.get("loginToken");

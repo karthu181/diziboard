@@ -177,7 +177,6 @@ const EventPopup = (props) => {
         >
           {(close) => {
             const onsaveEventHandler = () => {
-              close();
               eventName === ""
                 ? setInputRedBorder(true)
                 : setInputRedBorder(false);
@@ -383,9 +382,12 @@ const EventPopup = (props) => {
                         />
                       </div>
                     </div>
-                    <div className="event-add-event-column-container">
+                    <div className="event-add-event-column-container add-event-class-section-mobile">
                       <div className="add-event-width">
-                        <label className="lable-font-size-color" for="students">
+                        <label
+                          className="lable-font-size-color"
+                          htmlFor="students"
+                        >
                           Event To
                         </label>{" "}
                         <br />
@@ -425,9 +427,36 @@ const EventPopup = (props) => {
                       Cancel
                     </button>
                   </div>
+
+                  <div className="mobile-view-for-add-event">
+                    <div className="add-event-width">
+                      <label
+                        className="lable-font-size-color"
+                        htmlFor="students"
+                      >
+                        Event To
+                      </label>{" "}
+                      <br />
+                      <select
+                        name="students"
+                        id="students"
+                        className="drop-down-add-event"
+                        onChange={dropdownHandleEvent}
+                      >
+                        <option value="All">All</option>
+                        <option value="Class">Class</option>
+                        <option value="Section">Section</option>
+                      </select>
+                    </div>
+                    <div>{getDisplayEventTo()}</div>
+                    <div className="add-event-width">
+                      <input type="checkbox" />
+                      <label className="lable-font-size-color">Notify</label>
+                      {/* <label className="lable-font-size-color">Event</label> <br />
+                                    <input type='text' /> */}
+                    </div>
+                  </div>
                 </div>
-                {/* </div>
-                            </div>  */}
               </>
             );
           }}

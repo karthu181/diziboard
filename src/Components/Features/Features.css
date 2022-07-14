@@ -46,16 +46,16 @@
   color: #727272;
   font-size: 15px;
 }
-.iphone-black-container {
+.features-iphone-black-container {
   margin-left: 10px;
   margin-right: 10px;
   width: 30%;
 }
-.iphone-black-in-features {
+.features-iphone-black-in-features {
   width: 100%;
   margin-top: -25px;
 }
-.purchase-btn-des-container {
+.features-purchase-btn-des-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -65,18 +65,18 @@
   padding: 100px;
   padding-left: 150px;
 }
-.purchase-des-container {
+.features-purchase-des-container {
   text-align: left;
   color: #ffffff;
   width: 65%;
 }
-.purchase-btn-container {
+.features-purchase-btn-container {
   padding-left: 0px;
   width: 30%;
   text-align: left;
   margin-left: 50px;
 }
-.purchase-btn {
+.features-purchase-btn {
   padding-left: 28px;
   padding-right: 28px;
   height: 42px;

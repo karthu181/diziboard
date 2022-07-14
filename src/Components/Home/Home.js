@@ -27,7 +27,7 @@ const Home = () => {
   };
 
   return (
-    <div className="bg-container">
+    <div className="home-bg-container">
       <section id="home">
         <NavBar displayOrHide={display} />
         <div onMouseMove={onMouseMoveHandler}>
@@ -42,16 +42,16 @@ const Home = () => {
         </div>
         <div className="home-text-image-container">
           <div>
-            <h2 className="transform-text">
+            <h2 className="home-transform-text">
               TRANSFORM YOUR SCHOOL TO
               <br />
               DIZITAL WORLD
             </h2>
-            <div className="buttons-container">
-              <button className="download-button">DOWNLOAD</button>
-              <button className="take-a-tour-button">
+            <div className="home-buttons-container">
+              <button className="home-download-button">DOWNLOAD</button>
+              <button className="home-take-a-tour-button">
                 TAKE A TOUR
-                <span className="btn-tour">
+                <span className="home-btn-tour">
                   <FaAngleDown />
                 </span>
               </button>

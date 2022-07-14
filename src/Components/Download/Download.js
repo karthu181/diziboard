@@ -3,7 +3,7 @@ import "./Download.css";
 
 const Download = () => {
   return (
-    <section id="download" className="download-bg-container">
+    <section id="download" className="home-download-bg-container">
       <h1 className="about-us-text">DOWNLOAD NOW</h1>
       <hr className="about-us-hr-line" />
       <p className="about-us-description">
