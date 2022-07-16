@@ -3,13 +3,14 @@ import React from "react";
 import { useState } from "react";
 import { FaEnvelope } from "react-icons/fa";
 import { FaKey } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
-const Login = () => {
+const Login = (props) => {
+  const {history}=props
+
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  const [loginFailedMsg,setLoginFailedMsg]=useState()
 
   const onUserInputChange = (event) => {
     setUserName(event.target.value);
@@ -19,6 +20,16 @@ const Login = () => {
     setPassword(event.target.value);
   };
 
+  //onlogin success
+  const onLoginSuccess=(tokenObj)=>{
+    Cookies.set("loginToken", tokenObj.access_token, { expires: 1 });
+    getUserProfile(tokenObj.access_token);
+    history.replace("/dashboard");
+  }
+  //on login failure
+  const onLoginFailure=()=>{
+    setLoginFailedMsg("failed")
+  }
   //get userprofile only when access token is not undefined this is called from onclick let me in eventhandler
 
   const getUserProfile = async (accessToken) => {
@@ -102,9 +113,10 @@ const Login = () => {
 
       //if access token is success
       if (tokenObj.access_token !== undefined) {
-        Cookies.set("loginToken", tokenObj.access_token, { expires: 1 });
-        getUserProfile(tokenObj.access_token);
-        navigate("/dashboard");
+        onLoginSuccess(tokenObj)
+      }
+      else{
+        onLoginFailure()
       }
     } catch (e) {
       console.log(e);

@@ -11,6 +11,7 @@ import HolidayManagement from "./HolidayManagement/HolidayManagement";
 import KidApprovals from "./KidApprovals/KidApprovals";
 import KidMarks from "./KidMarks/KidMarks";
 import KidStatus from "./KidStatus/KidStatus";
+import ProtectedRouteForCt from "../RequiredAuthForCt/RequiredAuthForCt";
 import "./Dashboard.css";
 
 const Dashboard = () => {

@@ -7,6 +7,7 @@ import Login from "./Components/Login/Login";
 import Registration from "./Components/Registration/Registration";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import ResetPassword from "./Components/Reset Password/ResetPassword";
+import RequiredAuthForCt from "./Components/RequiredAuthForCt/RequiredAuthForCt";
 
 // import AboutMe from "./Components/Dashboard/AboutMe/AboutMe";
 // import Attendance from "./Components/Dashboard/Attendance/Attendance";
@@ -31,7 +32,20 @@ function App() {
           <Route path="/download" element={<Download />} />
           <Route path="/contact" element={<Contact />} /> */}
           <Route path="/registration" element={<Registration />} />
-          <Route path="/dashboard/*" element={<Dashboard />} />
+
+
+
+          {/* <Route path="/dashboard/*" element={
+          <RequiredAuthForCt redirectTo="/login">
+          <Dashboard />
+          </RequiredAuthForCt>} /> */}
+
+{/* note: since all links are in dashboard, keeping auth condition for dashboard is enough
+whatever links after dashboard, it all requires authorisation */}
+
+          <Route path="/dashboard/*" element={<Dashboard/>}/>
+
+
           <Route path="/resetPassword" element={<ResetPassword />} />
 
           {/* Here you need to give /* if you want to use descendant/nested routing */}
