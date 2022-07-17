@@ -1,36 +1,45 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import NavBar from "../NavBar/NavBar";
 import { FaAngleDown } from "react-icons/fa";
-
+import WOW from 'wowjs';
 import AboutUs from "../AboutUs/AboutUs";
 import Features from "../Features/Features";
 import Screens from "../Screens/Screens";
 import Download from "../Download/Download";
 import Contact from "../Contact/Contact";
+import Testimonials from "../Testimonials/Testimonials";
 import "animate.css";
 import "./Home.css";
 
 const Home = () => {
-  const [display, setDisplay] = useState("d-block");
-  // var navDisplayOrHideClassName = "display";
+ const [hideNavClass, setHideNavClass]=useState("navbar-top-0")
 
-  // const onMouseMoveHandler = () => {
-  //   navDisplayOrHideClassName = "hide";
-  // };
+  useEffect(() => {
+    new WOW.WOW({
+      live: false
+    }).init();
+  }, [])
 
-  const onMouseMoveHandler = () => {
-    setDisplay("d-block");
-    setTimeout(() => {
-      setDisplay("d-none");
-    }, 5000);
-  };
+
+const scrollFunction=()=>{
+  if(document.body.scrollTop>20 || document.documentElement.scrollTop>20){
+    setHideNavClass("navbar-top-0")
+  }else{
+    setHideNavClass("navbar-top-50")
+  }
+}
+
+
+  window.onscroll=()=>{
+    scrollFunction("navbar-top-50")
+  }
 
   return (
     <div className="home-bg-container">
       <section id="home">
-        <NavBar displayOrHide={display} />
-        <div onMouseMove={onMouseMoveHandler}>
+        <NavBar hideOrShow={hideNavClass}/>
+        <div>
           <div className="home-bg">
             <div>
               <img
@@ -48,8 +57,8 @@ const Home = () => {
               DIZITAL WORLD
             </h2>
             <div className="home-buttons-container">
-              <button className="home-download-button">DOWNLOAD</button>
-              <button className="home-take-a-tour-button">
+              <button className="home-download-button wow">DOWNLOAD</button>
+              <button className="home-take-a-tour-button wow">
                 TAKE A TOUR
                 <span className="home-btn-tour">
                   <FaAngleDown />
@@ -67,6 +76,9 @@ const Home = () => {
       </section>
       <section id="about">
         <AboutUs />
+      </section>
+      <section>
+      <Testimonials/>
       </section>
       <Features />
       <Screens />

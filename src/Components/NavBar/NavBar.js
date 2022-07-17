@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import { Nav, Navbar } from "react-bootstrap";
 
 const NavBar = (props) => {
-  const { displayOrHide } = props;
-
+  const { hideOrShow } = props;
+  console.log(hideOrShow)
   return (
-    <div className={`nav-container ${displayOrHide}`}>
+    <div className={`nav-container ${hideOrShow}`}>
       <Navbar collapseOnSelect expand="lg" bg="transparent" variant="light">
         <Navbar.Brand className="me-auto" href="#home">
           <img

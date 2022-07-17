@@ -1,7 +1,16 @@
-import "./Features.css";
+import { useEffect } from "react";
+import WOW from "wowjs";
 import React from "react";
+import "./Features.css";
 
 const Features = () => {
+
+  useEffect(() => {
+    new WOW.WOW({
+      live: false
+    }).init();
+  }, [])
+
   return (
     <section id="features" className="features-bg-container">
       <h1 className="features-heading">FEATURES</h1>
@@ -14,7 +23,7 @@ const Features = () => {
         available all the time.
       </p>
       <div className="features-row-container">
-        <div className="features-left-text-container">
+        <div className="features-left-text-container wow">
           <h1 className="features-subheadings text-end">LIVE BUS TRACKING</h1>
           <p className="features-sub-des text-end">
             Managing the school bus fleet and ensuring the safety of school
@@ -43,7 +52,7 @@ const Features = () => {
             className="features-iphone-black-in-features"
           />
         </div>
-        <div className="features-right-text-container">
+        <div className="features-right-text-container wow" >
           <h1 className="features-subheadings text-start">
             ONLINE ASSESSMENTS
           </h1>

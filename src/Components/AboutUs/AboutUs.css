@@ -15,6 +15,7 @@
   width: 4%;
   margin-left: 48%;
   margin-right: 48%;
+  border: 1px solid #129cf3;
 }
 .about-us-description {
   color: #333;
@@ -28,22 +29,27 @@
 .about-us-iphone-container {
   /* animated css, without animation-duration, animation wont work*/
   animation: fadeInLeft;
-  animation-duration: 2s; /* don't forget to set a duration! */
+  animation-fill-mode: both;
+  animation-duration: 1s;
+  /* don't forget to set a duration! */
   width: 100vw;
+  position: relative;
 }
 .about-us-iphone {
   width: 80%;
 }
 .about-us-why-chose-dizi-text-container {
-  animation: fadeInRight;
-  animation-duration: 2s;
 }
 .about-us-why-choose-dizi-text {
+  animation: fadeInRight;
+  animation-fill-mode: both;
+  animation-duration: 1s;
   font-weight: 700;
   font-size: 30px;
   line-height: 37px;
   text-align: left;
   margin-bottom: 20px;
+  position: relative;
 }
 .about-us-why-choose-us-img-text-container {
   display: flex;
@@ -52,12 +58,14 @@
 }
 .about-us-why-choose-us-text-container {
   animation: fadeInUp;
-  animation-duration: 0.5s;
-  animation-delay: 1s;
+  animation-fill-mode: both;
+  animation-duration: 1s;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
+  position: relative;
+
 }
 .about-us-dizital-subheadings {
   text-align: left;

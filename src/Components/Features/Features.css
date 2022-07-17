@@ -2,6 +2,7 @@
   background-color: #ffffff;
   padding-top: 20px;
   min-height: 100vh;
+  margin-top: 50px;
 }
 
 .features-row-container {
@@ -22,6 +23,7 @@
   width: 4%;
   margin-left: 48%;
   margin-right: 48%;
+  border: 1px solid #129cf3;
 }
 .features-description {
   color: #333;
@@ -31,20 +33,21 @@
   text-align: center;
   margin-top: 22px;
   margin-bottom: 100px;
-  margin-left: 17%;
-  margin-right: 17%;
-  padding: 30px;
+  padding-left: 17%;
+  padding-right: 17%;
 }
 .features-subheadings {
   text-align: left;
   color: #343434;
   font-size: 20px;
   font-weight: 700;
-  margin-top: 15px;
+  margin-top:45px !important;
+
 }
 .features-sub-des {
   color: #727272;
   font-size: 15px;
+  line-height: 20px;
 }
 .features-iphone-black-container {
   margin-left: 10px;
@@ -83,7 +86,19 @@
 }
 .features-left-text-container {
   width: 30%;
+  animation: fadeInLeft;
+  animation-fill-mode: both;
+  animation-duration: 1s;
+  animation-delay: .5s;
+
+/* to hide the element before animation starts you should use animation-fill-mode
+other wise before animation element appears, then animation starts, its not good */
 }
 .features-right-text-container {
   width: 30%;
+  animation: fadeInRight;
+  animation-fill-mode: both;
+  animation-delay: .5s;
+  animation-duration: 1s;
+
 }

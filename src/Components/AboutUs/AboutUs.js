@@ -1,10 +1,19 @@
 import React from "react";
 import { FaRegCalendarAlt, FaRegFlag } from "react-icons/fa";
 import { HiUserGroup } from "react-icons/hi";
+import { useEffect } from "react";
+import WOW from 'wowjs';
 import "animate.css";
 import "./AboutUs.css";
 
 const AboutUs = () => {
+
+  useEffect(() => {
+    new WOW.WOW({
+      live: false
+    }).init();
+  }, [])
+
   return (
     <div className="about-us-bg-container">
       <h1 className="about-us-text">ABOUT US</h1>
@@ -15,20 +24,20 @@ const AboutUs = () => {
       </p>
 
       <div className="about-us-why-choose-us-img-text-container">
-        <div className="about-us-iphone-container">
+        <div className="wow about-us-iphone-container">
           <img
-            className="about-us-iphone "
+            className="about-us-iphone"
             alt="iphone"
             src="http://192.168.0.116:8080/images/why%20iphone.png"
           />
         </div>
         <div>
           <div className="about-us-why-chose-dizi-text-container">
-            <h2 className="about-us-why-choose-dizi-text">
+            <h2 className="about-us-why-choose-dizi-text wow">
               WHY CHOOSE DIZI BOARD?
             </h2>
           </div>
-          <div className="about-us-why-choose-us-text-container">
+          <div className="about-us-why-choose-us-text-container wow" data-wow-delay="0.5s">
             <div className="about-us-why-choose-us-icons">
               <FaRegCalendarAlt />
             </div>
@@ -41,7 +50,7 @@ const AboutUs = () => {
               </p>
             </div>
           </div>
-          <div className="about-us-why-choose-us-text-container">
+          <div className="about-us-why-choose-us-text-container wow" data-wow-delay="0.7s">
             <div className="about-us-why-choose-us-icons">
               <HiUserGroup />
             </div>
@@ -55,7 +64,7 @@ const AboutUs = () => {
               </p>
             </div>
           </div>
-          <div className="about-us-why-choose-us-text-container">
+          <div className="about-us-why-choose-us-text-container wow" data-wow-delay="0.9s">
             <div className="about-us-why-choose-us-icons">
               <FaRegFlag />
             </div>
@@ -69,7 +78,7 @@ const AboutUs = () => {
               </p>
             </div>
           </div>
-          <div className="about-us-why-choose-us-text-container">
+          <div className="about-us-why-choose-us-text-container wow" data-wow-delay="1.1s">
             <div>
               <img
                 className="about-us-track-img"

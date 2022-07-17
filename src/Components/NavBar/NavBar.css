@@ -1,4 +1,12 @@
 .nav-container {
   border-bottom: 1px solid black;
   padding-right: 20px;
+  transition: 0.5s;
+
+}
+.navbar-top-0{
+ display: block;
+}
+.navbar-top-50{
+  display: hide;
 }

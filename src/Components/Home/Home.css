@@ -4,6 +4,8 @@
   min-height: 100vh;
   background-size: cover;
   background-attachment: fixed;
+  position: absolute;
+  
 }
 
 .home-heading {
@@ -32,11 +34,12 @@
   flex-direction: row;
   justify-content: flex-start;
   margin-top: 100px;
+ 
 }
 .home-download-button {
   animation-name: fadeInLeft;
   animation-duration: 1s;
-
+  position: relative;
   background-color: #129cf3;
   color: #fff;
   border-style: none;
@@ -70,7 +73,7 @@
 .home-take-a-tour-button {
   animation-name: fadeInRight;
   animation-duration: 2s;
-
+  position: relative;
   border-style: none;
   color: #a9adb0;
   margin-left: 20px;
@@ -84,3 +87,4 @@
 .home-display {
   display: block;
 }
+
