@@ -93,8 +93,11 @@
   width: 50px;
   border-radius: 50%;
   padding: 3px;
-  padding-left: 3px;
-  margin-right: 10px;
+  padding-left: 3.5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .diary-first-letter {
   background-color: rgb(0, 150, 224);
@@ -104,8 +107,12 @@
   text-align: center;
   padding-top: 5px;
   font-size: 24px;
-  text-align: center;
   color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  
 }
 .diary-compose-subhead {
   padding-bottom: 2px;

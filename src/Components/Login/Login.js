@@ -1,12 +1,13 @@
 import "./Login.css";
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaEnvelope } from "react-icons/fa";
 import { FaKey } from "react-icons/fa";
 import Cookies from "js-cookie";
 
 const Login = (props) => {
-  const {history}=props
+  const navigate = useNavigate();
 
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -24,7 +25,7 @@ const Login = (props) => {
   const onLoginSuccess=(tokenObj)=>{
     Cookies.set("loginToken", tokenObj.access_token, { expires: 1 });
     getUserProfile(tokenObj.access_token);
-    history.replace("/dashboard");
+    navigate("/dashboard", { replace: true })
   }
   //on login failure
   const onLoginFailure=()=>{
@@ -110,6 +111,7 @@ const Login = (props) => {
     try {
       const response = await fetch(url, options);
       const tokenObj = await response.json();
+      console.log(tokenObj)
 
       //if access token is success
       if (tokenObj.access_token !== undefined) {

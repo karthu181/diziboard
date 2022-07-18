@@ -18,9 +18,6 @@ import "./DashboardHome.css";
 highcharts3d(Highcharts);
 
 const DashboardHome = () => {
-  const loggedInUserProfile = JSON.parse(
-    localStorage.getItem("diziUserProfile")
-  );
 
   const [birthdaysObj, setBirthdaysObj] = useState({});
   const [sectionDataForDashboard, setSectionDataForDashboard] = useState({});
@@ -28,8 +25,9 @@ const DashboardHome = () => {
   const [holidaysData, setHolidaysData] = useState({});
   const loginToken = Cookies.get("loginToken");
 
+
   //getUserProfile from local storage
-  const diziUserProfile = JSON.parse(localStorage.getItem("diziUserProfile"));
+  const loggedInUserProfile = JSON.parse(localStorage.getItem("diziUserProfile"));
 
   //displaying right container
   const [rightContainerItemSelected, setRightContainerItemSelected] = useState(
@@ -46,20 +44,21 @@ const DashboardHome = () => {
   useEffect(() => {
     //get birthdays on page launch
     const getBirthdays = async () => {
+      const getBirthdaysUrl = "https://192.168.0.116:8243/mas_KidBirthday/1.0/getBirthDays"
+
+      const getBirthdaysQueryParams =
+        `?mas_SchoolUniqueId=${loggedInUserProfile.mas_schoolUniqueId}&Guid=xyz&GeoLocation=anonymous&RequestedFrom=x&RequestedOn=x&mas_class=${loggedInUserProfile.mas_class}&mas_section=${loggedInUserProfile.mas_section}`;
+
+      let options = {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${loginToken}`,
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      };
       try {
-        const getBirthdaysUrl =
-          "https://192.168.0.116:8243/mas_KidBirthday/1.0/getBirthDays?mas_SchoolUniqueId=5911355945&Guid=xyz&GeoLocation=anonymous&RequestedFrom=x&RequestedOn=x&mas_class=SECOND%20CLASS&mas_section=B";
-
-        let options = {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${loginToken}`,
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-        };
-
-        let response = await fetch(getBirthdaysUrl, options);
+        let response = await fetch(getBirthdaysUrl + getBirthdaysQueryParams, options);
         let birthdaysResponse = await response.json();
         setBirthdaysObj(birthdaysResponse.body);
       } catch (error) {
@@ -71,19 +70,22 @@ const DashboardHome = () => {
     //get section data for dashboard
 
     const getSectionDataForDashboard = async () => {
-      try {
-        const getSectionDataForDashboardUrl =
-          "https://192.168.0.116:8243/mas_sectiondata4dashboard/v1/mas_getsectiondata4dashboard?mas_class=SECOND%20CLASS&mas_section=B&mas_emailId=ct2%40gmail.com&mas_SchoolUniqueId=5911355945&mas_Date=22-06-23&mas_guid=4266f57b-063a-a6b7-d837-c3674d90d33d&mas_requestedFrom=xyz&mas_requestedOn=xyz&mas_geoLocation=xyz";
-        let options = {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${loginToken}`,
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-        };
+      const getSectionDataForDashboardUrl = `https://192.168.0.116:8243/mas_sectiondata4dashboard/v1/mas_getsectiondata4dashboard`
 
-        let response = await fetch(getSectionDataForDashboardUrl, options);
+      const getSectionDataForDashboardQueryParams =
+        `?mas_class=${loggedInUserProfile.mas_class}&mas_section=${loggedInUserProfile.mas_section}&mas_emailId=${loggedInUserProfile.mas_emailId}&mas_SchoolUniqueId=${loggedInUserProfile.mas_schoolUniqueId}&mas_Date=22-06-23&mas_guid=4266f57b-063a-a6b7-d837-c3674d90d33d&mas_requestedFrom=xyz&mas_requestedOn=xyz&mas_geoLocation=xyz`;
+
+
+      let options = {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${loginToken}`,
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      };
+      try {
+        let response = await fetch(getSectionDataForDashboardUrl + getSectionDataForDashboardQueryParams, options);
         let sectionDataResponse = await response.json();
         // console.log(sectionDataResponse);
         setSectionDataForDashboard(sectionDataResponse.body);
@@ -96,19 +98,20 @@ const DashboardHome = () => {
     //get events
 
     const getClassSectionEvents = async () => {
-      try {
-        const getClassSectionEventsUrl =
-          "https://192.168.0.116:8243/mas_classsectionevents/v1/mas_getclasssectionevents?mas_guid=a&mas_requestedFrom=b&mas_requestedOn=b&mas_geoLocation=b&mas_schoolUniqueId=5911355945&mas_class=SECOND%20CLASS&mas_section=B&mas_userRef=b";
-        let options = {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${loginToken}`,
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-        };
 
-        let response = await fetch(getClassSectionEventsUrl, options);
+      const getClassSectionEventsUrl = `https://192.168.0.116:8243/mas_classsectionevents/v1/mas_getclasssectionevents`
+      const getClassSectionEventsQueryParams =
+        `?mas_guid=a&mas_requestedFrom=b&mas_requestedOn=b&mas_geoLocation=b&mas_schoolUniqueId=${loggedInUserProfile.mas_schoolUniqueId}&mas_class=${loggedInUserProfile.mas_class}&mas_section=${loggedInUserProfile.mas_section}&mas_userRef=b`;
+      let options = {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${loginToken}`,
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      };
+      try {
+        let response = await fetch(getClassSectionEventsUrl + getClassSectionEventsQueryParams, options);
         let classSectionEvents = await response.json();
         setClassSectionEvents(classSectionEvents.body);
       } catch (error) {
@@ -161,7 +164,7 @@ const DashboardHome = () => {
   //displaying right container based on click of dashboard items
 
   //easeOutBounce is an animation is used in piechart
-  var easeOutBounce = function(pos) {
+  var easeOutBounce = function (pos) {
     if (pos < 1 / 2.75) {
       return 7.5625 * pos * pos;
     }
@@ -175,6 +178,20 @@ const DashboardHome = () => {
   };
 
   Math.easeOutBounce = easeOutBounce;
+
+//present and absent kids data from sectionDataForDashboard to display
+  //sectionDataForDashboard is already stored in state, so no need to store present/absent data in state again
+  //this present/absent data is sub data of sectionDataForDashboard
+  let presentKidsData =
+    sectionDataForDashboard.presentkids === "NA"
+      ? sectionDataForDashboard.totalkids
+      : 0;
+
+  let absentkidsData =
+    sectionDataForDashboard.absentkids === "NA"
+      ? 0
+      : sectionDataForDashboard.absentkids;
+
 
   //maintaining chartOptions in state to render chat again on small change in chartOptions
   const [threeD, setThreeD] = useState(true);
@@ -236,8 +253,8 @@ const DashboardHome = () => {
         type: "pie",
         name: "Browser share",
         data: [
-          ["Kids Present", 45.0],
-          ["Kids Absent", 26.8],
+          ["Kids Present", presentKidsData],
+          ["Kids Absent", absentkidsData],
         ],
       },
     ],
@@ -251,18 +268,7 @@ const DashboardHome = () => {
     setThreeD(true);
   };
 
-  //present and absent kids data from sectionDataForDashboard to display
-  //sectionDataForDashboard is already stored in state, so no need to store present/absent data in state again
-  //this present/absent data is sub data of sectionDataForDashboard
-  let presentKidsData =
-    sectionDataForDashboard.presentkids === "NA"
-      ? sectionDataForDashboard.totalkids
-      : 0;
-
-  let absentkidsData =
-    sectionDataForDashboard.absentkids === "NA"
-      ? 0
-      : sectionDataForDashboard.absentkids;
+  
 
   //displaying right container fn
   const displayRightContainer = () => {
@@ -294,8 +300,8 @@ const DashboardHome = () => {
                   loader={<div></div>}
                   data={[
                     ["total", "value"],
-                    ["presint", 10],
-                    ["absent", 5],
+                    ["presint", presentKidsData],
+                    ["absent", absentkidsData],
                   ]}
                   options={{
                     title: "Exam Performance",
