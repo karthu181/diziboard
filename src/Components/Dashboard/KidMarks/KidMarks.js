@@ -14,7 +14,7 @@ const KidMarks = () => {
   const loggedInUserProfile = JSON.parse(
     localStorage.getItem("diziUserProfile")
   );
-  console.log(loggedInUserProfile.mas_userRef);
+  console.log(loggedInUserProfile);
 
   const [subMaxMarks, setSubMaxMarks] = useState();
   const [schoolExamTypes, setSchoolExamTypes] = useState([]);
@@ -123,9 +123,11 @@ const KidMarks = () => {
       try {
         //dont give query parameters as hardcode (in string static) add params and in variables
         //params must be dynamic, that varibale might change==> parameters might change
-        let getClasskidsListUrl =
-          "https://192.168.0.116:8243/mas_getclasskidlist/v1/mas_getclasskidlist?mas_SchoolUniqueId=5911355945&mas_Class=SECOND%20CLASS&mas_Section=B&mas_guid=xyz&mas_geoLocation=xyz&mas_requestedFrom=xyz&mas_requestedOn=anonymous";
-        let options = {
+        const getClasskidsListUrl =
+          `https://192.168.0.116:8243/mas_getclasskidlist/v1/mas_getclasskidlist`
+        const getClasskidsListQueryParams=`?mas_SchoolUniqueId=${loggedInUserProfile.mas_SchoolUniqueId}&mas_Class=${loggedInUserProfile.mas_class}&mas_Section=${loggedInUserProfile.mas_section}&mas_guid=xyz&mas_geoLocation=xyz&mas_requestedFrom=xyz&mas_requestedOn=anonymous`
+        
+          let options = {
           method: "GET",
           headers: {
             Authorization: `Bearer ${loginToken}`,
@@ -133,7 +135,7 @@ const KidMarks = () => {
             "Content-Type": "application/json",
           },
         };
-        let response = await fetch(getClasskidsListUrl, options);
+        let response = await fetch(getClasskidsListUrl+getClasskidsListQueryParams, options);
         let classKidsListData = await response.json();
         // setSchoolExamTypes(classKidsListData);
         setClassKidsList(classKidsListData.body);
@@ -149,9 +151,9 @@ const KidMarks = () => {
       try {
         //dont give query parameters as hardcode (in string static) add params and in variables
         //params must be dynamic, that varibale might change==> parameters might change
-        let getSchoolSubjectsUrl =
-          "http://192.168.0.116:8280/mas_get_schoolsubjects/1.0/getexamtype?mas_SchoolUniqueId=5911355945&Guid=k&GeoLocation=kjkj&RequestedFrom=kj&RequestedOn=k";
-
+        const getSchoolSubjectsUrl =
+          `http://192.168.0.116:8280/mas_get_schoolsubjects/1.0/getexamtype`;
+        const getSchoolExamTypesQueryParams=`?mas_SchoolUniqueId=${loggedInUserProfile.mas_schoolUniqueId}&Guid=k&GeoLocation=kjkj&RequestedFrom=kj&RequestedOn=k`
         let options = {
           method: "GET",
           headers: {
@@ -160,7 +162,7 @@ const KidMarks = () => {
             "Content-Type": "application/json",
           },
         };
-        let response = await fetch(getSchoolSubjectsUrl, options);
+        let response = await fetch(getSchoolSubjectsUrl+getSchoolExamTypesQueryParams, options);
         let schoolSubjectsData = await response.json();
         // setSchoolExamTypes(classKidsListData);
         console.log(schoolSubjectsData.body.common);

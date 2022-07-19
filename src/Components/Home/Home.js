@@ -66,8 +66,9 @@ const scrollFunction=()=>{
               </button>
             </div>
           </div>
-          <div>
+          <div className="home-iphone-black-container">
             <img
+            className="home-iphone-black-1"
               src="http://192.168.0.116:8080/images/iphone-black.png"
               alt="iphone-black"
             />

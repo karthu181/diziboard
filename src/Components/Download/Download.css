@@ -3,3 +3,126 @@
   padding: 30px;
   padding-top: 20px !important;
 }
+.download-text {
+  text-align: center;
+  color: #333;
+  font-size: 30px;
+  font-weight: 400;
+}
+.download-hr-line {
+  width: 4%;
+  margin-left: 48%;
+  margin-right: 48%;
+  border: 1px solid #129cf3;
+}
+.download-description {
+  color: #333;
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 300;
+  text-align: center;
+  margin-top: 22px;
+  margin-bottom: 65px;
+  height: 100%;
+  padding-left: 14%;
+  padding-right: 14%;
+}
+.download-3-img{
+  width: 58%;
+  animation: fadeInUp;
+  animation-duration: 1s;
+}
+.available-on {   
+  background-color: #1a1a1a;
+  margin-top: -8px;
+  position: relative;
+}
+.available-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 75px;
+}
+.available-title h2 {
+  color: #fff;
+  font-size: 30px;
+}
+.available-title p {
+  color: #B5B5B5;
+}
+.available-on-item {
+  text-align: center;
+  border-left: 1px solid #0F1217;
+  min-height: 230px;
+  padding-bottom: 15px;
+  position: relative;
+  transition: all 1s;
+  -moz-transition: all 1s;
+  -o-transition: all 1s;
+  -webkit-transition: all 1s;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.available-on-item:hover {
+  background-color: #121212;
+}
+
+.available-on-item-icon{
+  color: #129CF3;
+  text-align: center;
+  opacity: 1;
+  font-size: 40px;
+  transition: all 1s;
+  -moz-transition: all 1s;
+  -o-transition: all 1s;
+  -webkit-transition: all 1s;
+}
+
+.available-on-item:hover  .available-on-item-icon{
+  opacity: 0;
+}
+.available-on-item:hover .available-on-inner{
+  opacity: 1 !important;
+}
+.available-on-inner {
+  position: absolute;
+  bottom: 93px;
+  width: 100%;
+  opacity: 0;
+   transition: all 1s;
+  -moz-transition: all 1s;
+  -o-transition: all 1s;
+  -webkit-transition: all 1s;
+}
+.available-on-inner h2 {
+  text-align: center;
+  font-weight:  300;
+  color: #D7DADB;
+  font-size: 16px;
+}
+
+.available-on-item:hover div.available-on-inner {
+  opacity: 1;
+}
+.available-no-padding {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.available-on-des{
+  width: 50%;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.available-on-ios{
+  width: 25%;
+}
+.available-on-android{
+  width: 25%;
+}

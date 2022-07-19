@@ -1,8 +1,17 @@
 import React from "react";
+import { useEffect } from "react";
 import { Carousel } from "react-bootstrap";
+import WOW from 'wowjs';
 import "./Screens.css";
 
 const Screens = () => {
+
+  useEffect(() => {
+    new WOW.WOW({
+      live: false
+    }).init();
+  }, [])
+
   // const [count, setCount] = useState(500);
 
   // const intervalId = setInterval(function() {
@@ -66,9 +75,6 @@ const Screens = () => {
             </div>
           </Carousel.Item>
         </Carousel>
-      </div>
-      <div>
-        <h1>1</h1>
       </div>
     </div>
   );

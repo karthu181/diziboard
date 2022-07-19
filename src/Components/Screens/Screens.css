@@ -2,7 +2,7 @@
   min-height: 100vh;
   background-color: #ffffff;
   padding: 30px;
-  padding-top: 20px !important;
+  padding-top: 120px !important;
 }
 .screens-hr-line {
   width: 4%;
@@ -16,21 +16,21 @@
 .screen-carousel-images {
   height: 550px;
 }
-.screen-carousel-indicators {
+.screens-carousel-container .carousel-indicators {
   bottom: -50px;
 }
-.screen-carousel-indicators button {
+.screens-carousel-container .carousel-indicators button {
   width: 0.5rem !important;
   height: 0.5rem !important;
   border-radius: 50%;
   border: 1px solid blue !important; /* use !important otherwise this styles wont work in react bootstrap*/
 }
 
-.screen-carousel-indicators button:not(:first-child) {
+.screens-carousel-container .carousel-indicators button:not(:first-child) {
   margin-left: 0.5rem;
 }
 
-.screen-carousel-indicators .active {
+.screens-carousel-container .carousel-indicators .active {
   background-color: blue;
 }
 /* use bootstrap class names to change css styles for react bootstrap styles  */
@@ -55,4 +55,7 @@
   text-align: center;
   margin-top: 22px;
   margin-bottom: 100px;
+  height: 100%;
+  padding-left: 14%;
+  padding-right: 14%;
 }

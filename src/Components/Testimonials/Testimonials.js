@@ -6,11 +6,11 @@ const Testimonials = () => {
     return (
 
         <section className="testimonials-bg-container">
-            <div className="testimonials-inner-container">
+            <div className="testimonials-carousel-container">
                 <Carousel controls={false}>
                     <Carousel.Item interval={2000}>
-                        <div className="item active text-center">
-                            <img src="images/image.png" alt="testimonial" className="testimonials-img center-block" />
+                        <div className="testimonials-carousel-item   wow active text-center">
+                            <img src="http://192.168.0.116:8080/images/image.png" alt="testimonial" className="testimonials-img center-block" />
                             <div className="testimonial-caption">
                                 <h2>Sagan</h2>
                                 <h4><span> Vidya Bharathi Techno School </span>Principal</h4>
@@ -19,8 +19,8 @@ const Testimonials = () => {
                         </div>
                     </Carousel.Item>
                     <Carousel.Item interval={2000}>
-                        <div className="item text-center">
-                            <img src="images/image.png" alt="testimonial" className="testimonials-img center-block" />
+                        <div className="text-center">
+                            <img src="http://192.168.0.116:8080/images/image.png" alt="testimonial" className="testimonials-img center-block" />
                             <div className="testimonial-caption">
                                 <h2>Shivaranjan</h2>
                                 <h4><span> Vikas Techno School </span>Principal</h4>
@@ -29,8 +29,8 @@ const Testimonials = () => {
                         </div>
                     </Carousel.Item>
                     <Carousel.Item interval={2000}>
-                        <div className="item text-center">
-                            <img src="images/image.png" alt="testimonial" className="testimonials-img center-block" />
+                        <div className="text-center">
+                            <img src="http://192.168.0.116:8080/images/image.png" alt="testimonial" className="testimonials-img center-block" />
                             <div className="testimonial-caption">
                                 <h2>Lasya</h2>
                                 <h4><span> Bharathiya Vidyalayam </span>Principal</h4>

@@ -1,7 +1,7 @@
 .home-bg-container {
   background-image: url("http://192.168.0.116:8080/images/shutterstock_246299713.jpg");
   width: 100%;
-  min-height: 100vh;
+  height: 200vh;
   background-size: cover;
   background-attachment: fixed;
   position: absolute;
@@ -38,6 +38,7 @@
 }
 .home-download-button {
   animation-name: fadeInLeft;
+  font-weight: 400;
   animation-duration: 1s;
   position: relative;
   background-color: #129cf3;
@@ -69,16 +70,17 @@
   line-height: 45px;
   padding-top: 30px;
   text-align: left;
+  font-family: 'Raleway', sans-serif;
 }
 .home-take-a-tour-button {
   animation-name: fadeInRight;
+  font-size: 19px;
   animation-duration: 2s;
   position: relative;
   border-style: none;
   color: #a9adb0;
-  margin-left: 20px;
-  font-size: 22px;
-  font-weight: 400;
+  margin-left: 25px;
+  font-weight: 300;
   background: transparent;
 }
 .home-hide {
@@ -87,4 +89,11 @@
 .home-display {
   display: block;
 }
-
+.home-iphone-black-container{
+  width: 25%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.home-iphone-black-1{
+  width: 90%;
+}

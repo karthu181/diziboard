@@ -1,7 +1,7 @@
 .event-bg-container {
   background-color: rgb(243, 248, 254);
   background-size: cover;
-  height: 100vh;
+  height: 100%;
 }
 
 @media screen and (min-width: 768px) {

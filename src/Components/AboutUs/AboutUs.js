@@ -87,7 +87,7 @@ const AboutUs = () => {
               />
             </div>
             <div>
-              <h3 className="about-us-dizital-subheadings dizital-subheadings-track">
+              <h3 className="about-us-dizital-subheadings about-us-dizital-subheadings-track">
                 DIZITAL TRACKING
               </h3>
               <p className="about-us-dizital-sub-des">
