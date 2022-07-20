@@ -42,6 +42,8 @@ const Diary = () => {
 
   const diaryAllkidsCheckboxHandler = (event) => {
     setAllKidsChecked(!allKidsChecked);
+    setDisplayKidsListDropdown(false);
+
   };
 
   const [notificationPosted, setNotificationPosted] = useState(false);
@@ -59,6 +61,7 @@ const Diary = () => {
   //send message button handler
   const newMessageSendBtnHandler = () => {
     //post notification or message sending message to api
+    setDisplayKidsListDropdown(false)
     const postNotification = async () => {
       try {
         //dont give query parameters as hardcode (in string static) add params and in variables
@@ -241,6 +244,7 @@ const Diary = () => {
     setSubject("");
     setMessage("");
     setSelectedKidsArr([]);
+    setDisplayKidsListDropdown(false)
   };
 
   //search input kids list handler in dropdown
@@ -277,7 +281,7 @@ const Diary = () => {
               <div>
                 {/* if all kids checked=> no dropdown input, else show input dropdown */}
                 {!allKidsChecked ? (
-                  <div
+                  <ul
                     className="diary-selectedKidsList-container diary-compose-inputbox"
                     placeholder="Select Kid Name"
                     id="examName"
@@ -301,19 +305,19 @@ const Diary = () => {
                         });
                       };
                       return (
-                        <div>
+                        <li className="diary-selectected-kid-each">
                           <p>
                             {fullNameOfKid}
                             <span>
-                              <button onClick={deleteSelectedKidHandler}>
+                              <button className="diary-selected-kid-each-x-btn" onClick={deleteSelectedKidHandler}>
                                 x
                               </button>
                             </span>
                           </p>
-                        </div>
+                        </li>
                       );
                     })}
-                  </div>
+                  </ul>
                 ) : null}
                 {displayKidsListDropdown ? (
                   <div className="diary-kidslist-dropdown-search-container">
@@ -370,14 +374,18 @@ const Diary = () => {
                 ) : null}
               </div>
               <div className="diary-allkids-checkbox-container">
+                <div>
                 <input
                   type="checkbox"
                   id="allkids"
                   onChange={diaryAllkidsCheckboxHandler}
                 />
+                </div>
+                <div>
                 <label htmlFor="allkids" className="diary-input-allkids-label">
                   All Kids
                 </label>
+                </div>
               </div>
             </div>
             <label className="diary-sub-sub-headings">Subject:</label>

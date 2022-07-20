@@ -98,6 +98,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-right: 6px;
 }
 .diary-first-letter {
   background-color: rgb(0, 150, 224);
@@ -138,8 +139,9 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
+  
 }
 .diary-allkids-checkbox-container {
   display: flex;
@@ -227,6 +229,8 @@
 .diary-selectedKidsList-container {
   display: flex;
   cursor: pointer;
+  list-style-type: none;
+  padding-left: 0px !important;
 }
 .diary-kidslist-dropdown-search-container {
   position: absolute;
@@ -241,7 +245,7 @@
   overflow-y: scroll;
 }
 .diary-eachkid-name-in-dropdown {
-  margin-top: 4px;
+  margin-top: -6px;
   margin-bottom: 0px;
   cursor: pointer;
 }
@@ -251,4 +255,18 @@
   outline: none;
   margin-top: 5px;
   margin-bottom: 8px;
+}
+.diary-selectected-kid-each{
+  border: 1px solid rgb(196, 206, 215);
+  margin: 5px;
+  margin-right: 0px!important;
+  padding: 3px;
+  padding-left: 5px;
+  border-radius: 2.5px;
+}
+.diary-selected-kid-each-x-btn{
+  border: none;
+  background-color: transparent;
+  color: #209fc8;
+  font-weight: 600;
 }

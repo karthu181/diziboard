@@ -79,7 +79,7 @@ const Features = () => {
           <img
             alt="iphone-black"
             src="http://192.168.0.116:8080/images/iphone-black.png"
-            className="features-iphone-black"
+            className="features-iphone-black wow"
           />
         </div>
         <div className="features-right-text-container wow" >

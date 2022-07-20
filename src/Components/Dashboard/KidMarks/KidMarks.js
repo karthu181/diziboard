@@ -16,7 +16,7 @@ const KidMarks = () => {
   );
   console.log(loggedInUserProfile);
 
-  const [subMaxMarks, setSubMaxMarks] = useState();
+  const [subMaxMarks, setSubMaxMarks] = useState(0);
   const [schoolExamTypes, setSchoolExamTypes] = useState([]);
   const [selectedExamType, setSelectedExamType] = useState();
 
@@ -125,8 +125,8 @@ const KidMarks = () => {
         //params must be dynamic, that varibale might change==> parameters might change
         const getClasskidsListUrl =
           `https://192.168.0.116:8243/mas_getclasskidlist/v1/mas_getclasskidlist`
-        const getClasskidsListQueryParams=`?mas_SchoolUniqueId=${loggedInUserProfile.mas_SchoolUniqueId}&mas_Class=${loggedInUserProfile.mas_class}&mas_Section=${loggedInUserProfile.mas_section}&mas_guid=xyz&mas_geoLocation=xyz&mas_requestedFrom=xyz&mas_requestedOn=anonymous`
-        
+        const getClasskidsListQueryParams=`?mas_SchoolUniqueId=${loggedInUserProfile.mas_schoolUniqueId}&mas_Class=${loggedInUserProfile.mas_class}&mas_Section=${loggedInUserProfile.mas_section}&mas_guid=xyz&mas_geoLocation=xyz&mas_requestedFrom=xyz&mas_requestedOn=anonymous`
+        console.log(getClasskidsListUrl+getClasskidsListQueryParams)
           let options = {
           method: "GET",
           headers: {
@@ -139,6 +139,7 @@ const KidMarks = () => {
         let classKidsListData = await response.json();
         // setSchoolExamTypes(classKidsListData);
         setClassKidsList(classKidsListData.body);
+        console.log(classKidsListData)
       } catch (e) {
         console.log(e);
       }
@@ -490,7 +491,7 @@ const KidMarks = () => {
                 {addMarksArray.map((eachMarksObj) => (
                   <tr>
                     <td scope="row" className="kidmarks-table-body-each-col">
-                      {eachMarksObj.selectedKidId}
+                      {parseInt(eachMarksObj.selectedKidId)}
                     </td>
                     <td className="kidmarks-table-body-each-col">
                       SECOND CLASS
@@ -521,17 +522,10 @@ const KidMarks = () => {
                       {eachMarksObj.addSocial}
                     </td>
                     <td className="kidmarks-table-body-each-col">
-                      {parseInt(eachMarksObj.addHindi) +
-                        parseInt(eachMarksObj.addLabSkills) +
-                        parseInt(eachMarksObj.addIt) +
-                        parseInt(eachMarksObj.addEnglish) +
-                        parseInt(eachMarksObj.addTelugu) +
-                        parseInt(eachMarksObj.addMaths) +
-                        parseInt(eachMarksObj.addScience) +
-                        parseInt(eachMarksObj.addSocial)}
+                      {eachMarksObj.addTotal}
                     </td>
                     <td className="kidmarks-table-body-each-col">
-                      {eachMarksObj.addPercentage}
+                      {`${eachMarksObj.addPercentage} %`}
                     </td>
                   </tr>
                 ))}

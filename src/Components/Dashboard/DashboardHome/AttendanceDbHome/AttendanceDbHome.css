@@ -33,25 +33,30 @@
   align-items: center;
 }
 
-.dbhome-day-description {
-  color: white;
+.dbhome-attendance-num {
+  box-sizing: border-box;
+  color: #ffffff;
   font-size: 15px;
   cursor: pointer;
   background-color: #0572cd;
   animation-duration: 0.5s;
   border-radius: 50%;
-  height: 34px;
-  width: 34px;
+  height: 40px;
+  width: 40px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  font-weight: 700;
 }
-.dbhome-day-description-green {
+.dbhome-attendance-num-green {
   background-color: rgb(118, 180, 23);
+  color: black !important;
 }
-.dbhome-day-description-red {
+.dbhome-attendance-num-red {
   background-color: rgb(255, 0, 0);
+  color: black !important;
 }
 
 .dbhome-attendance-bottom-description {

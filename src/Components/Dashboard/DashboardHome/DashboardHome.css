@@ -198,3 +198,16 @@
 }
 
 /* highcharts classnames ends here */
+.dbhome-piechart-button{
+  border: 0.5px solid rgb(196, 206, 215);
+  background-color: #e4e8ea ;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  width: 45px;
+  height: 32px;
+}
+.active-d{
+background-color:#0572ce ;
+color: #ffffff;
+}

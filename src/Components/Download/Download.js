@@ -37,13 +37,13 @@ const AvailableOn = () => {
   {/* available on section */ }
   return (
     <section className="available-on d-flex flex-row" >
-      <div className="available-on-des wow bounceInRight" data-wow-duration="1s">
+      <div className="available-on-des wow" data-wow-duration="1s">
         <div className="available-title" >
           <h2>Available On </h2>
           <p>Dizi Board mobile applications are available for ios and android platform.<br /> Download it today!</p>
         </div>
       </div>
-      <div className="available-on-ios">
+      <div className="available-on-ios wow">
         <a href="#" >
           <div className="available-no-padding">
             <div className="available-on-item">
@@ -55,7 +55,7 @@ const AvailableOn = () => {
           </div>
         </a>
       </div>
-      <div className="available-on-android">
+      <div className="available-on-android wow">
         <a href="#">
           <div className="available-no-padding">
             <div className="available-on-item">

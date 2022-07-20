@@ -8,7 +8,6 @@ import KidApprovalsDbHome from "./KidApprovalsDbHome/KidApprovalsDbHome";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { v4 as uuidv4 } from "uuid";
-import Chart from "react-google-charts";
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 import highcharts3d from "highcharts/highcharts-3d";
@@ -40,6 +39,25 @@ const DashboardHome = () => {
   };
 
   //displaying right container till here
+
+  //get current date and time
+  const currentDateAndTime = () => {
+    const dateObj = new Date();
+    const monthReq = dateObj.getMonth() + 1 > 9 ? dateObj.getMonth() : "0" + (dateObj.getMonth() + 1)
+    const dateReq = dateObj.getDate() > 9 ? dateObj.getDate() : "0" + dateObj.getDate()
+    const currentDateTime = `${dateObj.getFullYear()}-${monthReq}-${dateObj.getDate()} ${dateObj.getHours()}:${dateObj.getMinutes()}:${dateObj.getSeconds()
+      }`;
+    return currentDateTime;
+  };
+
+
+  //get DateOnly form date time
+  const getDateOnly = () => {
+    const dateTime = currentDateAndTime()
+    const dateOnly = dateTime.split(" ")[0]
+    return dateOnly
+  }
+
 
   useEffect(() => {
     //get birthdays on page launch
@@ -73,8 +91,9 @@ const DashboardHome = () => {
       const getSectionDataForDashboardUrl = `https://192.168.0.116:8243/mas_sectiondata4dashboard/v1/mas_getsectiondata4dashboard`
 
       const getSectionDataForDashboardQueryParams =
-        `?mas_class=${loggedInUserProfile.mas_class}&mas_section=${loggedInUserProfile.mas_section}&mas_emailId=${loggedInUserProfile.mas_emailId}&mas_SchoolUniqueId=${loggedInUserProfile.mas_schoolUniqueId}&mas_Date=22-06-23&mas_guid=4266f57b-063a-a6b7-d837-c3674d90d33d&mas_requestedFrom=xyz&mas_requestedOn=xyz&mas_geoLocation=xyz`;
+        `?mas_class=${loggedInUserProfile.mas_class}&mas_section=${loggedInUserProfile.mas_section}&mas_emailId=${loggedInUserProfile.mas_emailId}&mas_SchoolUniqueId=${loggedInUserProfile.mas_schoolUniqueId}&mas_Date=${getDateOnly()}&mas_guid=4266f57b-063a-a6b7-d837-c3674d90d33d&mas_requestedFrom=xyz&mas_requestedOn=xyz&mas_geoLocation=xyz`;
 
+      console.log(getSectionDataForDashboardUrl + getSectionDataForDashboardQueryParams)
 
       let options = {
         method: "GET",
@@ -87,7 +106,7 @@ const DashboardHome = () => {
       try {
         let response = await fetch(getSectionDataForDashboardUrl + getSectionDataForDashboardQueryParams, options);
         let sectionDataResponse = await response.json();
-        // console.log(sectionDataResponse);
+        console.log(sectionDataResponse)
         setSectionDataForDashboard(sectionDataResponse.body);
       } catch (error) {
         console.log(error);
@@ -179,23 +198,16 @@ const DashboardHome = () => {
 
   Math.easeOutBounce = easeOutBounce;
 
-//present and absent kids data from sectionDataForDashboard to display
+  //present and absent kids data from sectionDataForDashboard to display
   //sectionDataForDashboard is already stored in state, so no need to store present/absent data in state again
   //this present/absent data is sub data of sectionDataForDashboard
-  let presentKidsData =
-    sectionDataForDashboard.presentkids === "NA"
-      ? sectionDataForDashboard.totalkids
-      : 0;
-
-  let absentkidsData =
-    sectionDataForDashboard.absentkids === "NA"
-      ? 0
-      : sectionDataForDashboard.absentkids;
-
 
   //maintaining chartOptions in state to render chat again on small change in chartOptions
+
+
   const [threeD, setThreeD] = useState(true);
   const chartOptions = {
+    colors: ['rgb(104, 193, 130)', 'rgb(237, 102, 71)',],
     chart: {
       backgroundColor: "#f3f9fe",
       type: "pie",
@@ -253,8 +265,8 @@ const DashboardHome = () => {
         type: "pie",
         name: "Browser share",
         data: [
-          ["Kids Present", presentKidsData],
-          ["Kids Absent", absentkidsData],
+          ["Kids Present", sectionDataForDashboard.presentkids],
+          ["Kids Absent", sectionDataForDashboard.absentkids],
         ],
       },
     ],
@@ -268,7 +280,7 @@ const DashboardHome = () => {
     setThreeD(true);
   };
 
-  
+
 
   //displaying right container fn
   const displayRightContainer = () => {
@@ -276,42 +288,27 @@ const DashboardHome = () => {
     switch (rightContainerItemSelected) {
       case "attendanceClicked":
         return (
-          <div className="dbhome-right-attendance-piechart-container">
-            <div>
-              <h1 className="db-right-container-attendance-heading">
-                Today Attendance Status
-              </h1>
-              <div className="dbhome-piechart-container">
-                <HighchartsReact
-                  highcharts={Highcharts}
-                  options={chartOptions}
-                />
+              <div className="dbhome-right-attendance-piechart-container">
+                <div>
+                  <h1 className="db-right-container-attendance-heading">
+                    Today Attendance Status
+                  </h1>
+                  {sectionDataForDashboard.absentkids === "NA" ?
+              <div>Attendance have not taken yet</div> :
+              <>
+                  <div className="dbhome-piechart-container">
+                    <HighchartsReact
+                      highcharts={Highcharts}
+                      options={chartOptions}
+                    />
+                  </div>
+                  <div className="dbhome-piechart-btns-container">
+                    <button className={`dbhome-piechart-button ${!threeD && "active-d"}`} onClick={Handler2d}>2D</button>
+                    <button className={`dbhome-piechart-button ${threeD && "active-d"}`} onClick={Handler3d}>3D</button>
+                  </div>
+                  </>}
+                </div>
               </div>
-              <div className="dbhome-piechart-btns-container">
-                <button onClick={Handler2d}>2D</button>
-                <button onClick={Handler3d}>3D</button>
-              </div>
-
-              <div>
-                <Chart
-                  width={"500px"}
-                  height={"500px"}
-                  chartType="PieChart"
-                  loader={<div></div>}
-                  data={[
-                    ["total", "value"],
-                    ["presint", presentKidsData],
-                    ["absent", absentkidsData],
-                  ]}
-                  options={{
-                    title: "Exam Performance",
-                    is3D: false,
-                    hAxis: { direction: { min: 0, max: 5 } },
-                  }}
-                />
-              </div>
-            </div>
-          </div>
         );
         break; // no use of break statement when used return statement, it comes out of switch on return statement
       case "birthdaysClicked":

@@ -131,7 +131,7 @@ const AttendanceDbHome = (props) => {
           <div className="attendance-dot-blue"></div>
           <h1 className="dbhome-day-heading">Total</h1>
         </div>
-        <p className="dbhome-day-description">
+        <p className="dbhome-attendance-num">
           {sectionDataForDashboard.totalkids}
         </p>
       </div>
@@ -141,10 +141,8 @@ const AttendanceDbHome = (props) => {
           <div className="attendance-dot-green"></div>
           <h1 className="dbhome-day-heading">Kids Present</h1>
         </div>
-        <p className="dbhome-day-description dbhome-day-description-green">
-          {sectionDataForDashboard.presentkids === "NA"
-            ? sectionDataForDashboard.totalkids
-            : 0}
+        <p className="dbhome-attendance-num dbhome-attendance-num-green">
+          {sectionDataForDashboard.presentkids}
         </p>
       </div>
       <hr className="dbhome-attendance-sub-containers-hr-line" />
@@ -153,10 +151,8 @@ const AttendanceDbHome = (props) => {
           <div className="attendance-dot-blue"></div>
           <h1 className="dbhome-day-heading">Kids Absent</h1>
         </div>
-        <p className="dbhome-day-description dbhome-day-description-red">
-          {sectionDataForDashboard.absentkids === "NA"
-            ? 0
-            : sectionDataForDashboard.absentkids}
+        <p className="dbhome-attendance-num dbhome-attendance-num-red">
+          {sectionDataForDashboard.absentkids}
         </p>
       </div>
       <hr className="dbhome-attendance-sub-containers-hr-line" />

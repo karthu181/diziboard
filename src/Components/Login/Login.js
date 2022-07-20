@@ -42,9 +42,12 @@ const Login = (props) => {
       },
     };
     const getUserProfileUrl =
-      "http://192.168.0.116:8280/mas_getuserprofiles/v1/getUserProfile?mas_userId=ct2%40gmail.com&mas_guid=dfg&mas_requestedOn=hfgh&mas_requestedFrom=gfh&mas_geoLocation=gfh";
-    try {
-      const response = await fetch(getUserProfileUrl, getUserProfileOptions);
+      "http://192.168.0.116:8280/mas_getuserprofiles/v1/getUserProfile";
+    const getUserProfileQueryParams=`?mas_userId=${username}&mas_guid=dfg&mas_requestedOn=hfgh&mas_requestedFrom=gfh&mas_geoLocation=gfh`
+    
+    
+      try {
+      const response = await fetch(getUserProfileUrl+getUserProfileQueryParams, getUserProfileOptions);
       const userProfileObj = await response.json();
 
       // storing in local storage user profile. delete on logout

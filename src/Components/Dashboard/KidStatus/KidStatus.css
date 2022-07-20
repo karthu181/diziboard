@@ -23,6 +23,7 @@
 .kidstatus-pagination {
 }
 .kidstatus-table {
+  width: 100%;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
@@ -188,6 +189,7 @@ th {
 
 .kidstatus-user-body {
   padding: 20px;
+  width: 100%;
 }
 
 .kidstatus-current-page {
