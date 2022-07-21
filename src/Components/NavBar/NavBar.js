@@ -7,8 +7,8 @@ const NavBar = (props) => {
   const { hideOrShow } = props;
   console.log(hideOrShow)
   return (
-    <div className={`nav-container ${hideOrShow}`}>
-      <Navbar collapseOnSelect expand="lg" bg="transparent" variant="light">
+    <div className={`nav-container ${hideOrShow} fixed-top`}>
+      <Navbar collapseOnSelect  expand="lg" bg="transparent" variant="light">
         <Navbar.Brand className="me-auto" href="#home">
           <img
             className="navbar-logo"

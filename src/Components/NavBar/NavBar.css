@@ -1,12 +1,18 @@
 .nav-container {
   border-bottom: 1px solid black;
   padding-right: 20px;
-  transition: 0.5s;
-
+  transition: all 1s;
+    -moz-transition: all 1s;
+    -o-transition: all 1s;
+    -webkit-transition: all 1s;
+  
 }
 .navbar-top-0{
- display: block;
+ top:0px !important;
 }
 .navbar-top-50{
-  display: hide;
+  top: -80px;
+}
+.navbar-logo{
+  height: 50px;
 }

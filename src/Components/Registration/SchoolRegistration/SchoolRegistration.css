@@ -1,0 +1,26 @@
+.school-reg-bg-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    min-height: 79%;
+
+}
+.school-reg-heading{
+    font-weight: 700;
+    font-size: 18px;
+    text-align: center;
+}
+.school-reg-form-container{
+    margin-right: 10%;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+}
+.school-reg-each-label{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+    border: 1px solid black;
+}

@@ -1,0 +1,12 @@
+.parent-dashboard-bg-container{
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+}
+.parent-dash-footer-container{
+    margin-top: auto;
+    bottom: 0;
+
+}
+
+/* move footer to bottom of page with margin-top:0 works only with display flex */

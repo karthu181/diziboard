@@ -1,0 +1,32 @@
+.dashboard-nav-bg-container {
+    background-image: linear-gradient(
+      to right,
+      #539fe1 0%,
+      #73b1e7 24%,
+      #0a77d5 53%,
+      #539fe1 100%,
+      #87bcea 100%,
+      #539fe1 101%
+    );
+    padding: 10px;
+  }
+  .dashboard-nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-style: none;
+  }
+  .db-nav-ul-list-container {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .db-nav-link-item {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  .db-nav-logo {
+    width: 60px;
+  }
+  

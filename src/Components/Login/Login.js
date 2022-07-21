@@ -59,6 +59,7 @@ const Login = (props) => {
         "diziUserProfile",
         JSON.stringify(userProfileObj.body)
       );
+      console.log(userProfileObj.body)
     } catch (error) {
       console.log(error);
     }
@@ -95,7 +96,6 @@ const Login = (props) => {
   const letMeInHandler = async (event) => {
     event.preventDefault();
 
-    const userDetails = { username, password };
     const options = {
       method: "POST",
       headers: {

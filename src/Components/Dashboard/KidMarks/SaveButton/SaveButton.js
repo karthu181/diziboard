@@ -6,7 +6,10 @@ import { v4 as uuidv4 } from "uuid";
 import "./SaveButton.css";
 
 const SaveButton = (props) => {
-  const loggedInUserProfile = localStorage.getItem("diziUserProfile");
+  const loggedInUserProfile = JSON.parse(
+    localStorage.getItem("diziUserProfile")
+  );
+  console.log(loggedInUserProfile)
 
   const { addMarksArray, disableSaveButton, selectedExamType, subMaxMarks } = props;
   const [saveModalshow, setSaveModalShow] = useState(false);
@@ -122,15 +125,16 @@ const SaveButton = (props) => {
         className="save-btn-modal"
         show={saveModalshow}
         onHide={handleClose}
+        size={"sm"}
       >
         <Modal.Header closeButton>
           <Modal.Title></Modal.Title>
         </Modal.Header>
-        <Modal.Body className="text-center">
+        <Modal.Body className="text-success text-center">
           Kid Marks Inserted Successfully
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button className="save-btn-in-kidmarks" variant="secondary" onClick={handleClose}>
             Ok
           </Button>
         </Modal.Footer>

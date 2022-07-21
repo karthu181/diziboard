@@ -1,31 +1,11 @@
-import Cookies from "js-cookie";
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import "./AboutMe.css";
 
 const AboutMe = () => {
-  const [data1, setData] = useState({});
 
-  const loginToken = Cookies.get("loginToken");
+  const loggedInUserProfile=JSON.parse(localStorage.getItem("diziUserProfile"))
 
-  useEffect(() => {
-    axios
-      .get(
-        "http://192.168.0.116:8280/mas_getuserprofiles/v1/getUserProfile?mas_userId=ct2%40gmail.com&mas_guid=dfg&mas_requestedOn=hfgh&mas_requestedFrom=gfh&mas_geoLocation=gfh",
-        {
-          headers: {
-            Authorization: `Bearer ${loginToken}`,
-          },
-        }
-      )
-      .then((res) => {
-        setData(res.data.body);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
+  
   const [showSaveBtn, setShowSaveBtn] = useState(false);
   const inputFileHandler = () => {
     setShowSaveBtn(!showSaveBtn);
@@ -56,7 +36,7 @@ const AboutMe = () => {
                       </div>
                       <div className="aboutme-subans-container">
                         <p>
-                          {data1.mas_firstName} {data1.mas_lastName}
+                          {loggedInUserProfile.mas_firstName} {localStorage.mas_lastName}
                         </p>
                       </div>
                     </div>
@@ -66,7 +46,7 @@ const AboutMe = () => {
                       </div>
                       <div className="aboutme-subans-container">
                         <p className="uniqueid-paragraph">
-                          {data1.mas_schoolUniqueId}
+                          {loggedInUserProfile.mas_schoolUniqueId}
                         </p>
                       </div>
                     </div>
@@ -75,7 +55,7 @@ const AboutMe = () => {
                         <label className="lable-school">School Role:</label>
                       </div>
                       <div className="aboutme-subans-container">
-                        <p>{data1.Role}</p>
+                        <p>{loggedInUserProfile.Role}</p>
                       </div>
                     </div>
                     <div className="name-lastname-firstname-container">
@@ -83,7 +63,7 @@ const AboutMe = () => {
                         <label className="lable-email">Email ID:</label>
                       </div>
                       <div className="aboutme-subans-container">
-                        <p>{data1.mas_userId}</p>
+                        <p>{loggedInUserProfile.mas_userId}</p>
                       </div>
                     </div>
                     <div className="name-lastname-firstname-container">
@@ -91,7 +71,7 @@ const AboutMe = () => {
                         <label className="lable-class">Class:</label>
                       </div>
                       <div className="aboutme-subans-container">
-                        <p>{data1.mas_class}</p>
+                        <p>{loggedInUserProfile.mas_class}</p>
                       </div>
                     </div>
                     <div className="name-lastname-firstname-container">
@@ -99,7 +79,7 @@ const AboutMe = () => {
                         <label className="lable-created">Created On:</label>
                       </div>
                       <div className="aboutme-subans-container">
-                        <p>{data1.mas_createdOn}</p>
+                        <p>{loggedInUserProfile.mas_createdOn}</p>
                       </div>
                     </div>
                     <div className="name-lastname-firstname-container">
@@ -122,7 +102,7 @@ const AboutMe = () => {
                 width="150px"
                 height="150px"
                 style={{ "padding-bottom": "5px" }}
-                src="http://192.168.0.116:8080/getimages/classteacher/5911355945/ct2@gmail.com.jpg"
+                src={`http://192.168.0.116:8080/getimages/classteacher/${loggedInUserProfile.mas_schoolUniqueId}/${loggedInUserProfile.mas_userId}.jpg`}
                 alt="teacher img"
                 className="img-tech"
               />

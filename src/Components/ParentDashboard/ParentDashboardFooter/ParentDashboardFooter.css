@@ -1,0 +1,25 @@
+.parent-db-footer-bg-container {
+  background-image: linear-gradient(
+    to right,
+    #539fe1 0%,
+    #73b1e7 24%,
+    #0a77d5 53%,
+    #539fe1 100%,
+    #87bcea 100%,
+    #539fe1 101%
+  );
+  box-sizing: border-box;
+  /* if you dont give this padding goes out of the footer and even you give 100vh to dashboard its 
+  taking more than 100vh == 100vh+padding so best practice is to use box sizing : border box; */
+  padding-top: 15px;
+  padding-bottom: 10px;
+  margin-top: auto !important;
+}
+
+.parent-db-footer-text {
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #fff;
+  text-shadow: 1px 1px 1px #252525;
+}

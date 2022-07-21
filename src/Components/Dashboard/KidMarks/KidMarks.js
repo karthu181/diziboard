@@ -166,7 +166,7 @@ const KidMarks = () => {
         let response = await fetch(getSchoolSubjectsUrl+getSchoolExamTypesQueryParams, options);
         let schoolSubjectsData = await response.json();
         // setSchoolExamTypes(classKidsListData);
-        console.log(schoolSubjectsData.body.common);
+        console.log(schoolSubjectsData.body);
         setSchoolSubjects(schoolSubjectsData.body.common);
       } catch (e) {
         console.log(e);

@@ -1,0 +1,65 @@
+.parent-db-kidlist-bg-container{
+  
+}
+.parent-db-kidlist-button {
+    margin-left: -80px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    border-radius: 2px !important;
+    border: 1px solid rgb(1, 97, 128);
+    color: #ffffff;
+    background-image: linear-gradient(to bottom, #177ed7 0%, #177ed7 100%);
+  }
+  .parent-db-kidlist-button:hover {
+    background-image: linear-gradient(
+      to bottom,
+      #209fc8 0%,
+      #6dd2f3 50%,
+      #209fc8 100%
+    ) !important;
+    color: black;
+  }
+  .parent-db-kidlist-btn-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .parent-db-kidlist-container{
+    list-style-type: none;
+    padding-left: 0px;
+  }
+  .parent-db-eachkid-outer-container{
+    padding: 12px;
+    width: 25%;
+    box-sizing: border-box;
+    background-image: linear-gradient(#eee, #eee) ;
+    border: 1px solid black;
+  }
+  .parent-db-eachkid-inner-container{
+    padding: 12px;
+    text-align: center;
+  }
+  .parent-db-eachkid-img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+  .parent-db-kid-name{
+    color: parent-db-kid-name;
+    font-weight: 800;
+    font-size: 15px;
+    line-height: 16.5px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    text-align: center;
+
+  }

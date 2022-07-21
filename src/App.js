@@ -7,17 +7,9 @@ import Login from "./Components/Login/Login";
 import Registration from "./Components/Registration/Registration";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import ResetPassword from "./Components/Reset Password/ResetPassword";
+import ParentDashboard from "./Components/ParentDashboard/ParentDashboard";
 import RequiredAuthForCt from "./Components/RequiredAuthForCt/RequiredAuthForCt";
 
-// import AboutMe from "./Components/Dashboard/AboutMe/AboutMe";
-// import Attendance from "./Components/Dashboard/Attendance/Attendance";
-// import DashboardHome from "./Components/Dashboard/DashboardHome/DashboardHome";
-// import Diary from "./Components/Dashboard/Diary/Diary";
-// import EventManagement from "./Components/Dashboard/EventManagement/EventManagement";
-// import HolidayManagement from "./Components/Dashboard/HolidayManagement/HolidayManagement";
-// import KidApprovals from "./Components/Dashboard/KidApprovals/KidApprovals";
-// import KidMarks from "./Components/Dashboard/KidMarks/KidMarks";
-// import KidStatus from "./Components/Dashboard/KidStatus/KidStatus";
 
 function App() {
   return (
@@ -31,10 +23,7 @@ function App() {
           <Route path="/screens" element={<Screens />} />
           <Route path="/download" element={<Download />} />
           <Route path="/contact" element={<Contact />} /> */}
-          <Route path="/registration" element={<Registration />} />
-
-
-
+          <Route path="/registration/*" element={<Registration />} />
           {/* <Route path="/dashboard/*" element={
           <RequiredAuthForCt redirectTo="/login">
           <Dashboard />
@@ -44,6 +33,7 @@ function App() {
 whatever links after dashboard, it all requires authorisation */}
 
           <Route path="/dashboard/*" element={<Dashboard/>}/>
+          <Route path="/parent-dashboard/*" element={<ParentDashboard/>}/>
 
 
           <Route path="/resetPassword" element={<ResetPassword />} />

@@ -22,8 +22,9 @@ const Home = () => {
   }, [])
 
 
+//scroll fn to hide or show navbar==> hide navbar when scrolled to top, else show
 const scrollFunction=()=>{
-  if(document.body.scrollTop>20 || document.documentElement.scrollTop>20){
+  if(document.body.scrollTop>30 || document.documentElement.scrollTop>20){
     setHideNavClass("navbar-top-0")
   }else{
     setHideNavClass("navbar-top-50")
@@ -32,7 +33,7 @@ const scrollFunction=()=>{
 
 
   window.onscroll=()=>{
-    scrollFunction("navbar-top-50")
+    scrollFunction()
   }
 
   return (

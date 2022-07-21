@@ -21,3 +21,46 @@
   ) !important;
   color: black;
 }
+/* save btn modal */
+.save-btn-modal {
+  transform: scale(-0.2) !important ;
+  opacity: 0;
+  transition: all 0.4s ease-in-out !important;
+}
+
+.save-btn-modal.show {
+  opacity: 1;
+  transform: scale(1) !important;
+  transition: all 0.4s ease-in-out !important;
+  top: 30%;
+}
+.save-btn-modal .modal-header {
+  background-color: #177ed7;
+  height: 55px;
+  color: #ffffff;
+  margin-bottom: 10px;
+  transition: all 0.4s ease-in-out !important;
+  border-radius: 0px !important;
+  /* to get gull border==> to remove default border to bootstrap react modal */
+  -webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  
+}
+
+.save-btn-modal .modal-title {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.save-btn-modal .modal-footer {
+  -webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
+  border-top: 0 none;
+  transition: all 0.4s ease-in-out !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
