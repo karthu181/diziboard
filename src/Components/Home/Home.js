@@ -13,7 +13,7 @@ import "animate.css";
 import "./Home.css";
 
 const Home = () => {
- const [hideNavClass, setHideNavClass]=useState("navbar-top-0")
+ const [hideNavClass, setHideNavClass]=useState(["nav-show", "nav-items-black"])
 
   useEffect(() => {
     new WOW.WOW({
@@ -25,9 +25,9 @@ const Home = () => {
 //scroll fn to hide or show navbar==> hide navbar when scrolled to top, else show
 const scrollFunction=()=>{
   if(document.body.scrollTop>30 || document.documentElement.scrollTop>20){
-    setHideNavClass("navbar-top-0")
+    setHideNavClass(["nav-show","nav-items-white"])
   }else{
-    setHideNavClass("navbar-top-50")
+    setHideNavClass(["nav-hide","nav-items-black"])
   }
 }
 

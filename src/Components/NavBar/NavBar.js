@@ -7,7 +7,7 @@ const NavBar = (props) => {
   const { hideOrShow } = props;
   console.log(hideOrShow)
   return (
-    <div className={`nav-container ${hideOrShow} fixed-top`}>
+    <div className={`nav-container ${hideOrShow[0]} fixed-top`}>
       <Navbar collapseOnSelect  expand="lg" bg="transparent" variant="light">
         <Navbar.Brand className="me-auto" href="#home">
           <img
@@ -19,17 +19,23 @@ const NavBar = (props) => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link href="#home">HOME</Nav.Link>
-            <Nav.Link href="#about">ABOUT</Nav.Link>
-            <Nav.Link href="#features">FEATURES</Nav.Link>
-            <Nav.Link href="#screens">SCREENS</Nav.Link>
-            <Nav.Link href="#download">DOWNLOAD</Nav.Link>
-            <Nav.Link href="#contact">CONTACT</Nav.Link>
-            <Link className="nav-link" to="/registration">
-              REGISTRATION
+            <Nav.Link href="#home">
+              <span  className={`${hideOrShow[1]}`}>HOME</span></Nav.Link>
+            <Nav.Link href="#about">
+              <span  className={`${hideOrShow[1]}`}>ABOUT</span></Nav.Link>
+            <Nav.Link href="#features">
+              <span className={`${hideOrShow[1]}`}>FEATURES</span></Nav.Link>
+            <Nav.Link href="#screens">
+              <span className={`${hideOrShow[1]}`}>SCREENS</span></Nav.Link>
+            <Nav.Link href="#download" >
+              <span className={`${hideOrShow[1]}`}>DOWNLOAD</span></Nav.Link>
+            <Nav.Link href="#contact">
+              <span  className={`${hideOrShow[1]}`}>CONTACT</span></Nav.Link>
+            <Link className="nav-link" to="/registration"> 
+              <span className={`${hideOrShow[1]}`}>REGISTRATION</span>
             </Link>
             <Link className="nav-link" to="/login">
-              SIGN IN
+              <span className={`${hideOrShow[1]}`}>SIGN IN</span>
             </Link>
           </Nav>
         </Navbar.Collapse>

@@ -93,13 +93,6 @@
   font-size: 20px;
 }
 
-.fa {
-  
-  font: normal normal normal 14px/1 FontAwesome;
-  font-size: inherit;
-  text-rendering: auto;
-  
-}
 
 .social-icons-list-items{
   cursor: pointer;
@@ -134,6 +127,7 @@
   margin: 10px;
   animation: fadeInLeft;
   animation-duration: 1s;
+  animation-fill-mode: both;
 }
 
 .socila-icons-items{
@@ -171,6 +165,7 @@
 .contact-copyright{
   font-size:15px;
   font-weight: bold;
+  color: #8C8B8A;;
 }
 
 .contact-phne-number{

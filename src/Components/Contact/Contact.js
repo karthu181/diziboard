@@ -9,14 +9,14 @@ import "./Contact.css";
 const Contact = () => {
   return (
     <div id="contact" className="contact-bg-container">
-      <div className="contact-animation">
+      <div>
         <h1 className="about-us-text">GET IN TOUCH</h1>
         <hr className="about-us-hr-line" />
         <p className="about-us-description">
           Have a question or comment? Drop us a line
         </p>
         <div>
-          <form className="contact-form">
+          <form className="contact-form contact-animation wow">
             <div>
               <input placeholder="Name" type="text" className="contact-us-input-containers" />
               <br />
@@ -37,7 +37,7 @@ const Contact = () => {
               </button>
             </div>
           </form>
-          <ul className="social-icons">
+          <ul className="social-icons wow">
 
             <li className="social-icons-list-items">
               <a href="#">
