@@ -1,25 +1,29 @@
 .nav-container {
-
- 
   padding-right: 20px;
   transition: all 1s;
+  background-color: transparent;
     -moz-transition: all 1s;
     -o-transition: all 1s;
     -webkit-transition: all 1s;
-  
+    border-bottom:1px solid black;
 }
 .nav-show{
   top:0px;
  animation: fade;
  animation-duration: 1s;
  background-color: rgba(59,59,59,0.7);
- transition: all 1s;
+ border-style: none;
+
 }
 .nav-hide{
   animation: fade;
  animation-duration: 1s;
   top: -80px;
   background-color: transparent;
+  transition: all 1s;
+  border-style: none;
+ 
+
  
 }
 .navbar-logo{
@@ -36,7 +40,7 @@
 
 }
 .nav-items-black{
-  color: #ffffff;
+  color: black;
   font-size: 14px;
   font-weight: lighter;
   font-family: "Raleway", sans-serif;

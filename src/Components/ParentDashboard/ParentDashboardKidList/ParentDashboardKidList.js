@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 import "./ParentDashboardKidList.css"
 import Cookies from "js-cookie";
 
 const ParentDashboardKidList = () => {
+    const navigate=useNavigate()
     const loginToken = Cookies.get("loginToken")
     const [kidlistArr, setKidlistArr] = useState([])
     const loggedInUserProfile = JSON.parse(localStorage.getItem("diziUserProfile"))
@@ -41,6 +43,15 @@ const ParentDashboardKidList = () => {
     }, [])
 
 
+    
+    const onClickEachKidHandler=(kidObj)=>{
+        console.log(kidObj)
+        navigate("/parent-dashboard/parent-kid-details",{state:{eachKid:kidObj}});
+        // history and useHistory is not working in react router dom v6
+        // so use useNavigate or Navigate component
+        //we can pass props only in state like above, you cant use other than state name, not works
+    }
+
     return (
         <div className="parent-db-kidlist-bg-container">
             <div className="parent-db-kidlist-btn-container">
@@ -54,18 +65,20 @@ const ParentDashboardKidList = () => {
             <ul className="parent-db-kidlist-container">
                 {kidlistArr.map((eachKidObj) => {
                     return (
-                        <li className="parent-db-eachkid-outer-container">
+                        <li className="parent-db-eachkid-outer-container" onClick={()=>{onClickEachKidHandler(eachKidObj)}}>
                             <div className="parent-db-eachkid-inner-container">
                                 <div className="parent-db-eachkid-img-container">
                                     <img alt="profile-image"
                                         className="parent-db-eachkid-img"
                                         src="http://192.168.0.116:8080/css/images/kidImages/download.jpg" />
                                 </div>
-                                <h2 className="parent-db-kid-name">Nikil</h2>
+                                
+                                <h2 className="parent-db-kid-name">{eachKidObj.mas_firstName} {eachKidObj.mas_lastName}</h2>
                                 <p className="text-center">{eachKidObj.mas_schoolName}</p>
                                 <p className="text-center">{eachKidObj.mas_Class}</p>
-                                <p className="text-center">{eachKidObj.mas_Section}</p>
-                                <p className="text-center">{eachKidObj.mas_kidStatus}</p>
+                                <p className="text-center">Section-{eachKidObj.mas_Section}</p>
+                                <p className="text-center">Status-{eachKidObj.mas_kidStatus}</p>
+                                
                             </div>
                         </li>
                     )

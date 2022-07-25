@@ -167,7 +167,7 @@ const KidMarks = () => {
         let schoolSubjectsData = await response.json();
         // setSchoolExamTypes(classKidsListData);
         console.log(schoolSubjectsData.body);
-        setSchoolSubjects(schoolSubjectsData.body.common);
+        setSchoolSubjects(schoolSubjectsData.body);
       } catch (e) {
         console.log(e);
       }
@@ -268,7 +268,7 @@ const KidMarks = () => {
             className="kidmarks-input kidmarks-input-disabled kidmarks-no-border"
             placeholder="Username"
             id="kidmarksUsername"
-            value="Class Teacher2 CT"
+            value={loggedInUserProfile.mas_firstName+" "+loggedInUserProfile.mas_lastName}
             type="text"
             disabled
           />
@@ -279,7 +279,7 @@ const KidMarks = () => {
             className="kidmarks-input kidmarks-input-disabled kidmarks-no-border"
             type="text"
             disabled
-            placeholder="SECOND CLASS"
+            placeholder={loggedInUserProfile.mas_class}
             id="kidmarksClass"
           />
         </div>
@@ -294,7 +294,7 @@ const KidMarks = () => {
             className="kidmarks-input kidmarks-input-disabled kidmarks-no-border"
             type="text"
             disabled
-            placeholder="B"
+            placeholder={loggedInUserProfile.mas_section}
             id="kidmarksSection"
           />
         </div>

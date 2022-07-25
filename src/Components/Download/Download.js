@@ -58,7 +58,7 @@ const AvailableOn = () => {
       <div className="available-on-android wow">
         <a href="#">
           <div className="available-no-padding">
-            <div className="available-on-item">
+            <div className="available-on-item" style={{border:"1px solid #0F1217"}}>
               <div className="available-on-item-icon">
               <GrAndroid />
               </div>

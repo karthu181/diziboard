@@ -36,17 +36,21 @@
   .parent-db-kidlist-container{
     list-style-type: none;
     padding-left: 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
   .parent-db-eachkid-outer-container{
-    padding: 12px;
     width: 25%;
     box-sizing: border-box;
-    background-image: linear-gradient(#eee, #eee) ;
-    border: 1px solid black;
   }
   .parent-db-eachkid-inner-container{
     padding: 12px;
+    margin: 12px;
     text-align: center;
+    background-image: linear-gradient(#eee, #eee) ;
+    border: 1px solid black;
+    cursor: pointer;
   }
   .parent-db-eachkid-img{
     width: 150px;

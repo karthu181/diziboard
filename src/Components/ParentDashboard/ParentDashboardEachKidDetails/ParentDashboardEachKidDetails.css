@@ -1,0 +1,69 @@
+.parent-eachkid-bg-container{
+    padding: 10px;
+}
+.parent-eachkid-profile-img-container{
+    width:16% ;
+    text-align: center;
+    border: 1px solid black;
+}
+.parent-eachkid-name-container{
+    width: 25%;
+    text-align: center;
+    border: 1px solid black;
+}
+.parent-eachkid-3rd-container{
+    width: 25%;
+    text-align: center;
+    border: 1px solid black;
+}
+.parent-eachkid-4th-cont{
+    width: 25%;
+    text-align: center;
+    border: 1px solid black;
+}
+.parent-eachkid-5th-cont{
+    width: 9%;
+    text-align: center;
+    border: 1px solid black;
+}
+.parent-eachkid-profile-img{
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+}
+.parent-kid-basic-data-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    background-color: #98DBF1;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 14px;
+}
+.parent-eachkid-details-subhead-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.parent-eachkid-details-subhead{
+    background-image: linear-gradient(#337AB7 0px,#265A88 100%);
+    border: 1px solid rgb(36,85,128);
+    border-radius: 4px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    text-align: center;
+    cursor: pointer;
+    width: 25%;
+}
+.parent-eachkid-details-subhead p{
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+}
+.parent-eachkid-active-tab{
+    background-color: #429BDF !important;
+    background-image: none;
+}

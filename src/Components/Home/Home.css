@@ -83,12 +83,7 @@
   font-weight: 300;
   background: transparent;
 }
-.home-hide {
-  display: none;
-}
-.home-display {
-  display: block;
-}
+
 .home-iphone-black-container{
   width: 25%;
   padding-left: 15px;

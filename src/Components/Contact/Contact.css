@@ -1,7 +1,7 @@
 .contact-bg-container {
   background-color: #fff;
   height: 100vh;
-  padding: 10px;
+
   }
 
   .contact-animation{
@@ -166,11 +166,6 @@
   font-size:15px;
   font-weight: bold;
   color: #8C8B8A;;
-}
-
-.contact-phne-number{
-  font-size: 15px;
-  font-weight: bold;
 }
 
 .contact-scrool-up{

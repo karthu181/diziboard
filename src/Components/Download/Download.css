@@ -120,15 +120,21 @@
   justify-content: center;
   align-items: center;
   animation: bounceInRight;
+  animation-fill-mode: both;
   animation-duration: 1s;
+  animation-delay: 0.2s;
 }
 .available-on-ios{
   width: 22%;
   animation: bounceInRight;
+  animation-fill-mode: both;
   animation-duration: 1s;
+  animation-delay: 0.2s;
 }
 .available-on-android{
   width: 22%;
   animation: bounceInRight;
+  animation-fill-mode: both;
   animation-duration: 1s;
+  animation-delay: 0.2s;
 }

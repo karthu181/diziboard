@@ -9,7 +9,7 @@ import "./Contact.css";
 const Contact = () => {
   return (
     <div id="contact" className="contact-bg-container">
-      <div>
+      <div className="p-3">
         <h1 className="about-us-text">GET IN TOUCH</h1>
         <hr className="about-us-hr-line" />
         <p className="about-us-description">
@@ -61,7 +61,7 @@ const Contact = () => {
         <div className="contact-bottom-flex-container">
           <div className="contact-name-phone-container">
             <p className="contact-copyright">COPYRIGHT © 2018<span className="contact-span-item"><a href="#">-MASSIL TECHNOLOGIES PVT LTD</a></span></p>
-            <p className="contact-phne-number">CONTACT : +9140 27177600</p>
+            <p className="contact-copyright">CONTACT : +9140 27177600</p>
           </div>
 
           <a href="#home">

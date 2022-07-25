@@ -1,0 +1,26 @@
+.parents-eachkid-marks-left-cont{
+    width: 50%;
+}
+
+.parents-eachkid-marks-sublabels-container{
+    display: flex;
+    flex-direction: row;
+  
+}
+
+.parents-eachkid-marks-sublabels{
+    text-align: left;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    margin-bottom: 5px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.parents-eachkid-marks-sublabels span{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+.parents-eachkid-marks-right-cont{
+    width: 50%;
+}

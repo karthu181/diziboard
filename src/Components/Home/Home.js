@@ -13,7 +13,7 @@ import "animate.css";
 import "./Home.css";
 
 const Home = () => {
- const [hideNavClass, setHideNavClass]=useState(["nav-show", "nav-items-black"])
+ const [hideNavClass, setHideNavClass]=useState(["", "nav-items-black"])
 
   useEffect(() => {
     new WOW.WOW({
